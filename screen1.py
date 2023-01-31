@@ -1,7 +1,7 @@
 import pygame, os
 
 pygame.init()
-screen= pygame.display.set_mode((800, 800))
+screen= pygame.display.set_mode()
 pygame.display.set_caption('Sick or Swim')
 
 clock = pygame.time.Clock()
