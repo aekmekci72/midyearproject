@@ -18,6 +18,7 @@ while True:
               
         if ev.type == pygame.MOUSEBUTTONDOWN:
             if width/2 <= pygame.mouse.get_pos()[0] <= width/2+140 and height/2 <= pygame.mouse.get_pos()[1] <= height/2+40:
+        
                 pygame.quit()
                   
     screen.fill((110,110,110))
