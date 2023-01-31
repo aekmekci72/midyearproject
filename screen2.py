@@ -1,6 +1,7 @@
 import pygame, os
 
 pygame.init()
+screen= pygame.display.set_mode((800, 800))
 screen = pygame.display.set_mode()
 color = (255,255,255)
 color_light = (170,170,170)
@@ -29,6 +30,6 @@ while True:
     else:
         pygame.draw.rect(screen,color_dark,[width/2,height/2,240,40])
       
-    screen.blit(text , (width/2+50,height/2))
+    screen.blit(text,(width/2+50,height/2))
       
     pygame.display.update()
