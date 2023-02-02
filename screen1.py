@@ -1,20 +1,21 @@
-import pygame, os
+import pygame
+from sys import exit
+import os
 
 pygame.init()
-screen= pygame.display.set_mode()
+screen= pygame.display.set_mode((800, 800))
 pygame.display.set_caption('Sick or Swim')
 
 clock = pygame.time.Clock()
 font = pygame.font.Font('Neucha-Regular.ttf',60)
-font1 = pygame.font.Font('Neucha-Regular.ttf', 90)
+font1 = pygame.font.Font('PermanentMarker-Regular.ttf', 90)
 
-screen = pygame.display.set_mode()
 color = (255,255,255)
 color_light = (170,170,170)
 color_dark = (100,100,100)
 width = screen.get_width()
 height = screen.get_height()
-smallfont = pygame.font.SysFont('Ariel',35)
+smallfont = pygame.font.SysFont('Arial',35)
 text = smallfont.render('S T A R T' , True , color)
 continueb = pygame.image.load('continue.png')
 
@@ -22,8 +23,8 @@ continueb = pygame.image.load('continue.png')
 splash_page = pygame.image.load('ship_sink.jpeg')
 splash_water = pygame.image.load('water_drop.png')
 
-scaled_splash = pygame.transform.scale(splash_page, (width/2, height/2))
-scaled_water = pygame.transform.scale(splash_water, (width/2, height/4))
+scaled_splash = pygame.transform.scale(splash_page, (800, 800))
+scaled_water = pygame.transform.scale(splash_water, (800, 495))
 splash_water1 = pygame.transform.flip(scaled_water, True, False)
 
 
@@ -39,7 +40,6 @@ def blit_alpha(target, source, location, opacity):
 text_splash = font1.render('Sick Or Swim', False, 'white')
 text_splash_name = font.render('By: Shreeja And Anna', False, 'white')
 
-play_button = pygame.image.load('play_button.png').convert_alpha()
 
 while True:
     for event in pygame.event.get():
@@ -53,12 +53,12 @@ while True:
                 os.system("howtoplay.py 1")
                 pygame.quit()
         
-    screen.blit(text , (width/2+50,height/2))
+    screen.blit(text , (0,0))
     position=pygame.mouse.get_pos()
     screen.blit(scaled_splash,(0,0))
     blit_alpha(screen, scaled_water,(0,0),150)
     blit_alpha(screen, splash_water1,(0,450),150)
-    screen.blit(text_splash, (200,70))
+    screen.blit(text_splash, (60,70))
     screen.blit(text_splash_name, (165,570))
     scaled_splash = pygame.transform.smoothscale(scaled_splash, (width, height)) 
     scaled_water = pygame.transform.smoothscale(scaled_water, (width, height)) 

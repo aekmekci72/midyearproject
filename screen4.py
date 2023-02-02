@@ -2,6 +2,7 @@ import pygame, os
 
 pygame.init()
 screen= pygame.display.set_mode((800, 800))
+screen = pygame.display.set_mode()
 color = (255,255,255)
 color_light = (170,170,170)
 color_dark = (100,100,100)
