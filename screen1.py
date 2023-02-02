@@ -41,19 +41,6 @@ text_splash_name = font.render('By: Shreeja And Anna', False, 'white')
 
 play_button = pygame.image.load('play_button.png').convert_alpha()
 
-# class Button():
-#     def __init__(self, x, y, width,height, image):
-#         self.image=image
-#         self.rect = self.image.get_rect()
-#         self.rect.topleft = (x,y)
-#         self.width=width
-#         self.height=height
-   
-#     def draw(self):
-#         screen.blit(self.image, (self.rect.x, self.rect.y))
-
-# start_button= Button(500, 500, 100,100,play_button)
-
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -80,7 +67,3 @@ while True:
          
     pygame.display.update()
     clock.tick(60)
-
-
-
-

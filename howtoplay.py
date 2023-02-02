@@ -7,6 +7,7 @@ pygame.display.set_caption('Sick or Swim')
 clock = pygame.time.Clock()
 font = pygame.font.Font('Neucha-Regular.ttf',60)
 font1 = pygame.font.Font('Neucha-Regular.ttf', 90)
+font2=pygame.font.Font('Neucha-Regular.ttf', 30)
 
 screen = pygame.display.set_mode()
 color = (255,255,255)
@@ -20,11 +21,8 @@ text = smallfont.render('S T A R T' , True , color)
 
 splash_page = pygame.image.load('howtoplayback.png')
 continueb = pygame.image.load('continue.png')
-#splash_water = pygame.image.load('water_drop.png')
 
 scaled_splash = pygame.transform.scale(splash_page, (width/2, height/2))
-#scaled_water = pygame.transform.scale(splash_water, (width/2, height/4))
-#splash_water1 = pygame.transform.flip(scaled_water, True, False)
 
 
 def blit_alpha(target, source, location, opacity):
@@ -37,22 +35,10 @@ def blit_alpha(target, source, location, opacity):
     target.blit(temp, location)
 
 text_splash = font1.render('How to Play', False, 'white')
-text_splash_name = font.render('this is the game description ig', False, 'white')
+text_splash_name = font2.render('this is the game description ig', False, 'white')
 
 play_button = pygame.image.load('play_button.png').convert_alpha()
 
-# class Button():
-#     def __init__(self, x, y, width,height, image):
-#         self.image=image
-#         self.rect = self.image.get_rect()
-#         self.rect.topleft = (x,y)
-#         self.width=width
-#         self.height=height
-   
-#     def draw(self):
-#         screen.blit(self.image, (self.rect.x, self.rect.y))
-
-# start_button= Button(500, 500, 100,100,play_button)
 
 while True:
     for event in pygame.event.get():
@@ -69,13 +55,10 @@ while True:
     screen.blit(text , (width/2+50,height/2))
     position=pygame.mouse.get_pos()
     screen.blit(scaled_splash,(0,0))
-   # blit_alpha(screen, scaled_water,(0,0),150)
-   # blit_alpha(screen, splash_water1,(0,450),150)
     screen.blit(text_splash, (200,70))
     screen.blit(continueb, (width/2-500,height/2+200))
     continueb = pygame.transform.smoothscale(continueb, (140, 200)) 
     screen.blit(text_splash_name, (165,270))
-    #scaled_water = pygame.transform.scale(splash_water, (width/2, height/4))
     scaled_splash = pygame.transform.smoothscale(scaled_splash, (width, height)) 
     
          
