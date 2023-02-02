@@ -16,6 +16,7 @@ width = screen.get_width()
 height = screen.get_height()
 smallfont = pygame.font.SysFont('Arial',35)
 text = smallfont.render('S T A R T' , True , color)
+continueb = pygame.image.load('continue.png')
 
 
 splash_page = pygame.image.load('ship_sink.jpeg')
@@ -46,21 +47,10 @@ while True:
             exit()
         
         if event.type == pygame.MOUSEBUTTONDOWN:
-            if width/2 <= pygame.mouse.get_pos()[0] <= width/2+240 and height/2 <= pygame.mouse.get_pos()[1] <= height/2+40:
-                os.system("screen2.py 1")
+            (width/2-500,height/2+200)
+            if width/2-500 <= pygame.mouse.get_pos()[0] <= width/2-360 and height/2+200 <= pygame.mouse.get_pos()[1] <= height/2+400:
+                os.system("howtoplay.py 1")
                 pygame.quit()
-
-        if width/2 <= pygame.mouse.get_pos()[0] <= width/2+140 and height/2 <= pygame.mouse.get_pos()[1] <= height/2+40:
-            pygame.draw.rect(screen,"black",[width/2,height/2,240,40])
-            
-        else:
-            pygame.draw.rect(screen,"white",[width/2,height/2,240,40])
-
-        if width/2 <= pygame.mouse.get_pos()[0] <= width/2+140 and height/2 <= pygame.mouse.get_pos()[1] <= height/2+40:
-            pygame.draw.rect(screen,color_light,[width/2,height/2,240,40])
-            
-        else:
-            pygame.draw.rect(screen,color_dark,[width/2,height/2,240,40])
         
     screen.blit(text , (0,0))
     position=pygame.mouse.get_pos()
@@ -69,6 +59,14 @@ while True:
     blit_alpha(screen, splash_water1,(0,450),150)
     screen.blit(text_splash, (60,70))
     screen.blit(text_splash_name, (165,570))
+    scaled_splash = pygame.transform.smoothscale(scaled_splash, (width, height)) 
+    scaled_water = pygame.transform.smoothscale(scaled_water, (width, height)) 
+    screen.blit(continueb, (width/2-500,height/2+200))
+    continueb = pygame.transform.smoothscale(continueb, (140, 200)) 
          
     pygame.display.update()
     clock.tick(60)
+
+
+
+
