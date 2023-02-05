@@ -1,5 +1,6 @@
 import pygame
 import os
+import time
 
 pygame.init()
 screen= pygame.display.set_mode()
@@ -33,6 +34,35 @@ def blit_alpha(target, source, location, opacity):
     target.blit(temp, location)
 
 variable="commons"
+health = 100
+wealth = 100
+clock_game = 0
+
+def clock_time():
+    hour = 1
+    count=1
+
+    while True:
+        if count%2!=0:
+            clock_game = f"{hour}:00 AM"
+        else:
+            clock_game = f"{hour}:00 PM"
+
+        while hour!=12:
+            time.sleep(10)
+            hour+=1
+            if count%2!=0:
+                clock_game = f"{hour}:00 AM"
+            else:
+                clock_game = f"{hour}:00 PM"
+
+        if hour == 12:
+            if count%2!=0:
+                clock_game = f"{hour}:00 PM"
+            else:
+                clock_game = f"{hour}:00 AM"
+            hour = 1
+            count+=1
 
 while True:
     for event in pygame.event.get():
