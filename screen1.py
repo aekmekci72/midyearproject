@@ -45,13 +45,13 @@ while True:
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
-        
+       
         if event.type == pygame.MOUSEBUTTONDOWN:
             (width/2-500,height/2+200)
             if width/2-500 <= pygame.mouse.get_pos()[0] <= width/2-360 and height/2+200 <= pygame.mouse.get_pos()[1] <= height/2+400:
                 os.system("howtoplay.py 1")
                 pygame.quit()
-        
+       
     screen.blit(text , (0,0))
     position=pygame.mouse.get_pos()
     screen.blit(scaled_splash,(0,0))
@@ -59,10 +59,10 @@ while True:
     blit_alpha(screen, splash_water1,(0,450),150)
     screen.blit(text_splash, (60,70))
     screen.blit(text_splash_name, (165,570))
-    scaled_splash = pygame.transform.smoothscale(scaled_splash, (width, height)) 
-    scaled_water = pygame.transform.smoothscale(scaled_water, (width, height)) 
+    scaled_splash = pygame.transform.smoothscale(scaled_splash, (width, height))
+    scaled_water = pygame.transform.smoothscale(scaled_water, (width, height))
     screen.blit(continueb, (width/2-500,height/2+200))
-    continueb = pygame.transform.smoothscale(continueb, (140, 200)) 
+    continueb = pygame.transform.smoothscale(continueb, (140, 200))
          
     pygame.display.update()
     clock.tick(60)
