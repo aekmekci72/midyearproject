@@ -8,7 +8,7 @@ pygame.display.set_caption('Sick or Swim')
 
 clock = pygame.time.Clock()
 font = pygame.font.Font('Neucha-Regular.ttf',60)
-font1 = pygame.font.Font('PermanentMarker-Regular.ttf', 90)
+font1 = pygame.font.Font('PermanentMarker-Regular.ttf', 20)
 
 color = (255,255,255)
 color_light = (170,170,170)
@@ -37,32 +37,44 @@ variable="commons"
 health = 100
 wealth = 100
 clock_game = 0
+global min, hour, count, var
+hour=1
+count=1
+var=0
+min=0
 
-def clock_time():
-    hour = 1
-    count=1
-
-    while True:
+def clockfunc():
+    global min, hour, count, var
+    time.sleep(0.1)
+    min+=1
+    if min<10:
+        mindisp="0"+str(min)
+    else:
+        mindisp=str(min)
+    if count%2!=0:
+        clock_game = f"{hour}:{mindisp} AM"
+    else:
+        clock_game = f"{hour}:{mindisp} PM"
+    
+    if min==60:
+        min=0
+        hour+=1
         if count%2!=0:
-            clock_game = f"{hour}:00 AM"
+            clock_game = f"{hour}:{mindisp} AM"
         else:
-            clock_game = f"{hour}:00 PM"
+            clock_game = f"{hour}:{mindisp} PM"
 
-        while hour!=12:
-            time.sleep(10)
-            hour+=1
-            if count%2!=0:
-                clock_game = f"{hour}:00 AM"
-            else:
-                clock_game = f"{hour}:00 PM"
-
-        if hour == 12:
-            if count%2!=0:
-                clock_game = f"{hour}:00 PM"
-            else:
-                clock_game = f"{hour}:00 AM"
-            hour = 1
-            count+=1
+    if hour == 12:
+        if count%2!=0:
+            clock_game = f"{hour}:{mindisp} PM"
+        else:
+            clock_game = f"{hour}:{mindisp} AM"
+        hour = 1
+        count+=1
+    text_splash=font1.render(clock_game, False, 'black')
+    
+    pygame.draw.rect(screen, "white", pygame.Rect(0, 0, 100, 40))
+    screen.blit(text_splash, (10,10))
 
 while True:
     for event in pygame.event.get():
@@ -71,6 +83,8 @@ while True:
             exit()
         
         if event.type == pygame.KEYDOWN:
+            print("smth happened")
+            print(event.key, variable)
             if event.key == pygame.K_LEFT and variable=="commons" or event.key==pygame.K_DOWN and variable=="hallway" or event.key==pygame.K_UP and variable=="rooms":
                 variable="stores"
                 splash_page = pygame.image.load('stores.png')
@@ -99,15 +113,17 @@ while True:
                 variable="commons"
                 splash_page = pygame.image.load('commons.png')
             position=pygame.mouse.get_pos()
-            scaled_splash = pygame.transform.scale(splash_page, (800, 800))
+            scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
             screen.blit(scaled_splash,(0,0))
-            scaled_splash = pygame.transform.smoothscale(scaled_splash, (width, height))
-
-       
+    clockfunc()
+    
+        
+    pygame.display.update()
+        
+    text_splash=font1.render("", False, 'black')
+    screen.blit(text_splash, (60,70))
     screen.blit(text , (0,0))
     position=pygame.mouse.get_pos()
     screen.blit(scaled_splash,(0,0))
     scaled_splash = pygame.transform.smoothscale(scaled_splash, (width, height))
          
-    pygame.display.update()
-    clock.tick(60)
