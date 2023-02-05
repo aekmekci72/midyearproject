@@ -62,7 +62,7 @@ while True:
                 text_splash = font1.render("You embark on a ship called [SHIP NAME]", False, "white")
                 text_splash1 = font1.render("Thus, your adventure begins...", False, "white")
             if counter==7:
-                os.system("day1.py 1")
+                os.system("python day1.py 1")
                 pygame.quit()
 
         
