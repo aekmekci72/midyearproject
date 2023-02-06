@@ -2,6 +2,8 @@ import pygame
 import os
 import time
 
+global surv1
+
 pygame.init()
 screen= pygame.display.set_mode()
 pygame.display.set_caption('Sick or Swim')
@@ -37,14 +39,26 @@ variable="commons"
 health = 100
 wealth = 100
 clock_game = 0
-global min, hour, count, var
-hour=1
+global min, hour, count, var,label
+try:
+    if surv1==True:
+        hour=9
+except:
+    hour=7
 count=1
 var=0
 min=0
+label=font1.render("You wake up at 7 on your ship",False,"black")
+
+def event1():
+    global hour
+    os.system("python event1_1.py 1")
+    hour=10
 
 def clockfunc():
     global min, hour, count, var
+    if hour==9:
+        os.system("python event1_1.py 1")
     time.sleep(0.1)
     min+=1
     if min<10:
@@ -73,8 +87,12 @@ def clockfunc():
         count+=1
     text_splash=font1.render(clock_game, False, 'black')
     
-    pygame.draw.rect(screen, "white", pygame.Rect(0, 0, 100, 40))
+    
+    pygame.draw.rect(screen, "white", pygame.Rect(0, 0, 10000, 40))
     screen.blit(text_splash, (10,10))
+
+    screen.blit(label,(300,10))
+    
 
 while True:
     for event in pygame.event.get():
@@ -83,7 +101,6 @@ while True:
             exit()
         
         if event.type == pygame.KEYDOWN:
-            print("smth happened")
             print(event.key, variable)
             if event.key == pygame.K_LEFT and variable=="commons" or event.key==pygame.K_DOWN and variable=="hallway" or event.key==pygame.K_UP and variable=="rooms":
                 variable="stores"

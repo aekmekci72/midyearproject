@@ -1,13 +1,16 @@
 import pygame
 import os
 
+global surv1
+surv1=True
+
 pygame.init()
 screen= pygame.display.set_mode()
 pygame.display.set_caption('Sick or Swim')
 
 clock = pygame.time.Clock()
 font = pygame.font.Font('Neucha-Regular.ttf',60)
-font1 = pygame.font.Font('PermanentMarker-Regular.ttf', 90)
+font1 = pygame.font.Font('PermanentMarker-Regular.ttf', 30)
 
 color = (255,255,255)
 color_light = (170,170,170)
@@ -19,12 +22,9 @@ text = smallfont.render('S T A R T' , True , color)
 continueb = pygame.image.load('continue.png')
 
 
-splash_page = pygame.image.load('ship_sink.jpeg')
-splash_water = pygame.image.load('water_drop.png')
+splash_page = pygame.image.load('standinimage.png')
 
 scaled_splash = pygame.transform.scale(splash_page, (800, 800))
-scaled_water = pygame.transform.scale(splash_water, (800, 495))
-splash_water1 = pygame.transform.flip(scaled_water, True, False)
 
 
 def blit_alpha(target, source, location, opacity):
@@ -36,7 +36,9 @@ def blit_alpha(target, source, location, opacity):
     temp.set_alpha(opacity)        
     target.blit(temp, location)
 
-text_splash = font1.render('DAY 1', False, 'white')
+text_splash = font1.render('You navigated around the whirlpool', False, 'white')
+text_splash1 = font1.render('You survived!', False, 'white')
+counter=1
 
 
 while True:
@@ -46,21 +48,16 @@ while True:
             exit()
         
         if event.type == pygame.MOUSEBUTTONDOWN:
-            (width/2-500,height/2+200)
-            if width/2-500 <= pygame.mouse.get_pos()[0] <= width/2-360 and height/2+200 <= pygame.mouse.get_pos()[1] <= height/2+400:
-                os.system("python ship1.py 1")
-                pygame.quit()
+            os.system("python ship1.py 1")
+
         
     screen.blit(text , (0,0))
     position=pygame.mouse.get_pos()
     screen.blit(scaled_splash,(0,0))
-    blit_alpha(screen, scaled_water,(0,0),150)
-    blit_alpha(screen, splash_water1,(0,450),150)
     screen.blit(text_splash, (60,70))
+    screen.blit(text_splash1, (60,140))
+
     scaled_splash = pygame.transform.smoothscale(scaled_splash, (width, height)) 
-    scaled_water = pygame.transform.smoothscale(scaled_water, (width, height)) 
-    screen.blit(continueb, (width/2-500,height/2+200))
-    continueb = pygame.transform.smoothscale(continueb, (140, 200)) 
          
     pygame.display.update()
     clock.tick(60)
