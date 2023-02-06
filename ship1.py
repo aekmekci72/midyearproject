@@ -40,15 +40,24 @@ health = 100
 wealth = 100
 clock_game = 0
 global min, hour, count, var,label
-try:
-    if surv1==True:
-        hour=9
-except:
+booleee=False
+file =open("infofile.txt")
+for line in file:
+    line=line.strip()
+    if line=="event1_1":
+        boleee=True
+
+if booleee==True:
+    hour=9
+    label=font1.render("You survived the choppy waters", False,"black")
+else:
     hour=7
+    label=font1.render("You wake up at 7 on your ship",False,"black")
+
 count=1
 var=0
 min=0
-label=font1.render("You wake up at 7 on your ship",False,"black")
+
 
 def event1():
     global hour
