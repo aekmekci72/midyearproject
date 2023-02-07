@@ -6,7 +6,7 @@ pygame.display.set_caption('Sick or Swim')
 
 clock = pygame.time.Clock()
 font = pygame.font.Font('Neucha-Regular.ttf',60)
-font1 = pygame.font.Font('Neucha-Regular.ttf', 90)
+font1 = pygame.font.Font('Neucha-Regular.ttf', 100)
 font2=pygame.font.Font('Neucha-Regular.ttf', 30)
 
 screen = pygame.display.set_mode()
@@ -21,6 +21,9 @@ text = smallfont.render('S T A R T' , True , color)
 
 splash_page = pygame.image.load('howtoplayback.png')
 continueb = pygame.image.load('continue.png')
+virus_image = pygame.image.load('virus.png')
+lightning2 = pygame.image.load('lightning.png')
+
 
 scaled_splash = pygame.transform.scale(splash_page, (width/2, height/2))
 
@@ -35,7 +38,11 @@ def blit_alpha(target, source, location, opacity):
     target.blit(temp, location)
 
 text_splash = font1.render('How to Play', False, 'white')
-text_splash_name = font2.render('this is the game description ig', False, 'white')
+text_splash_name = font2.render("'Sick or Swim' is a gripping and intense choose your own adventure game that will put your survival skills to the test.", False, 'white')
+text_splash_name2 = font2.render("You play as a survivor in a world ravaged by a deadly disease. Are you ready to make tough decisions in order to stay alive?", False, 'white')
+text_splash_name3 = font2.render("Each choice you make will have consequences that affect your chances of survival. Can you make it to safety in time?", False, 'white')
+text_splash_name4 = font2.render("Get ready...every decision could mean the difference between life and death in 'Sick or Swim.'", False, 'white')
+
 
 play_button = pygame.image.load('play_button.png').convert_alpha()
 
@@ -59,8 +66,12 @@ while True:
     screen.blit(continueb, (width/2-500,height/2+200))
     continueb = pygame.transform.smoothscale(continueb, (140, 200)) 
     screen.blit(text_splash_name, (165,270))
+    screen.blit(text_splash_name2, (120,320))
+    screen.blit(text_splash_name3, (120,370))
+    screen.blit(text_splash_name4, (250,420))
+    screen.blit(virus_image, (290,420))
     scaled_splash = pygame.transform.smoothscale(scaled_splash, (width, height)) 
-    
+    screen.blit(lightning2, (900,-20))
          
     pygame.display.update()
     clock.tick(60)
