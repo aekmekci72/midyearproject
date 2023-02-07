@@ -38,6 +38,7 @@ def blit_alpha(target, source, location, opacity):
 variable="commons"
 health = 100
 wealth = 100
+
 clock_game = 0
 global min, hour, count, var,label
 booleee=False
@@ -48,18 +49,29 @@ for line in file:
     if line=="event1_1":
         hour=10
         label=font1.render("You survived the choppy waters", False,"black")
+        wealth+=10
     if line=="event1_2":
         hour=12
         label=font1.render("You survived the dangerous waters", False,"black")
-    if line=="event1_3":
+        wealth+=10
+    if line=="event1_2_loss":
+        hour=12
+        label=font1.render("You survived the dangerous waters", False,"black")
+        wealth-=10
+    if line=="event1_3_meh":
         hour=4
         label=font1.render("You passed the town...")
+        wealth+=15
     if line=="event1_3leave":
         hour=4
         label=font1.render("You left the cat and dog behind...")
+        health=-5
+        wealth+=15
     if line=="event1_3take":
         hour=4
+        wealth+=15
         label=font1.render("You took the cat and dog")
+        health+=5
 if hour==0:
     hour=7
     label=font1.render("You wake up at 7 on your ship",False,"black")
