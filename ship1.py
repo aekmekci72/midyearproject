@@ -51,6 +51,15 @@ for line in file:
     if line=="event1_2":
         hour=12
         label=font1.render("You survived the dangerous waters", False,"black")
+    if line=="event1_3":
+        hour=4
+        label=font1.render("You passed the town...")
+    if line=="event1_3leave":
+        hour=4
+        label=font1.render("You left the cat and dog behind...")
+    if line=="event1_3take":
+        hour=4
+        label=font1.render("You took the cat and dog")
 if hour==0:
     hour=7
     label=font1.render("You wake up at 7 on your ship",False,"black")
@@ -71,6 +80,8 @@ def clockfunc():
         os.system("python event1_1.py 1")
     if hour==11:
         os.system("python event1_2.py 1")
+    if hour==3:
+        os.system("python event1_3.py 1")
     time.sleep(0.1)
     min+=1
     if min<10:
