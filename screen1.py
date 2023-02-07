@@ -1,5 +1,6 @@
 import pygame
 import os
+import time
 
 pygame.init()
 screen= pygame.display.set_mode()
@@ -7,7 +8,7 @@ pygame.display.set_caption('Sick or Swim')
 
 clock = pygame.time.Clock()
 font = pygame.font.Font('Neucha-Regular.ttf',60)
-font1 = pygame.font.Font('PermanentMarker-Regular.ttf', 90)
+font1 = pygame.font.Font('PermanentMarker-Regular.ttf', 100)
 
 color = (255,255,255)
 color_light = (170,170,170)
@@ -21,6 +22,8 @@ continueb = pygame.image.load('continue.png')
 
 splash_page = pygame.image.load('ship_sink.jpeg')
 splash_water = pygame.image.load('water_drop.png')
+lightning = pygame.image.load('lightning.png')
+lightning2 = pygame.image.load('lightning2.png')
 
 scaled_splash = pygame.transform.scale(splash_page, (1500, 1500))
 scaled_water = pygame.transform.scale(splash_water, (800, 495))
@@ -39,8 +42,9 @@ def blit_alpha(target, source, location, opacity):
 text_splash = font1.render('Sick Or Swim', False, 'white')
 text_splash_name = font.render('By: Shreeja And Anna', False, 'white')
 
-
+count = True
 while True:
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -51,18 +55,39 @@ while True:
             if width/2-500 <= pygame.mouse.get_pos()[0] <= width/2-360 and height/2+200 <= pygame.mouse.get_pos()[1] <= height/2+400:
                 os.system("python howtoplay.py 1")
                 pygame.quit()
+
        
     screen.blit(text, (0,0))
     position=pygame.mouse.get_pos()
     screen.blit(scaled_splash,(0,0))
     blit_alpha(screen, scaled_water,(0,0),150)
     blit_alpha(screen, splash_water1,(0,450),150)
-    screen.blit(text_splash, (340,80))
+    screen.blit(text_splash, (320,80))
     screen.blit(text_splash_name, (330,570))
     scaled_splash = pygame.transform.smoothscale(scaled_splash, (width, height))
     scaled_water = pygame.transform.smoothscale(scaled_water, (width, height))
     screen.blit(continueb, (330, 650))
     continueb = pygame.transform.smoothscale(continueb, (200, 200))
+    screen.blit(lightning, (900,-20))
+    screen.blit(lightning2, (20,0))
+
          
     pygame.display.update()
     clock.tick(60)
+
+    if count==True:
+        time.sleep(0)
+        screen.fill(1)
+        clock.tick(120)  
+        pygame.display.update()
+    else:
+        time.sleep(1.5)
+        screen.fill(1)
+        clock.tick(120)  
+        pygame.display.update()
+    count=False
+
+
+
+
+
