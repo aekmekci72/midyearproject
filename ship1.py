@@ -42,15 +42,16 @@ clock_game = 0
 global min, hour, count, var,label
 booleee=False
 file =open("infofile.txt")
+hour=0
 for line in file:
     line=line.strip()
     if line=="event1_1":
-        boleee=True
-
-if booleee==True:
-    hour=9
-    label=font1.render("You survived the choppy waters", False,"black")
-else:
+        hour=10
+        label=font1.render("You survived the choppy waters", False,"black")
+    if line=="event1_2":
+        hour=12
+        label=font1.render("You survived the dangerous waters", False,"black")
+if hour==0:
     hour=7
     label=font1.render("You wake up at 7 on your ship",False,"black")
 
@@ -68,6 +69,8 @@ def clockfunc():
     global min, hour, count, var
     if hour==9:
         os.system("python event1_1.py 1")
+    if hour==11:
+        os.system("python event1_2.py 1")
     time.sleep(0.1)
     min+=1
     if min<10:
