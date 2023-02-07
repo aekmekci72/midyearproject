@@ -1,8 +1,6 @@
 import pygame
 import os
-
-global surv1
-surv1=True
+import time
 
 pygame.init()
 screen= pygame.display.set_mode()
@@ -10,7 +8,7 @@ pygame.display.set_caption('Sick or Swim')
 
 clock = pygame.time.Clock()
 font = pygame.font.Font('Neucha-Regular.ttf',60)
-font1 = pygame.font.Font('PermanentMarker-Regular.ttf', 30)
+font1 = pygame.font.Font('PermanentMarker-Regular.ttf', 20)
 
 color = (255,255,255)
 color_light = (170,170,170)
@@ -18,13 +16,11 @@ color_dark = (100,100,100)
 width = screen.get_width()
 height = screen.get_height()
 smallfont = pygame.font.SysFont('Arial',35)
-text = smallfont.render('S T A R T' , True , color)
-continueb = pygame.image.load('continue.png')
 
 
-splash_page = pygame.image.load('standinimage.png')
+splash_page = pygame.image.load('event1_1_2.png')
+scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
 
-scaled_splash = pygame.transform.scale(splash_page, (800, 800))
 
 
 def blit_alpha(target, source, location, opacity):
@@ -36,9 +32,8 @@ def blit_alpha(target, source, location, opacity):
     temp.set_alpha(opacity)        
     target.blit(temp, location)
 
-text_splash = font1.render('You navigated around the whirlpool', False, 'white')
-text_splash1 = font1.render('You survived!', False, 'white')
-counter=1
+health = 100
+wealth = 100
 
 
 while True:
@@ -47,20 +42,24 @@ while True:
             pygame.quit()
             exit()
         
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            f = open("infofile.txt", "w")
-            f.write("event1_1")
-            f.close()
-            os.system("python ship1.py 1")
-
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_LEFT:
+                os.system("python event1_2mone.py 1")
+                pygame.quit()
+            elif event.key ==pygame.K_RIGHT:
+                os.system("python event1_2surv.py 1")
+                pygame.quit()
+                
+            
+            position=pygame.mouse.get_pos()
+            scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
+    
         
-    screen.blit(text , (0,0))
+    pygame.display.update()
+        
+    text_splash=font1.render("", False, 'black')
+    screen.blit(text_splash, (60,70))
     position=pygame.mouse.get_pos()
     screen.blit(scaled_splash,(0,0))
-    screen.blit(text_splash, (60,70))
-    screen.blit(text_splash1, (60,140))
-
-    scaled_splash = pygame.transform.smoothscale(scaled_splash, (width, height)) 
+    scaled_splash = pygame.transform.smoothscale(scaled_splash, (width, height))
          
-    pygame.display.update()
-    clock.tick(60)

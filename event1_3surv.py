@@ -36,7 +36,7 @@ def blit_alpha(target, source, location, opacity):
     temp.set_alpha(opacity)        
     target.blit(temp, location)
 
-text_splash = font1.render('You navigated around the whirlpool', False, 'white')
+text_splash = font1.render('Meh-you pass the town, it could be dangerous', False, 'white')
 text_splash1 = font1.render('You survived!', False, 'white')
 counter=1
 
@@ -49,7 +49,7 @@ while True:
         
         if event.type == pygame.MOUSEBUTTONDOWN:
             f = open("infofile.txt", "w")
-            f.write("event1_1")
+            f.write("event1_3")
             f.close()
             os.system("python ship1.py 1")
 
