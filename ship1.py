@@ -151,5 +151,4 @@ while True:
     screen.blit(text , (0,0))
     position=pygame.mouse.get_pos()
     screen.blit(scaled_splash,(0,0))
-    scaled_splash = pygame.transform.smoothscale(scaled_splash, (width, height))
          
