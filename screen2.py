@@ -16,7 +16,7 @@ width = screen.get_width()
 height = screen.get_height()
 smallfont = pygame.font.SysFont('Arial',35)
 text = smallfont.render('S T A R T' , True , color)
-continueb = pygame.image.load('continue.png')
+continueb = pygame.image.load('images_fonts/continue.png')
 
 
 splash_page = pygame.image.load('standinimage.png')

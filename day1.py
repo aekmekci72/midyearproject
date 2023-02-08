@@ -16,10 +16,10 @@ width = screen.get_width()
 height = screen.get_height()
 smallfont = pygame.font.SysFont('Arial',35)
 text = smallfont.render('S T A R T' , True , color)
-continueb = pygame.image.load('continue.png')
+continueb = pygame.image.load('images_fonts/continue.png')
 
 splash_page = pygame.image.load('ship_sink.jpeg')
-splash_water = pygame.image.load('water_drop.png')
+splash_water = pygame.image.load('images_fonts/water_drop.png')
 
 scaled_splash = pygame.transform.scale(splash_page, (800, 800))
 scaled_water = pygame.transform.scale(splash_water, (800, 495))

@@ -20,7 +20,7 @@ text = smallfont.render('S T A R T' , True , color)
 
 
 splash_page = pygame.image.load('howtoplayback.png')
-continueb = pygame.image.load('continue.png')
+continueb = pygame.image.load('images_fonts/continue.png')
 virus_image = pygame.image.load('virus.png')
 lightning2 = pygame.image.load('lightning.png')
 
