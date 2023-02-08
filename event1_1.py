@@ -18,7 +18,7 @@ height = screen.get_height()
 smallfont = pygame.font.SysFont('Arial',35)
 
 
-splash_page = pygame.image.load('event1_1_1.png')
+splash_page = pygame.image.load('images_fonts/event1_1_1.png')
 scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
 
 

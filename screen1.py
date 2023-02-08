@@ -22,8 +22,8 @@ continueb = pygame.image.load('images_fonts/continue.png')
 
 splash_page = pygame.image.load('ship_sink.jpeg')
 splash_water = pygame.image.load('images_fonts/water_drop.png')
-lightning = pygame.image.load('lightning.png')
-lightning2 = pygame.image.load('lightning2.png')
+lightning = pygame.image.load('images_fonts/lightning.png')
+lightning2 = pygame.image.load('images_fonts/lightning2.png')
 
 scaled_splash = pygame.transform.scale(splash_page, (1500, 1500))
 scaled_water = pygame.transform.scale(splash_water, (800, 495))

@@ -151,13 +151,13 @@ while True:
                 splash_page = pygame.image.load('medbay.png')
             elif event.key == pygame.K_LEFT and variable=="arcade" or event.key == pygame.K_UP and variable=="stores":
                 variable="hallway"
-                splash_page = pygame.image.load('hallway.png')
+                splash_page = pygame.image.load('images_fonts/hallway.png')
             elif event.key == pygame.K_DOWN and variable =="captain" or event.key ==pygame.K_RIGHT and variable=="medbay":
                 variable="outsidedown"
-                splash_page = pygame.image.load('outsidedown.png')
+                splash_page = pygame.image.load('images_fonts/outsidedown.png')
             elif event.key == pygame.K_UP and variable =="captain" or event.key ==pygame.K_RIGHT and variable=="arcade":
                 variable="outsideup"
-                splash_page = pygame.image.load('outsideup.png')
+                splash_page = pygame.image.load('images_fonts/outsideup.png')
             elif event.key == pygame.K_DOWN and variable =="stores" or event.key ==pygame.K_LEFT and variable=="medbay":
                 variable="rooms"
                 splash_page = pygame.image.load('rooms.png')

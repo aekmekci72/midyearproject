@@ -19,10 +19,10 @@ smallfont = pygame.font.SysFont('Ariel',35)
 text = smallfont.render('S T A R T' , True , color)
 
 
-splash_page = pygame.image.load('howtoplayback.png')
+splash_page = pygame.image.load('images_fonts/howtoplayback.png')
 continueb = pygame.image.load('images_fonts/continue.png')
 virus_image = pygame.image.load('virus.png')
-lightning2 = pygame.image.load('lightning.png')
+lightning2 = pygame.image.load('images_fonts/lightning.png')
 
 
 scaled_splash = pygame.transform.scale(splash_page, (width/2, height/2))
