@@ -6,8 +6,8 @@ screen= pygame.display.set_mode()
 pygame.display.set_caption('Sick or Swim')
 
 clock = pygame.time.Clock()
-font = pygame.font.Font('Neucha-Regular.ttf',60)
-font1 = pygame.font.Font('PermanentMarker-Regular.ttf', 90)
+font = pygame.font.Font('images_fonts/Neucha-Regular.ttf',60)
+font1 = pygame.font.Font('images_fonts/PermanentMarker-Regular.ttf', 90)
 
 color = (255,255,255)
 color_light = (170,170,170)
