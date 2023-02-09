@@ -37,7 +37,7 @@ def blit_alpha(target, source, location, opacity):
     target.blit(temp, location)
 
 text_splash = font1.render('The sharks leave you alone, and you even discover a new species of shark!', False, 'white')
-text_splash1 = font1.render('You get +10 money [ADD], and you survived!', False, 'white')
+text_splash1 = font1.render('You get +10 money, and you survived!', False, 'white')
 counter=1
 
 

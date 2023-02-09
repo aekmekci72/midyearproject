@@ -36,7 +36,7 @@ def blit_alpha(target, source, location, opacity):
     temp.set_alpha(opacity)        
     target.blit(temp, location)
 
-text_splash = font1.render('You take the animals with you and gain 5 happiness!', False, 'white')
+text_splash = font1.render('You take the animals with you and gain happiness! +5 health', False, 'white')
 text_splash1 = font1.render('You survived! (and you name the animals ____ and ____ how cute)', False, 'white')
 counter=1
 

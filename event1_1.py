@@ -29,12 +29,8 @@ def blit_alpha(target, source, location, opacity):
     temp = pygame.Surface((source.get_width(), source.get_height())).convert()
     temp.blit(target, (-x, -y))
     temp.blit(source, (0, 0))
-    temp.set_alpha(opacity)        
+    temp.set_alpha(opacity)  
     target.blit(temp, location)
-
-health = 100
-wealth = 100
-
 
 while True:
     for event in pygame.event.get():
