@@ -3,6 +3,12 @@ import os
 import time
 
 global surv1
+global health, happiness, hunger,money
+
+health=75
+happiness=35
+hunger=60
+money=10
 
 pygame.init()
 screen= pygame.display.set_mode()
@@ -44,6 +50,7 @@ global min, hour, count, var,label
 booleee=False
 file =open("infofile.txt")
 hour=0
+count=1
 for line in file:
     line=line.strip()
     if line=="event1_1":
@@ -127,9 +134,20 @@ def clockfunc():
     screen.blit(text_splash, (10,10))
 
     screen.blit(label,(300,10))
+    pygame.draw.rect(screen, "white", pygame.Rect(width-250, height-250, 250, 250))
+    hungerdisp=font1.render("hunger: "+str(hunger)+"/100",False,"black")
+    screen.blit(hungerdisp,(width-200,height-200))
+    healthdisp=font1.render("health: "+str(health)+"/100",False,"black")
+    screen.blit(healthdisp,(width-200,height-150))
+    happydisp=font1.render("happiness: "+str(happiness)+"/100",False,"black")
+    screen.blit(happydisp,(width-200,height-100))
+    moneydisp=font1.render("money: $"+str(money),False,"black")
+    screen.blit(moneydisp,(width-200,height-50))
     
 
 while True:
+    
+    
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()

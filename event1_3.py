@@ -51,7 +51,6 @@ while True:
                 pygame.quit()
                 
             
-            position=pygame.mouse.get_pos()
             scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
     
         
