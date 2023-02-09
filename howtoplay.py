@@ -5,9 +5,9 @@ screen= pygame.display.set_mode()
 pygame.display.set_caption('Sick or Swim')
 
 clock = pygame.time.Clock()
-font = pygame.font.Font('Neucha-Regular.ttf',60)
-font1 = pygame.font.Font('Neucha-Regular.ttf', 100)
-font2=pygame.font.Font('Neucha-Regular.ttf', 30)
+font = pygame.font.Font('images_fonts/Neucha-Regular.ttf',60)
+font1 = pygame.font.Font('images_fonts/Neucha-Regular.ttf', 100)
+font2=pygame.font.Font('images_fonts/Neucha-Regular.ttf', 30)
 
 screen = pygame.display.set_mode()
 color = (255,255,255)
@@ -19,10 +19,10 @@ smallfont = pygame.font.SysFont('Ariel',35)
 text = smallfont.render('S T A R T' , True , color)
 
 
-splash_page = pygame.image.load('howtoplayback.png')
-continueb = pygame.image.load('continue.png')
+splash_page = pygame.image.load('images_fonts/howtoplayback.png')
+continueb = pygame.image.load('images_fonts/continue.png')
 virus_image = pygame.image.load('virus.png')
-lightning2 = pygame.image.load('lightning.png')
+lightning2 = pygame.image.load('images_fonts/lightning.png')
 
 
 scaled_splash = pygame.transform.scale(splash_page, (width/2, height/2))

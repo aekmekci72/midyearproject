@@ -7,8 +7,8 @@ screen= pygame.display.set_mode()
 pygame.display.set_caption('Sick or Swim')
 
 clock = pygame.time.Clock()
-font = pygame.font.Font('Neucha-Regular.ttf',60)
-font1 = pygame.font.Font('PermanentMarker-Regular.ttf', 20)
+font = pygame.font.Font('images_fonts/Neucha-Regular.ttf',60)
+font1 = pygame.font.Font('images_fonts/PermanentMarker-Regular.ttf', 20)
 
 color = (255,255,255)
 color_light = (170,170,170)
@@ -18,7 +18,7 @@ height = screen.get_height()
 smallfont = pygame.font.SysFont('Arial',35)
 
 
-splash_page = pygame.image.load('event1_1_2.png')
+splash_page = pygame.image.load('images_fonts/event1_1_2.png')
 scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
 
 

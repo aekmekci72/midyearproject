@@ -15,8 +15,8 @@ screen= pygame.display.set_mode()
 pygame.display.set_caption('Sick or Swim')
 
 clock = pygame.time.Clock()
-font = pygame.font.Font('Neucha-Regular.ttf',60)
-font1 = pygame.font.Font('PermanentMarker-Regular.ttf', 20)
+font = pygame.font.Font('images_fonts/Neucha-Regular.ttf',60)
+font1 = pygame.font.Font('images_fonts/PermanentMarker-Regular.ttf', 20)
 
 color = (255,255,255)
 color_light = (170,170,170)
@@ -27,7 +27,7 @@ smallfont = pygame.font.SysFont('Arial',35)
 text = smallfont.render('S T A R T' , True , color)
 
 
-splash_page = pygame.image.load('commons.png')
+splash_page = pygame.image.load('images_fonts/commons.png')
 
 scaled_splash = pygame.transform.scale(splash_page, (800, 800))
 
@@ -160,28 +160,28 @@ while True:
                 splash_page = pygame.image.load('stores.png')
             elif event.key == pygame.K_RIGHT and variable=="commons" or event.key==pygame.K_DOWN and variable=="outsideup" or event.key==pygame.K_UP and variable=="outsidedown":       
                 variable="captain"
-                splash_page = pygame.image.load('captainquarters.png')
+                splash_page = pygame.image.load('images_fonts/captainquarters.png')
             elif event.key == pygame.K_UP and variable=="commons" or event.key==pygame.K_LEFT and variable=="outsideup" or event.key==pygame.K_RIGHT and variable=="hallway":
                 variable="arcade"
-                splash_page = pygame.image.load('arcade.png')
+                splash_page = pygame.image.load('images_fonts/arcade.png')
             elif event.key == pygame.K_DOWN and variable=="commons" or event.key ==pygame.K_LEFT and variable=="outsidedown" or event.key==pygame.K_RIGHT and variable=="rooms":
                 variable="medbay"
                 splash_page = pygame.image.load('medbay.png')
             elif event.key == pygame.K_LEFT and variable=="arcade" or event.key == pygame.K_UP and variable=="stores":
                 variable="hallway"
-                splash_page = pygame.image.load('hallway.png')
+                splash_page = pygame.image.load('images_fonts/hallway.png')
             elif event.key == pygame.K_DOWN and variable =="captain" or event.key ==pygame.K_RIGHT and variable=="medbay":
                 variable="outsidedown"
-                splash_page = pygame.image.load('outsidedown.png')
+                splash_page = pygame.image.load('images_fonts/outsidedown.png')
             elif event.key == pygame.K_UP and variable =="captain" or event.key ==pygame.K_RIGHT and variable=="arcade":
                 variable="outsideup"
-                splash_page = pygame.image.load('outsideup.png')
+                splash_page = pygame.image.load('images_fonts/outsideup.png')
             elif event.key == pygame.K_DOWN and variable =="stores" or event.key ==pygame.K_LEFT and variable=="medbay":
                 variable="rooms"
                 splash_page = pygame.image.load('rooms.png')
             elif event.key==pygame.K_DOWN and variable=="arcade" or event.key==pygame.K_RIGHT and variable=="stores" or event.key==pygame.K_UP and variable=="medbay" or event.key==pygame.K_LEFT and variable=="captain":
                 variable="commons"
-                splash_page = pygame.image.load('commons.png')
+                splash_page = pygame.image.load('images_fonts/commons.png')
             position=pygame.mouse.get_pos()
             scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
             screen.blit(scaled_splash,(0,0))

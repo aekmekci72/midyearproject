@@ -1,5 +1,0 @@
-<<<<<<< HEAD
-event1_3leave-5 happy
-=======
-event1_2_loss
->>>>>>> 3de7359d04d6e01a82b241d0a95d0dca802e332c

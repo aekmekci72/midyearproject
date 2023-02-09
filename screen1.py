@@ -7,8 +7,8 @@ screen= pygame.display.set_mode()
 pygame.display.set_caption('Sick or Swim')
 
 clock = pygame.time.Clock()
-font = pygame.font.Font('Neucha-Regular.ttf',60)
-font1 = pygame.font.Font('PermanentMarker-Regular.ttf', 100)
+font = pygame.font.Font('images_fonts/Neucha-Regular.ttf',60)
+font1 = pygame.font.Font('images_fonts/PermanentMarker-Regular.ttf', 100)
 
 color = (255,255,255)
 color_light = (170,170,170)
@@ -17,13 +17,13 @@ width = screen.get_width()
 height = screen.get_height()
 smallfont = pygame.font.SysFont('Arial', 45)
 text = smallfont.render('S T A R T' , True , color)
-continueb = pygame.image.load('continue.png')
+continueb = pygame.image.load('images_fonts/continue.png')
 
 
 splash_page = pygame.image.load('ship_sink.jpeg')
-splash_water = pygame.image.load('water_drop.png')
-lightning = pygame.image.load('lightning.png')
-lightning2 = pygame.image.load('lightning2.png')
+splash_water = pygame.image.load('images_fonts/water_drop.png')
+lightning = pygame.image.load('images_fonts/lightning.png')
+lightning2 = pygame.image.load('images_fonts/lightning2.png')
 
 scaled_splash = pygame.transform.scale(splash_page, (1500, 1500))
 scaled_water = pygame.transform.scale(splash_water, (800, 495))
