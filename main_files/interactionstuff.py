@@ -5,8 +5,8 @@ screen= pygame.display.set_mode()
 pygame.display.set_caption('Sick or Swim')
 
 clock = pygame.time.Clock()
-font = pygame.font.Font('Neucha-Regular.ttf',60)
-font1 = pygame.font.Font('Neucha-Regular.ttf', 90)
+font = pygame.font.Font('images_fonts/Neucha-Regular.ttf',60)
+font1 = pygame.font.Font('images_fonts/Neucha-Regular.ttf', 90)
 
 screen = pygame.display.set_mode()
 color = (255,255,255)
@@ -37,7 +37,7 @@ while True:
         if event.type == pygame.MOUSEBUTTONDOWN:
             (width/2-500,height/2+200)
             if 70 <= pygame.mouse.get_pos()[0] <= 270 and 50 <= pygame.mouse.get_pos()[1] <= 670 :
-                os.system("screen2.py 1")
+                os.system("main_files/screen2.py 1")
                 pygame.quit()
         
     position=pygame.mouse.get_pos()

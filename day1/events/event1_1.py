@@ -40,7 +40,7 @@ while True:
         
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                os.system("python death.py 1")
+                os.system("python main_files/death.py 1")
                 pygame.quit()
             elif event.key ==pygame.K_RIGHT:
                 os.system("python day1/events/event1_1surv.py 1")

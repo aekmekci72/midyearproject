@@ -47,10 +47,10 @@ while True:
         if event.type == pygame.MOUSEBUTTONDOWN:
             (width/2-500,height/2+200)
             if width/2-500 <= pygame.mouse.get_pos()[0] <= width/2-360 and height/2+200 <= pygame.mouse.get_pos()[1] <= height/2+400:
-                f = open("infofile.txt", "w")
+                f = open("main_files/infofile.txt", "w")
                 f.write("")
                 f.close()
-                os.system("python ship1.py 1")
+                os.system("python main_files/ship1.py 1")
                 pygame.quit()
         
     screen.blit(text , (0,0))

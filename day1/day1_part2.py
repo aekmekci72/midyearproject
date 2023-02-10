@@ -19,7 +19,7 @@ text = smallfont.render('S T A R T' , True , color)
 continueb = pygame.image.load('images_fonts/continue.png')
 
 global scaled_splash, text_splash, text_splash1, counter
-splash_page = pygame.image.load('standinimage.png')
+splash_page = pygame.image.load('images_fonts/standinimage.png')
 
 scaled_splash = pygame.transform.scale(splash_page, (800, 800))
 
@@ -96,7 +96,7 @@ def masterloop():
                     counter+=1
                     eventvar="na"
                 if event.key==pygame.K_LEFT:
-                    os.system("python death.py 1")
+                    os.system("python main_files/death.py 1")
                     pygame.quit()
 
             if eventvar=="e2":

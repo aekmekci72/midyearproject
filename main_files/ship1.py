@@ -48,7 +48,7 @@ wealth = 100
 clock_game = 0
 global min, hour, count, var,label
 booleee=False
-file =open("infofile.txt")
+file =open("main_files/infofile.txt")
 hour=0
 count=1
 for line in file:

@@ -48,10 +48,10 @@ while True:
             exit()
         
         if event.type == pygame.MOUSEBUTTONDOWN:
-            f = open("infofile.txt", "w")
+            f = open("main_files/infofile.txt", "w")
             f.write("event1_2_loss")
             f.close()
-            os.system("python ship1.py 1")
+            os.system("python main_files/ship1.py 1")
 
         
     screen.blit(text , (0,0))

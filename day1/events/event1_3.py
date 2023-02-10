@@ -44,7 +44,7 @@ while True:
         
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                os.system("python event1_3visit.py 1")
+                os.system("python day1/events/event1_3visit.py 1")
                 pygame.quit()
             elif event.key ==pygame.K_RIGHT:
                 os.system("python day1/events/event1_3surv.py 1")
