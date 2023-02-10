@@ -19,12 +19,13 @@ text = smallfont.render('S T A R T' , True , color)
 continueb = pygame.image.load('images_fonts/continue.png')
 
 global scaled_splash, text_splash, text_splash1, counter
-splash_page = pygame.image.load('standinimage.png')
+splash_page = pygame.image.load('images_fonts/standinimage.png')
 
 scaled_splash = pygame.transform.scale(splash_page, (800, 800))
 
 
-global money
+global money, happy
+happy=0
 money=0
 
 def blit_alpha(target, source, location, opacity):
@@ -44,78 +45,135 @@ global eventvar
 
 eventvar="na"
 
-def masterloop():
-    global scaled_splash, text_splash, text_splash1, counter, eventvar
+def sync():
+    global scaled_splash, text_splash, text_splash1, counter, eventvar, money, happy
+    screen.blit(text , (0,0))
+    screen.blit(scaled_splash,(0,0))
+    screen.blit(text_splash, (60,70))
+    screen.blit(text_splash1, (60,140))
+    scaled_splash = pygame.transform.smoothscale(scaled_splash, (width, height)) 
 
+def masterloop():
+    global scaled_splash, text_splash, text_splash1, counter, eventvar, money, happy
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
-        
+        if counter==100:
+            eventvar="e3_1"
         if event.type == pygame.MOUSEBUTTONDOWN:
             if eventvar=="na":
                 if counter==1:
                     text_splash = font1.render("There, you see dangerous waters.", False, "white")
                     text_splash1 = font1.render("On the left, there is a thunderstorm, and on the right, there is a whirlpool", False, "white")
                     counter+=1
+                    sync()
                 if counter==2:
                     text_splash = font1.render("Which way do you want to direct your ship?", False, "white")
                     text_splash1 = font1.render("[left arrow --> thunderstorm, right arrow --> whirlpool]", False, "white")
                     eventvar="e1"
+                    sync()
                 
                 if counter==4:
                     text_splash = font1.render("Now, you are faced with another challenge...", False, "white")
                     text_splash1 = font1.render("Towards your left, you see sharks, and towards your right, you see pirhanas.", False, "white")
                     counter+=1
+                    sync()
                 if counter==5:
                     text_splash = font1.render("Which way do you want to direct your ship?", False, "white")
                     text_splash1 = font1.render("[left arrow --> sharks, right arrow --> piranhas]", False, "white")
                     eventvar="e2"
-                if counter==6:
-                    text_splash = font1.render("You navigate your ship towards the sharks...", False, "white")
-                    text_splash1 = font1.render("And are surprised to see they did not attack you.", False, "white")
-                    counter+=1
+                    sync()
                 if counter==7:
-                    text_splash = font1.render("In addition, you discover a new species of shark!", False, "white")
-                    text_splash1 = font1.render("You get 10 coins for your achievement", False, "white")
+                    print('ranthis')
+                    
+                    sync()
+                if counter==9:
+                    text_splash = font1.render("You see a town! Do you want to go past it, or explore?", False, "white")
+                    text_splash1 = font1.render("[left arrow --> go past, right arrow --> explore]", False, "white")
+                    eventvar="e3"
+                    sync()
+                if counter==11:
+                    text_splash = font1.render("Anyways, you leave the town.", False, "white")
+                    text_splash1 = font1.render("The water looks boring...", False, "white")
                     counter+=1
-                if counter==8:
-                    text_splash = font1.render("Anyways, you survived!", False, "white")
-                    text_splash1 = font1.render("You see something in the distance...", False, "white")
+                    sync()
+                if counter==12:
+                    text_splash = font1.render("You decide to go back to what you were doing before", False, "white")
+                    text_splash1 = font1.render("Events over for today.", False, "white")
                     counter+=1
+                    sync()
+                if counter==13:
+                    pygame.quit()
+                
+                
+
 
         if event.type == pygame.KEYDOWN:
-            print("keypress")
             if eventvar=="e1":
-                print('event1')
                 if event.key==pygame.K_RIGHT:
                     print('right')
-                    counter+=2
                     text_splash = font1.render("You navigate your ship towards the whirlpool...", False, "white")
                     text_splash1 = font1.render("And are able to circumnavigate the dangers.", False, "white")
-                    counter+=1
+                    counter=4
                     eventvar="na"
+                    sync()
                 if event.key==pygame.K_LEFT:
                     os.system("python death.py 1")
                     pygame.quit()
 
             if eventvar=="e2":
-                if event.type==pygame.K_LEFT:
-                    counter+=1
+                if event.key==pygame.K_LEFT:
+                    text_splash = font1.render("You navigate your ship towards the sharks... \nAnd are surprised to see they did not attack you.", False, "white")
+                    text_splash1 = font1.render("In addition, you discover a new species of shark! \nYou get 10 coins for your achievement", False, "white")
+                    money+=10
+                    counter=9
                     eventvar="na"
-                if event.type==pygame.K_RIGHT:
+                    sync()
+                if event.key==pygame.K_RIGHT:
                     text_splash = font1.render("You steer your ships towards the fishies, surprised when they eat some of your boat!", False, "white")
                     text_splash1 = font1.render("You have to spend 10 coins to fix it. ", False, "white")
                     eventvar="na"
-                    counter=8
-            
+                    money-=10
+                    counter=9
+                    sync()
+
+            if eventvar=="e3":
+                if event.key==pygame.K_LEFT:
+                    text_splash = font1.render("You pass the town.", False, "white")
+                    text_splash1 = font1.render("Maybe you missed something important...", False, "white")
+                    eventvar="na"
+                    counter=11
+                    sync()
+                if event.key==pygame.K_RIGHT:
+                    eventvar="na"
+                    text_splash = font1.render("You look around and see some resources! \nYou eat some food and get +10 on your hunger bar!", False, "white")
+                    text_splash1 = font1.render("You see a cat and a dog. Do you (right) leave them or (left) take them?", False, "white")
+                    counter=100
+                    sync()
+
+            if eventvar=="e3_1":
+                if event.key==pygame.K_LEFT:
+                    text_splash = font1.render("You take the cat and dog with you! Hopefully they aren't sick", False, "white")
+                    text_splash1 = font1.render("You gain 10 happiness!", False, "white")
+                    counter=11
+                    happy+=10
+                    eventvar="na"
+                    sync()
+                if event.key==pygame.K_RIGHT:
+                    text_splash = font1.render("Who knows, the cat and dog might be sick. You leave them", False, "white")
+                    text_splash1 = font1.render("You lose 10 happiness!", False, "white")
+                    eventvar="na"
+                    happy-=10
+                    counter=11
+                    sync()
+                             
             
                 
             
 
                 
         screen.blit(text , (0,0))
-        position=pygame.mouse.get_pos()
         screen.blit(scaled_splash,(0,0))
         screen.blit(text_splash, (60,70))
         screen.blit(text_splash1, (60,140))
