@@ -112,14 +112,13 @@ def masterloop():
         if event.type == pygame.KEYDOWN:
             if eventvar=="e1":
                 if event.key==pygame.K_RIGHT:
-                    print('right')
                     text_splash = font1.render("You navigate your ship towards the whirlpool...", False, "white")
                     text_splash1 = font1.render("And are able to circumnavigate the dangers.", False, "white")
                     counter=4
                     eventvar="na"
                     sync()
                 if event.key==pygame.K_LEFT:
-                    os.system("python main_files/death.py 1")
+                    os.system("python death.py 1")
                     pygame.quit()
 
             if eventvar=="e2":
