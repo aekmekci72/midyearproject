@@ -22,7 +22,7 @@ text = smallfont.render('S T A R T' , True , color)
 continueb = pygame.image.load('images_fonts/continue.png')
 
 
-splash_page = pygame.image.load('standinimage.png')
+splash_page = pygame.image.load('images_fonts/standinimage.png')
 
 scaled_splash = pygame.transform.scale(splash_page, (800, 800))
 

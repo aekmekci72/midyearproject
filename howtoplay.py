@@ -21,7 +21,7 @@ text = smallfont.render('S T A R T' , True , color)
 
 splash_page = pygame.image.load('images_fonts/howtoplayback.png')
 continueb = pygame.image.load('images_fonts/continue.png')
-virus_image = pygame.image.load('virus.png')
+virus_image = pygame.image.load('images_fonts/virus.png')
 lightning2 = pygame.image.load('images_fonts/lightning.png')
 
 
@@ -44,7 +44,7 @@ text_splash_name3 = font2.render("Each choice you make will have consequences th
 text_splash_name4 = font2.render("Get ready...every decision could mean the difference between life and death in 'Sick or Swim.'", False, 'white')
 
 
-play_button = pygame.image.load('play_button.png').convert_alpha()
+play_button = pygame.image.load('images_fonts/play_button.png').convert_alpha()
 
 
 while True:

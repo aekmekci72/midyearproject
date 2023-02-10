@@ -17,7 +17,7 @@ height = screen.get_height()
 smallfont = pygame.font.SysFont('Ariel',35)
 text = smallfont.render('S T A R T' , True , color)
 
-room = pygame.image.load('room.png')
+room = pygame.image.load('images_fonts/rooms/room.png')
 
 def blit_alpha(target, source, location, opacity):
     x = location[0]
