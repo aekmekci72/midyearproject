@@ -90,17 +90,17 @@ min=0
 
 def event1():
     global hour
-    os.system("python event1_1.py 1")
+    os.system("python day1/events/event1_1.py 1")
     hour=10
 
 def clockfunc():
     global min, hour, count, var
     if hour==9:
-        os.system("python event1_1.py 1")
+        os.system("python day1/events/event1_1.py 1")
     if hour==11:
-        os.system("python event1_2.py 1")
+        os.system("python day1/events/event1_2.py 1")
     if hour==3:
-        os.system("python event1_3.py 1")
+        os.system("python day1/events/event1_3.py 1")
     time.sleep(0.1)
     min+=1
     if min<10:

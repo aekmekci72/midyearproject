@@ -44,10 +44,10 @@ while True:
         
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_LEFT:
-                os.system("python event1_2mone.py 1")
+                os.system("python day1/events/event1_2mone.py 1")
                 pygame.quit()
             elif event.key ==pygame.K_RIGHT:
-                os.system("python event1_2surv.py 1")
+                os.system("python day1/events/event1_2surv.py 1")
                 pygame.quit()
                 
             
