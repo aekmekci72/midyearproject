@@ -74,15 +74,3 @@ while True:
          
     pygame.display.update()
     clock.tick(60)
-
-    # if count==True:
-    #     time.sleep(0)
-    #     screen.fill(1)
-    #     clock.tick(120)  
-    #     pygame.display.update()
-    # else:
-    #     time.sleep(1.5)
-    #     screen.fill(1)
-    #     clock.tick(120)  
-    #     pygame.display.update()
-    # count=False
