@@ -1,9 +1,6 @@
 import pygame
 import os
 
-global surv1
-surv1=True
-
 pygame.init()
 screen= pygame.display.set_mode()
 pygame.display.set_caption('Sick or Swim')
@@ -36,8 +33,8 @@ def blit_alpha(target, source, location, opacity):
     temp.set_alpha(opacity)        
     target.blit(temp, location)
 
-text_splash = font1.render('Meh-you pass the town, it could be dangerous', False, 'white')
-text_splash1 = font1.render('You survived!', False, 'white')
+text_splash = font1.render('You are but a lowly human in the small town of [TOWN NAME].', False, 'white')
+text_splash1 = font1.render('Fortunately, you are lucky enough to have a good job, a wonderful wife, and two children.', False, 'white')
 counter=1
 
 
@@ -48,12 +45,25 @@ while True:
             exit()
         
         if event.type == pygame.MOUSEBUTTONDOWN:
-            f = open("infofile.txt", "w")
-            f.write("event1_3")
-            f.write("\n0 happy")
-            f.close()
-            os.system("python ship1.py 1")
-            pygame.quit()
+            counter+=1
+            if counter==2:
+                text_splash = font1.render("You have everything a person could ever want in life", False, "white")
+                text_splash1 = font1.render("However, one day, everything changes...", False, "white")
+            if counter==3:
+                text_splash = font1.render("A disease called the [DISEASE NAME] washes through the town", False, "white")
+                text_splash1 = font1.render("One day, when you come home...", False, "white")
+            if counter==4:
+                text_splash = font1.render("You find your wife sick", False, "white")
+                text_splash1 = font1.render("Fast forward a few weeks...", False, "white")
+            if counter==5:
+                text_splash = font1.render("You are all alone. [INSERT DRAWING OF GRAVEYARD]", False, "white")
+                text_splash1 = font1.render("There is only one thing left to do...", False, "white")
+            if counter==6:
+                text_splash = font1.render("You embark on a ship called [SHIP NAME]", False, "white")
+                text_splash1 = font1.render("Thus, your adventure begins...", False, "white")
+            if counter==7:
+                os.system("python day1/day1.py 1")
+                pygame.quit()
 
         
     screen.blit(text , (0,0))

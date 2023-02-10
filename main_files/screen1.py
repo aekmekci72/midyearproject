@@ -53,7 +53,7 @@ while True:
         if event.type == pygame.MOUSEBUTTONDOWN:
             (width/2-500,height/2+200)
             if width/2-500 <= pygame.mouse.get_pos()[0] <= width/2-360 and height/2+200 <= pygame.mouse.get_pos()[1] <= height/2+400:
-                os.system("python howtoplay.py 1")
+                os.system("python main_files/howtoplay.py 1")
                 pygame.quit()
 
        

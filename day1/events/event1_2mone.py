@@ -36,8 +36,8 @@ def blit_alpha(target, source, location, opacity):
     temp.set_alpha(opacity)        
     target.blit(temp, location)
 
-text_splash = font1.render('You leave the animals behind... and lose happiness! -5 health', False, 'white')
-text_splash1 = font1.render('You survived!', False, 'white')
+text_splash = font1.render('The piranhas eat part of your boat, and you must repair it!', False, 'white')
+text_splash1 = font1.render('You get -10 money...fortunately you survived!', False, 'white')
 counter=1
 
 
@@ -48,12 +48,10 @@ while True:
             exit()
         
         if event.type == pygame.MOUSEBUTTONDOWN:
-            f = open("infofile.txt", "w")
-            f.write("event1_3leave")
-            f.write("\n-5 happy")
+            f = open("main_files/infofile.txt", "w")
+            f.write("event1_2_loss")
             f.close()
-            os.system("python ship1.py 1")
-            pygame.quit()
+            os.system("python main_files/ship1.py 1")
 
         
     screen.blit(text , (0,0))

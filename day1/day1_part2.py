@@ -119,7 +119,7 @@ def masterloop():
                     eventvar="na"
                     sync()
                 if event.key==pygame.K_LEFT:
-                    os.system("python death.py 1")
+                    os.system("python main_files/death.py 1")
                     pygame.quit()
 
             if eventvar=="e2":
