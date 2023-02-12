@@ -5,10 +5,7 @@ import time
 global surv1
 global health, happiness, hunger,money
 
-health=75
-happiness=35
-hunger=60
-money=10
+
 
 pygame.init()
 screen= pygame.display.set_mode()
@@ -28,8 +25,12 @@ text = smallfont.render('S T A R T' , True , color)
 
 
 splash_page = pygame.image.load('images_fonts/rooms/commons.png')
-
 scaled_splash = pygame.transform.scale(splash_page, (800, 800))
+
+player1=pygame.image.load('images_fonts/person1.png')
+player2=pygame.image.load('images_fonts/person2.png')
+player3=pygame.image.load('images_fonts/person3.png')
+
 
 
 def blit_alpha(target, source, location, opacity):
@@ -50,16 +51,24 @@ global min, hour, count, var, pmam
 booleee=False
 file =open("main_files/infofile.txt")
 
+list=[]
+for line in file:
+    line=line.strip()
+    list=line.split(",")
+
+health=list[0]
+happiness=list[1]
+hunger=list[2]
+money=list[3]
+
 min=0
 hour=11
 
 pmam="AM"
 b=False
 for line in file:
-    print(line)
-    if line!="":
+    if line!="75,35,60,10":
         b=True
-print(b)
 
 if b==True:
     hour=5
@@ -119,14 +128,33 @@ def clockfunc():
 
 while True:
     
+    if variable=="commons":
+        screen.blit(player1,(500,150))
+    if variable=="hallway":
+        screen.blit(player2,(1000,100))
+    if variable=="medbay":
+        screen.blit(player3,(300,240))
     
+    
+
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
         
         if event.type == pygame.KEYDOWN:
-            print(event.key, variable)
+
+            if event.key==pygame.K_q and variable=="commons":
+                print("person1 interact")
+            if event.key==pygame.K_w and variable=="hallway":
+                print("person2 interact")
+            if event.key==pygame.K_e and variable=="medbay":
+                print("person3 interact")
+
+
+
+
             if event.key == pygame.K_LEFT and variable=="commons" or event.key==pygame.K_DOWN and variable=="hallway" or event.key==pygame.K_UP and variable=="rooms":
                 variable="stores"
                 splash_page = pygame.image.load('images_fonts/rooms/stores.png')

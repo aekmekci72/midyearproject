@@ -25,7 +25,9 @@ scaled_splash = pygame.transform.scale(splash_page, (800, 800))
 
 
 global money, happy
+health=0
 happy=0
+hunger=0
 money=0
 
 def blit_alpha(target, source, location, opacity):
@@ -52,7 +54,6 @@ def sync():
     screen.blit(text_splash, (60,70))
     screen.blit(text_splash1, (60,140))
     scaled_splash = pygame.transform.smoothscale(scaled_splash, (width, height)) 
-
 def masterloop():
     global scaled_splash, text_splash, text_splash1, counter, eventvar, money, happy
     for event in pygame.event.get():
@@ -85,7 +86,6 @@ def masterloop():
                     eventvar="e2"
                     sync()
                 if counter==7:
-                    print('ranthis')
                     
                     sync()
                 if counter==9:
@@ -106,8 +106,6 @@ def masterloop():
                 if counter==13:
                     os.system("python day1/day1_part1.py")
                     pygame.quit()
-                
-                
 
 
         if event.type == pygame.KEYDOWN:
@@ -119,6 +117,7 @@ def masterloop():
                     eventvar="na"
                     sync()
                 if event.key==pygame.K_LEFT:
+                    os.system("python death.py 1")
                     os.system("python main_files/death.py 1")
                     pygame.quit()
 
@@ -137,7 +136,6 @@ def masterloop():
                     money-=10
                     counter=9
                     sync()
-
             if eventvar=="e3":
                 if event.key==pygame.K_LEFT:
                     text_splash = font1.render("You pass the town.", False, "white")
@@ -151,7 +149,6 @@ def masterloop():
                     text_splash1 = font1.render("You see a cat and a dog. Do you (right) leave them or (left) take them?", False, "white")
                     counter=100
                     sync()
-
             if eventvar=="e3_1":
                 if event.key==pygame.K_LEFT:
                     text_splash = font1.render("You take the cat and dog with you! Hopefully they aren't sick", False, "white")
@@ -172,15 +169,17 @@ def masterloop():
                 
             
 
-                
-        screen.blit(text_splash, (60,70))
-        screen.blit(text_splash1, (60,140))
-
         scaled_splash = pygame.transform.smoothscale(scaled_splash, (width, height)) 
         
 
+        
+        fi=open("main_files/infofile.txt")
+        stuff=""
+        for line in fi:
+            stuff+=line
+        stuff=stuff.split(",")
         file=open("main_files/infofile.txt", "w")
-        info=str(happy)+", " +str(money)
+        info=str(int(stuff[0])+health)+"," +str(int(stuff[1])+happy) +","+str(int(stuff[2])+hunger)+","+str(int(stuff[3])+money)
         file.write(info)
         file.close()
 

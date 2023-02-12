@@ -48,7 +48,8 @@ while True:
             (width/2-500,height/2+200)
             if width/2-500 <= pygame.mouse.get_pos()[0] <= width/2-360 and height/2+200 <= pygame.mouse.get_pos()[1] <= height/2+400:
                 f = open("main_files/infofile.txt", "w")
-                f.write("")
+                
+                f.write("75,35,60,10")
                 f.close()
                 os.system("python day1/day1_part1.py 1")
                 pygame.quit()
