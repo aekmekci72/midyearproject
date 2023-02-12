@@ -46,20 +46,32 @@ health = 100
 wealth = 100
 
 clock_game = 0
-global min, hour, count, var
+global min, hour, count, var, pmam
 booleee=False
 file =open("main_files/infofile.txt")
 
+min=0
+hour=11
+
+pmam="AM"
+b=False
+for line in file:
+    print(line)
+    if line!="":
+        b=True
+print(b)
+
+if b==True:
+    hour=5
+    pmam="PM"
 
 count=1
 var=0
-min=0
-hour=7
 
 
 
 def clockfunc():
-    global min, hour, count, var
+    global min, hour, count, var,pmam
     if hour==3:
         os.system("python day1/day1_part2.py 1")
 
@@ -69,24 +81,23 @@ def clockfunc():
         mindisp="0"+str(min)
     else:
         mindisp=str(min)
-    if count%2!=0:
-        clock_game = f"{hour}:{mindisp} AM"
-    else:
-        clock_game = f"{hour}:{mindisp} PM"
+    clock_game = f"{hour}:{mindisp} "+pmam
     
     if min==60:
         min=0
         hour+=1
         if count%2!=0:
-            clock_game = f"{hour}:{mindisp} AM"
+            pmam="AM"
         else:
-            clock_game = f"{hour}:{mindisp} PM"
-
+            pmam="PM"
+        clock_game = f"{hour}:{mindisp} "+pmam
+        
     if hour == 12:
         if count%2!=0:
-            clock_game = f"{hour}:{mindisp} PM"
+            pmam="PM"
         else:
-            clock_game = f"{hour}:{mindisp} AM"
+            pmam="AM"
+        clock_game = f"{hour}:{mindisp} "+pmam
         hour = 1
         count+=1
     text_splash=font1.render(clock_game, False, 'black')

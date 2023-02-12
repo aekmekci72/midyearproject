@@ -104,6 +104,7 @@ def masterloop():
                     counter+=1
                     sync()
                 if counter==13:
+                    os.system("python day1/day1_part1.py")
                     pygame.quit()
                 
                 
@@ -118,7 +119,7 @@ def masterloop():
                     eventvar="na"
                     sync()
                 if event.key==pygame.K_LEFT:
-                    os.system("python death.py 1")
+                    os.system("python main_files/death.py 1")
                     pygame.quit()
 
             if eventvar=="e2":
@@ -172,13 +173,17 @@ def masterloop():
             
 
                 
-        screen.blit(text , (0,0))
-        screen.blit(scaled_splash,(0,0))
         screen.blit(text_splash, (60,70))
         screen.blit(text_splash1, (60,140))
 
         scaled_splash = pygame.transform.smoothscale(scaled_splash, (width, height)) 
-                
+        
+
+        file=open("main_files/infofile.txt", "w")
+        info=str(happy)+", " +str(money)
+        file.write(info)
+        file.close()
+
         pygame.display.update()
         clock.tick(60)
 

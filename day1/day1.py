@@ -50,7 +50,7 @@ while True:
                 f = open("main_files/infofile.txt", "w")
                 f.write("")
                 f.close()
-                os.system("python main_files/ship1.py 1")
+                os.system("python day1/day1_part1.py 1")
                 pygame.quit()
         
     screen.blit(text , (0,0))
