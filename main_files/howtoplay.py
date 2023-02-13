@@ -41,7 +41,8 @@ text_splash = font1.render('How to Play', False, 'white')
 text_splash_name = font2.render("'Sick or Swim' is a gripping and intense choose your own adventure game that will put your survival skills to the test.", False, 'white')
 text_splash_name2 = font2.render("You play as a survivor in a world ravaged by a deadly disease. Are you ready to make tough decisions in order to stay alive?", False, 'white')
 text_splash_name3 = font2.render("Each choice you make will have consequences that affect your chances of survival. Can you make it to safety in time?", False, 'white')
-text_splash_name4 = font2.render("Get ready...every decision could mean the difference between life and death in 'Sick or Swim.'", False, 'white')
+text_splash_name4 = font2.render("Try to find the person with the disease on the boat, to protect yourself and every one else!", False, 'white')
+text_splash_name5 = font2.render("Get ready...every decision could mean the difference between life and death in 'Sick or Swim.'", False, 'white')
 
 
 play_button = pygame.image.load('images_fonts/play_button.png').convert_alpha()
@@ -69,6 +70,7 @@ while True:
     screen.blit(text_splash_name2, (120,320))
     screen.blit(text_splash_name3, (120,370))
     screen.blit(text_splash_name4, (250,420))
+    screen.blit(text_splash_name5, (250,470))
     screen.blit(virus_image, (290,420))
     scaled_splash = pygame.transform.smoothscale(scaled_splash, (width, height)) 
     screen.blit(lightning2, (900,-20))
@@ -80,25 +82,25 @@ while True:
 
 
 
-while True:
-    for ev in pygame.event.get():
+# while True:
+#     for ev in pygame.event.get():
           
-        if ev.type == pygame.QUIT:
-            pygame.quit()
+#         if ev.type == pygame.QUIT:
+#             pygame.quit()
               
-        if ev.type == pygame.MOUSEBUTTONDOWN:
-            if width/2 <= pygame.mouse.get_pos()[0] <= width/2+240 and height/2 <= pygame.mouse.get_pos()[1] <= height/2+40:
-                os.system("main_files/screen2.py 1")
-                pygame.quit()
+#         if ev.type == pygame.MOUSEBUTTONDOWN:
+#             if width/2 <= pygame.mouse.get_pos()[0] <= width/2+240 and height/2 <= pygame.mouse.get_pos()[1] <= height/2+40:
+#                 os.system("main_files/screen2.py 1")
+#                 pygame.quit()
                   
-    screen.fill((0,0,0))
+#     screen.fill((0,0,0))
       
-    if width/2 <= pygame.mouse.get_pos()[0] <= width/2+140 and height/2 <= pygame.mouse.get_pos()[1] <= height/2+40:
-        pygame.draw.rect(screen,color_light,[width/2,height/2,240,40])
+#     if width/2 <= pygame.mouse.get_pos()[0] <= width/2+140 and height/2 <= pygame.mouse.get_pos()[1] <= height/2+40:
+#         pygame.draw.rect(screen,color_light,[width/2,height/2,240,40])
           
-    else:
-        pygame.draw.rect(screen,color_dark,[width/2,height/2,240,40])
+#     else:
+#         pygame.draw.rect(screen,color_dark,[width/2,height/2,240,40])
       
-    screen.blit(text , (width/2+50,height/2))
+#     screen.blit(text , (width/2+50,height/2))
       
-    pygame.display.update()
+#     pygame.display.update()
