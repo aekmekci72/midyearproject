@@ -35,7 +35,7 @@ def blit_alpha(target, source, location, opacity):
     temp.set_alpha(opacity)        
     target.blit(temp, location)
 
-text_splash = font1.render('DAY 1', False, 'white')
+text_splash = font1.render('DAY 3', False, 'white')
 
 
 while True:
@@ -51,7 +51,7 @@ while True:
                 
                 f.write("75,35,60,10")
                 f.close()
-                os.system("python day1/day1_part1.py 1")
+                os.system("python day2/day2_part1.py 1")
                 pygame.quit()
         
     screen.blit(text , (0,0))

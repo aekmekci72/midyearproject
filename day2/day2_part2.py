@@ -65,8 +65,8 @@ def masterloop():
         if event.type == pygame.MOUSEBUTTONDOWN:
             if eventvar=="na":
                 if counter==1:
-                    text_splash = font1.render("There, you see dangerous waters.", False, "white")
-                    text_splash1 = font1.render("On the left, there is a thunderstorm, and on the right, there is a whirlpool", False, "white")
+                    text_splash = font1.render("ADD NEW EVENTS.", False, "white")
+                    text_splash1 = font1.render("ADD NEW EVENTS.", False, "white")
                     counter+=1
                     sync()
                 if counter==2:
@@ -104,7 +104,7 @@ def masterloop():
                     counter+=1
                     sync()
                 if counter==13:
-                    os.system("python day1/day1_part1.py")
+                    os.system("python day1/day1_part3.py")
                     pygame.quit()
 
 
