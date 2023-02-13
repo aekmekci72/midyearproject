@@ -152,9 +152,6 @@ while True:
             if event.key==pygame.K_e and variable=="medbay":
                 print("person3 interact")
 
-
-
-
             if event.key == pygame.K_LEFT and variable=="commons" or event.key==pygame.K_DOWN and variable=="hallway" or event.key==pygame.K_UP and variable=="rooms":
                 variable="stores"
                 splash_page = pygame.image.load('images_fonts/rooms/stores.png')
