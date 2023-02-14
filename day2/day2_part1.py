@@ -95,7 +95,7 @@ def clickeddoor():
 def clockfunc():
     global min, hour, count, var,pmam
     if hour==3:
-        os.system("python day1/day2_part2.py 1")
+        os.system("python day2/day2_part2.py 1")
 
     time.sleep(0.1)
     min+=1
@@ -137,8 +137,7 @@ def clockfunc():
     screen.blit(happydisp,(width-200,height-100))
     moneydisp=font1.render("money: $"+str(money),False,"black")
     screen.blit(moneydisp,(width-200,height-50))
-    
-
+ 
 while True:
 
     for event in pygame.event.get():
