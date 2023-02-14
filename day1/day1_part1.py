@@ -4,7 +4,7 @@ import time
 
 global surv1
 global health, happiness, hunger,money
-
+global variable
 
 
 pygame.init()
