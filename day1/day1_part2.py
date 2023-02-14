@@ -117,7 +117,6 @@ def masterloop():
                     eventvar="na"
                     sync()
                 if event.key==pygame.K_LEFT:
-                    os.system("python death.py 1")
                     os.system("python main_files/death.py 1")
                     pygame.quit()
 
@@ -181,6 +180,9 @@ def masterloop():
         file=open("main_files/infofile.txt", "w")
         info=str(int(stuff[0])+health)+"," +str(int(stuff[1])+happy) +","+str(int(stuff[2])+hunger)+","+str(int(stuff[3])+money)
         file.write(info)
+        file.close()
+        file=open("day1/mhm.txt","w")
+        file.write("yah")
         file.close()
 
         pygame.display.update()

@@ -60,11 +60,24 @@ health=list[0]
 happiness=list[1]
 hunger=list[2]
 money=list[3]
-
-min=0
 hour=11
-
+min=0
 pmam="AM"
+thing=False
+count=1
+
+file=open("day1/mhm.txt")
+for line in file:
+    if line=="yah":
+        hour=5
+        pmam="PM"
+        count=2
+        thing=True
+    else:
+        hour=11
+        pmam="AM"
+        
+
 b=False
 for line in file:
     if line!="75,35,60,10":
@@ -74,17 +87,25 @@ if b==True:
     hour=5
     pmam="PM"
 
-count=1
 var=0
 
 
-
 def clockfunc():
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            exit()
     global min, hour, count, var,pmam
     if hour==3:
         os.system("python day1/day1_part2.py 1")
 
-    time.sleep(0.1)
+    if hour==11 and pmam=="PM":
+        print("detected")
+        os.system("python day2/day2.py 1")
+        pygame.quit()
+
+
+    time.sleep(0.03)
     min+=1
     if min<10:
         mindisp="0"+str(min)
@@ -109,6 +130,9 @@ def clockfunc():
         clock_game = f"{hour}:{mindisp} "+pmam
         hour = 1
         count+=1
+    if thing==True:
+        count=2
+    clock_game = f"{hour}:{mindisp} "+pmam
     text_splash=font1.render(clock_game, False, 'black')
     
     
