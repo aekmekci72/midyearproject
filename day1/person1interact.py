@@ -9,9 +9,13 @@ clock = pygame.time.Clock()
 font = pygame.font.Font('images_fonts/Neucha-Regular.ttf',60)
 font1 = pygame.font.Font('images_fonts/PermanentMarker-Regular.ttf', 30)
 
+color = (255,255,255)
+color_light = (170,170,170)
+color_dark = (100,100,100)
 width = screen.get_width()
 height = screen.get_height()
-smallfont = pygame.font.SysFont('Arial',35, "black")
+smallfont = pygame.font.SysFont('Arial',35)
+text = smallfont.render('S T A R T' , True , color)
 continueb = pygame.image.load('images_fonts/continue.png')
 
 global scaled_splash, text_splash, text_splash1, counter
@@ -35,8 +39,8 @@ def blit_alpha(target, source, location, opacity):
     temp.set_alpha(opacity)        
     target.blit(temp, location)
 
-text_splash = font1.render('Hi! Are you the new captain?', False, 'black')
-text_splash1 = font1.render('My name is ____, and Im a crewmate! Happy to work for you, boss :)', False, 'black')
+text_splash = font1.render('You see somebody in the commons of the ship', False, 'black')
+text_splash1 = font1.render('You decide to meet them!', False, 'black')
 counter=1
 
 global eventvar
@@ -45,6 +49,7 @@ eventvar="na"
 
 def sync():
     global scaled_splash, text_splash, text_splash1, counter, eventvar, money, happy
+    screen.blit(text , (0,0))
     screen.blit(scaled_splash,(0,0))
     screen.blit(text_splash, (60,70))
     screen.blit(text_splash1, (60,140))
@@ -60,30 +65,104 @@ def masterloop():
         if event.type == pygame.MOUSEBUTTONDOWN:
             if eventvar=="na":
                 if counter==1:
-                    text_splash = font1.render("The disease, you ask? Well, it's very sad, very sad indeed", False, "black")
-                    text_splash1 = font1.render("My family died too, you know...", False, "black")
+                    text_splash = font1.render("Hiii I'm person 1!", False, "black")
+                    text_splash1 = font1.render("I'm glad to hear that we finally have a new captain!", False, "black")
                     counter+=1
                     sync()
                 if counter==2:
-                    text_splash = font1.render("[OTHER STANDIN STUFFFF]", False, "black")
-                    text_splash1 = font1.render("[MORE CONVERSATION]", False, "black")
+                    text_splash = font1.render("I am a crewmate on this ship, and am happy to oblige to your orders", False, "black")
+                    text_splash1 = font1.render("[RIGHT-INCITE CONVO ABOUT WHY PERSON ON SHIP LEFT-ASK THEM WHO THE PREVIOUS CAPTAIN WAS]", False, "black")
                     eventvar="e1"
                     sync()
+                
+                if counter==4:
+                    text_splash = font1.render("Anyways, the disease. *laughs", False, "black")
+                    text_splash1 = font1.render("I'm sorry to hear that your family suffered. Mine did too :(", False, "black")
+                    counter+=1
+                    sync()
+                if counter==5:
+                    ext_splash = font1.render("ADD MORE STUFF", False, "black")
+                    text_splash1 = font1.render("IN THE FUTURE WHEN STORYLINE MORE DEVELOPED", False, "black")
+                    counter=13
+                    sync()
+                if counter==13:
+                    pygame.quit()
+
+
+        if event.type == pygame.KEYDOWN:
+            if eventvar=="e1":
+                if event.key==pygame.K_RIGHT:
+                    text_splash = font1.render("Why am I on this ship?", False, "black")
+                    text_splash1 = font1.render("Let's just say the disease had a huge toll on me.", False, "black")
+                    counter=4
+                    eventvar="na"
+                    sync()
+                if event.key==pygame.K_LEFT:
+                    text_splash = font1.render("Who was the previous captain?", False, "black")
+                    text_splash1 = font1.render("He was kind of mean, we think he had the disease before he vanished...", False, "white")
+                    counter=4
+                    eventvar="na"
+                    sync()
+
+            if eventvar=="e2":
+                if event.key==pygame.K_LEFT:
+                    text_splash = font1.render("You navigate your ship towards the sharks... \nAnd are surprised to see they did not attack you.", False, "white")
+                    text_splash1 = font1.render("In addition, you discover a new species of shark! \nYou get 10 coins for your achievement", False, "white")
+                    money+=10
+                    counter=9
+                    eventvar="na"
+                    sync()
+                if event.key==pygame.K_RIGHT:
+                    text_splash = font1.render("You steer your ships towards the fishies, surprised when they eat some of your boat!", False, "white")
+                    text_splash1 = font1.render("You have to spend 10 coins to fix it. ", False, "white")
+                    eventvar="na"
+                    money-=10
+                    counter=9
+                    sync()
+            if eventvar=="e3":
+                if event.key==pygame.K_LEFT:
+                    text_splash = font1.render("You pass the town.", False, "white")
+                    text_splash1 = font1.render("Maybe you missed something important...", False, "white")
+                    eventvar="na"
+                    counter=11
+                    sync()
+                if event.key==pygame.K_RIGHT:
+                    eventvar="na"
+                    text_splash = font1.render("You look around and see some resources! \nYou eat some food and get +10 on your hunger bar!", False, "white")
+                    text_splash1 = font1.render("You see a cat and a dog. Do you (right) leave them or (left) take them?", False, "white")
+                    counter=100
+                    sync()
+            if eventvar=="e3_1":
+                if event.key==pygame.K_LEFT:
+                    text_splash = font1.render("You take the cat and dog with you! Hopefully they aren't sick", False, "white")
+                    text_splash1 = font1.render("You gain 10 happiness!", False, "white")
+                    counter=11
+                    happy+=10
+                    eventvar="na"
+                    sync()
+                if event.key==pygame.K_RIGHT:
+                    text_splash = font1.render("Who knows, the cat and dog might be sick. You leave them", False, "white")
+                    text_splash1 = font1.render("You lose 10 happiness!", False, "white")
+                    eventvar="na"
+                    happy-=10
+                    counter=11
+                    sync()
+                             
+            
+                
+            
 
         scaled_splash = pygame.transform.smoothscale(scaled_splash, (width, height)) 
         
-        fi=open("main_files/infofile.txt")
-        stuff=""
-        for line in fi:
-            stuff+=line
-        stuff=stuff.split(",")
-        file=open("main_files/infofile.txt", "w")
-        info=str(int(stuff[0])+health)+"," +str(int(stuff[1])+happy) +","+str(int(stuff[2])+hunger)+","+str(int(stuff[3])+money)
-        file.write(info)
+
+        
+        file=open("day1/charspeak.txt","w")
+        file.write("character spoke")
         file.close()
-        file=open("day1/mhm.txt","w")
-        file.write("yah")
-        file.close()
+
+        file1=open("day1/mhm.txt","w")
+        file1.write('')
+        file1.close()
 
         pygame.display.update()
         clock.tick(60)

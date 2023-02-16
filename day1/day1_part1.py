@@ -73,9 +73,8 @@ for line in file:
         pmam="PM"
         count=2
         thing=True
-    else:
-        hour=11
-        pmam="AM"
+    elif "character spoke" == line:
+        hour+=1
         
 
 b=False
@@ -170,11 +169,24 @@ while True:
         if event.type == pygame.KEYDOWN:
 
             if event.key==pygame.K_q and variable=="commons":
-                print("person1 interact")
+                file=open("day1/charspeak.txt","w")
+                file.write(str(hour)+ " "+pmam)
+                file.close()
+                hour+=1
+                os.system("python day1/person1interact.py 1")
+                
             if event.key==pygame.K_w and variable=="hallway":
-                print("person2 interact")
+                file=open("day1/charspeak.txt","w")
+                file.write(str(hour)+ " "+pmam)
+                file.close()
+                hour+=1
+                os.system("python day1/person2interact.py 1")
             if event.key==pygame.K_e and variable=="medbay":
-                print("person3 interact")
+                file=open("day1/charspeak.txt","w")
+                file.write(str(hour)+ " "+pmam)
+                file.close()
+                hour+=1
+                os.system("python day1/person3interact.py 1")
 
             if event.key == pygame.K_LEFT and variable=="commons" or event.key==pygame.K_DOWN and variable=="hallway" or event.key==pygame.K_UP and variable=="rooms":
                 variable="stores"
