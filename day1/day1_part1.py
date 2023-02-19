@@ -218,6 +218,11 @@ while True:
             position=pygame.mouse.get_pos()
             scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
             screen.blit(scaled_splash,(0,0))
+        if event.type==pygame.MOUSEBUTTONDOWN:
+            position=pygame.mouse.get_pos()
+            if variable=="arcade" and position[0]>85 and position[0]<1450 and position[1]>66 and position[1]<232:
+                pass
+                #ONCE GAMES ARE DONE SORT THIS OUT
     clockfunc()
     
         
