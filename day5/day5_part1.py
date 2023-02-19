@@ -36,8 +36,8 @@ def blit_alpha(target, source, location, opacity):
     temp.set_alpha(opacity)        
     target.blit(temp, location)
 
-text_splash = font1.render('You are but a lowly human in the small town of Ethopia.', False, 'white')
-text_splash1 = font1.render('Fortunately, you are lucky enough to have a good job, a wonderful wife, and a son.', False, 'white')
+text_splash = font1.render('You wake up and know the whole truth.', False, 'white')
+text_splash1 = font1.render('The person who had the _____ all along is _____.', False, 'white')
 counter=1
 
 
@@ -50,27 +50,26 @@ while True:
         if event.type == pygame.MOUSEBUTTONDOWN:
             counter+=1
             if counter==2:
-                text_splash = font1.render("You have everything a person could ever want in life", False, "white")
-                text_splash1 = font1.render("However, one day, everything changes...", False, "white")
+                text_splash = font1.render("You contemplate the turn of events.", False, "white")
+                text_splash1 = font1.render("You have been manipulated, decieved.", False, "white")
             if counter==3:
-                text_splash = font1.render("A disease called the Fisherman's Pox washes through the town", False, "black")
-                text_splash1 = font1.render("One day, when you come home...", False, "black")
+                text_splash = font1.render("There is only one thing left do to.", False, "black")
+                text_splash1 = font1.render("You decide to fight...", False, "black")
             if counter==4:
-                text_splash = font1.render("You find your wife sick", False, "black")
-                text_splash1 = font1.render("Fast forward a few weeks...", False, "black")
+                text_splash = font1.render("But where?", False, "black")
+                text_splash1 = font1.render("The creepy hallway, that might be fitting...", False, "black")
             if counter==5:
-                text_splash = font1.render("You are all alone.", False, "white")
-                text_splash1 = font1.render("There is only one thing left to do...", False, "white")
+                text_splash = font1.render("You only have the resources that are on you right now.", False, "white")
+                text_splash1 = font1.render("You can't waste any time, each passing second is precious.", False, "white")
             if counter==6:
-                text_splash = font1.render("You embark on a ship called 'Promise'", False, "white")
-                text_splash1 = font1.render("Thus, your adventure begins...", False, "white")
+                text_splash = font1.render("With a new resolve, you decide to leave your room.", False, "white")
+                text_splash1 = font1.render("Best of luck!", False, "white")
             if counter==7:
-                os.system("python day1/day1.py 1")
+                os.system("python day5/fight.py 1")
                 pygame.quit()
 
         
     screen.blit(text , (0,0))
-    position=pygame.mouse.get_pos()
     if counter == 1 or counter==2:
         screen.blit(scaled_splash,(0,0))
     if counter==3 or counter==4:

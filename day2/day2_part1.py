@@ -42,7 +42,6 @@ def blit_alpha(target, source, location, opacity):
     temp.set_alpha(opacity)        
     target.blit(temp, location)
 
-variable="commons"
 health = 100
 wealth = 100
 
@@ -75,22 +74,29 @@ if b==True:
     pmam="PM"
 
 count=1
+global screenn
+screenn="captain"
 var=0
 
 def clickedbookshelf():
-    pass
+    global screenn
+    screenn="bookshelf"
 
 def clickedbed():
-    pass
+    global screenn
+    screenn="bed"
 
 def clickedwheel():
-    pass
+    global screenn
+    screenn="wheel"
 
 def clickedsofa():
-    pass
+    global screenn
+    screenn="sofa"
 
 def clickeddoor():
-    pass
+    global screenn
+    screenn="door"
 
 def clockfunc():
     global min, hour, count, var,pmam
@@ -145,7 +151,7 @@ while True:
             pygame.quit()
             exit()
 
-        if event.type==pygame.MOUSEBUTTONDOWN:
+        if event.type==pygame.MOUSEBUTTONDOWN and screenn=="captain":
             position=pygame.mouse.get_pos()
             if position[0]>1019 and position[0]<1441:
                 if position[1]>64 and position[1]<163:
