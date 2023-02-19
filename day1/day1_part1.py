@@ -90,6 +90,8 @@ var=0
 
 
 def clockfunc():
+    global health, happiness, hunger,money
+
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
@@ -147,6 +149,16 @@ def clockfunc():
     screen.blit(happydisp,(width-200,height-100))
     moneydisp=font1.render("money: $"+str(money),False,"black")
     screen.blit(moneydisp,(width-200,height-50))
+    list=[]
+    file=open("main_files/infofile.txt")
+    for line in file:
+        line=line.strip()
+        list=line.split(",")
+
+    health=list[0]
+    happiness=list[1]
+    hunger=list[2]
+    money=list[3]
     
 
 while True:
@@ -221,7 +233,7 @@ while True:
         if event.type==pygame.MOUSEBUTTONDOWN:
             position=pygame.mouse.get_pos()
             if variable=="arcade" and position[0]>85 and position[0]<1450 and position[1]>66 and position[1]<232:
-                pass
+                os.system("python specificinteractions/arcademenu.py 1")
                 #ONCE GAMES ARE DONE SORT THIS OUT
     clockfunc()
     

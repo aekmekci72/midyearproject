@@ -104,6 +104,19 @@ def masterloop():
                     counter+=1
                     sync()
                 if counter==13:
+                    
+                    fi=open("main_files/infofile.txt")
+                    stuff=""
+                    for line in fi:
+                        stuff+=line
+                    stuff=stuff.split(",")
+                    file=open("main_files/infofile.txt", "w")
+                    info=str(int(stuff[0])+int(health))+"," +str(int(stuff[1])+int(happy)) +","+str(int(stuff[2])+int(hunger))+","+str(int(stuff[3])+int(money))
+                    file.write(info)
+                    file.close()
+                    file=open("day1/mhm.txt","w")
+                    file.write("yah")
+                    file.close()
                     os.system("python day1/day1_part1.py")
                     pygame.quit()
 
@@ -172,18 +185,7 @@ def masterloop():
         
 
         
-        fi=open("main_files/infofile.txt")
-        stuff=""
-        for line in fi:
-            stuff+=line
-        stuff=stuff.split(",")
-        file=open("main_files/infofile.txt", "w")
-        info=str(int(stuff[0])+health)+"," +str(int(stuff[1])+happy) +","+str(int(stuff[2])+hunger)+","+str(int(stuff[3])+money)
-        file.write(info)
-        file.close()
-        file=open("day1/mhm.txt","w")
-        file.write("yah")
-        file.close()
+        
 
         pygame.display.update()
         clock.tick(60)

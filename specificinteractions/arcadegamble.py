@@ -16,7 +16,15 @@ BLACK = (0, 0, 0)
 
 # set up game variables
 bet = 0
-balance = 1000
+
+infofile=open("main_files/infofile.txt")
+for line in infofile:
+    line=line.strip()
+    line=line.split(",")
+    print(line)
+    money=int(line[3])
+
+balance=money
 
 img = pygame.image.load('images_fonts/rooms/arcade.jpg')
 
@@ -74,11 +82,34 @@ while running:
                 bet = 0
             elif event.key == pygame.K_BACKSPACE:
                 bet = int(bet / 10)
+            elif event.key==pygame.K_e:
+                stuff=line
+                print(stuff)
+                stuff[3]=balance
+                infofile=open("main_files/infofile.txt","w")
+                for thing in stuff:
+                    t=str(thing)+","
+                    infofile.write(t)
+                infofile.close()
+                pygame.quit()
+        if balance==0:
+            stuff=line
+            print(stuff)
+            stuff[3]=balance
+            infofile=open("main_files/infofile.txt","w")
+            for thing in stuff:
+                t=str(thing)+","
+                infofile.write(t)
+            infofile.close()
+            pygame.quit()
+
+
 
     # draw the screen
     draw_screen()
     draw_text("Enter your bet:", font, BLACK, 500, 500)
     draw_text("$" + str(bet), font, BLACK, 500, 600)
+    draw_text("Press 'e' to exit", font, BLACK, 500,700)
     # screen.blit(img, (0,0))
 
     # update the display

@@ -54,7 +54,7 @@ while menu_running:
             print(position)
             if position[0]>50 and position[0]<350:
                 if position[1]>150 and position[1]<200:
-                    os.system("python specificinteractions/colordash.py 1")
+                    os.system("python specificinteractions/colordashpayment.py 1")
                     pygame.quit() 
                 elif position[1]>215 and position[1]<275:
                     os.system("python specificinteractions/arcadegamble.py 1")
