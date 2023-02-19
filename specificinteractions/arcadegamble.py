@@ -18,12 +18,12 @@ BLACK = (0, 0, 0)
 bet = 0
 balance = 1000
 
+img = pygame.image.load('images_fonts/rooms/arcade.jpg')
+
 # define functions
 def draw_text(text, font, color, x, y):
     text_surface = font.render(text, True, color)
-    text_rect = text_surface.get_rect()
-    text_rect.center = (x, y)
-    screen.blit(text_surface, text_rect)
+    screen.blit(text_surface, (x,y))
 
 def draw_screen():
     screen.fill(WHITE)
@@ -79,6 +79,7 @@ while running:
     draw_screen()
     draw_text("Enter your bet:", font, BLACK, 500, 500)
     draw_text("$" + str(bet), font, BLACK, 500, 600)
+    # screen.blit(img, (0,0))
 
     # update the display
     pygame.display.update()
