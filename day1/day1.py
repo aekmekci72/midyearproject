@@ -51,6 +51,11 @@ while True:
                 
                 f.write("75,35,60,10")
                 f.close()
+
+                a=open("main_files/inventory.txt","w")
+                a.write("")
+                a.close()
+
                 file=open("day1/mhm.txt","w")
                 file.write("")
                 file.close()

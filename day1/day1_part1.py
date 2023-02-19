@@ -60,7 +60,7 @@ health=list[0]
 happiness=list[1]
 hunger=list[2]
 money=list[3]
-hour=11
+hour=7
 min=0
 pmam="AM"
 thing=False
@@ -106,7 +106,7 @@ def clockfunc():
         pygame.quit()
 
 
-    time.sleep(0.03)
+    time.sleep(0.1)
     min+=1
     if min<10:
         mindisp="0"+str(min)
@@ -185,20 +185,20 @@ while True:
                 file.write(str(hour)+ " "+pmam)
                 file.close()
                 hour+=1
-                os.system("python day1/person1interact.py 1")
+                os.system("python day1/person1floateract.py 1")
                 
             if event.key==pygame.K_w and variable=="hallway":
                 file=open("day1/charspeak.txt","w")
                 file.write(str(hour)+ " "+pmam)
                 file.close()
                 hour+=1
-                os.system("python day1/person2interact.py 1")
+                os.system("python day1/person2floateract.py 1")
             if event.key==pygame.K_e and variable=="medbay":
                 file=open("day1/charspeak.txt","w")
                 file.write(str(hour)+ " "+pmam)
                 file.close()
                 hour+=1
-                os.system("python day1/person3interact.py 1")
+                os.system("python day1/person3floateract.py 1")
 
             if event.key == pygame.K_LEFT and variable=="commons" or event.key==pygame.K_DOWN and variable=="hallway" or event.key==pygame.K_UP and variable=="rooms":
                 variable="stores"
@@ -232,9 +232,16 @@ while True:
             screen.blit(scaled_splash,(0,0))
         if event.type==pygame.MOUSEBUTTONDOWN:
             position=pygame.mouse.get_pos()
-            if variable=="arcade" and position[0]>85 and position[0]<1450 and position[1]>66 and position[1]<232:
-                os.system("python specificinteractions/arcademenu.py 1")
-                #ONCE GAMES ARE DONE SORT THIS OUT
+            if variable=="arcade" and position[0]>85 and position[0]<1450 and position[1]>65 and position[1]<230:
+                os.system("python specificfloateractions/arcademenu.py 1")
+            if variable=="stores" and position[0]>115 and position[0]<350 and position[1]>115 and position[1]<275:
+                os.system("python shop/foodstore.py 1")
+            if variable=="stores" and position[0]>100 and position[0]<350 and position[1]>520 and position[1]<700:
+                os.system("python shop/toolstore.py 1")
+            if variable=="medbay" and position[0]>200 and position[0]<430 and position[1]>700 and position[1]<818:
+                os.system("python shop/healthstore.py 1")
+                
+
     clockfunc()
     
         
