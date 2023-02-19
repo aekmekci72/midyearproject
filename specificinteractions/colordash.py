@@ -1,85 +1,103 @@
-import pygame,sys,random
+import pygame
+import random
+
+# Initialize Pygame
 pygame.init()
-screen = pygame.display.set_mode([600, 500])
-clock = pygame.time.Clock()
 
-counter, text = 10, '10'.rjust(3)
-textt=""
+# Set up the game window
+WINDOW_WIDTH = 400
+WINDOW_HEIGHT = 400
+game_display = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
+pygame.display.set_caption("Color Game")
 
-textset=["red","orange","yellow","green","blue","purple", "black"]
-colorset=["red","orange","yellow","green","blue","purple","white"]
+typed_color=""
 
-colortext=""
+# Define some colors
+BLACK = (0, 0, 0)
+WHITE = (255, 255, 255)
+RED = (255, 0, 0)
+GREEN = (0, 255, 0)
+BLUE = (0, 0, 255)
+YELLOW = (255, 255, 0)
+CYAN = (0, 255, 255)
+MAGENTA = (255, 0, 255)
 
-pygame.time.set_timer(pygame.USEREVENT, 1000)
-font = pygame.font.SysFont('Consolas', 30)
+# Define the fonts to be used for the game
+font = pygame.font.Font(None, 36)
 
-input_rect = pygame.Rect(100, 100, 140, 32)
-thing_rect = pygame.Rect(100,250,140,32)
-points_rect=pygame.Rect(100,400,140,32)
-  
-color_active = pygame.Color('lightskyblue3')
+# Define the countdown timer for the game
+COUNTDOWN_TIMER = 25
 
-color_passive = pygame.Color('chartreuse4')
-color = color_passive
-  
-active = False
-  
-points=-1
+# Define the colors to be used in the game
+COLORS = {
+    "red": RED,
+    "green": GREEN,
+    "blue": BLUE,
+    "yellow": YELLOW,
+    "cyan": CYAN,
+    "magenta": MAGENTA
+}
 
-correctvar=True
+# Set up the initial game state
+current_color1 = random.choice(list(COLORS.keys()))
+current_color2 = random.choice(list(COLORS.keys()))
+score = 0
+time_left = COUNTDOWN_TIMER * 60
 
-run = True
-while run:
-    for e in pygame.event.get():
-        if e.type==pygame.QUIT:
-            pygame.quit()
-            sys.exit()
-        if e.type == pygame.USEREVENT: 
-            counter -= 1
-            text = str(counter).rjust(3) if counter > 0 else 'boom!'
-        if e.type == pygame.MOUSEBUTTONDOWN:
-            if input_rect.collidepoint(e.pos):
-                active = True
-            else:
-                active = False
-        if e.type == pygame.KEYDOWN:
-            
-            if e.key == pygame.K_BACKSPACE:
-                textt = textt[:-1]
-            else:
-                textt += e.unicode
-            print(textt)
-            if e.key==pygame.K_RETURN:
-                print(textt,textss)
-                if textt==textss:
-                    correctvar=True
-        if correctvar==True:
-            colorr=colorset[random.randint(0,6)]
-            print(colorr)
-            textss=textset[random.randint(0,6)]
-            colortext=text
-            thing_rect=pygame.Rect(100, 100, 140,32)
-            correctvar=False
-            points+=1
-            textt=""
-
-    if active:
-        color = color_active
-    else:
-        color = color_passive
-    screen.fill((0, 0, 0))
-    pygame.draw.rect(screen, color, input_rect)
-    pygame.draw.rect(screen, colorr, thing_rect)
-    pygame.draw.rect(screen, color, points_rect)
-  
-    text_surface = font.render(text, True, (0, 0, 0))
-    textt_surface = font.render(textt, True, (255,255,255))
-      
-    screen.blit(text_surface, (input_rect.x+5, input_rect.y+5))
-    screen.blit(textt_surface, (input_rect.x, input_rect.y+55))
-      
-    input_rect.w = max(100, text_surface.get_width()+10)
+# Define a function to update the game state
+def update_game():
+    global current_color1,current_color2, score, time_left
+    if current_color2 == typed_color.lower():
+        score += 1
+        current_color2 = random.choice(list(COLORS.keys()))
+        current_color1 = random.choice(list(COLORS.keys()))
     
-    pygame.display.flip()
-    clock.tick(60)
+
+# Set up the game loop
+game_running = True
+while game_running:
+    # Handle events
+    time_left -= 0.01
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            game_running = False
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_ESCAPE:
+                game_running = False
+            else:
+                # Check if the user typed the correct color
+                if event.key == pygame.K_RETURN:
+                    typed_color = typed_color.lower()
+                    update_game()
+                    typed_color = ""
+                elif event.key == pygame.K_BACKSPACE:
+                    typed_color = typed_color[:-1]
+                elif event.unicode.isalpha():
+                    typed_color += event.unicode
+
+    # Draw the background and the text
+    background_color = COLORS[current_color2]
+    game_display.fill(background_color)
+    text = font.render(current_color1.capitalize(), True, WHITE)
+    text_rect = text.get_rect(center=(WINDOW_WIDTH/2, WINDOW_HEIGHT/2))
+    game_display.blit(text, text_rect)
+
+    # Draw the score and the time left
+    score_text = font.render("Score: {}".format(score), True, WHITE)
+    score_text_rect = score_text.get_rect(topright=(WINDOW_WIDTH-10, 10))
+    game_display.blit(score_text, score_text_rect)
+    time_text = font.render("Time left: {}s".format(int(time_left/60)), True, WHITE)
+    time_text_rect = time_text.get_rect(topleft=(10, 10))
+    game_display.blit(time_text, time_text_rect)
+
+    # Draw the typed text
+    typed_text = font.render(typed_color, True, WHITE)
+    typed_rect = typed_text.get_rect(center=(WINDOW_WIDTH/2, WINDOW_HEIGHT/2+50))
+    game_display.blit(typed_text, typed_rect)
+
+    # Update the screen
+    pygame.display.update()
+
+    # Check if the game is over
+    if time_left <= 0:
+        game_running = False
