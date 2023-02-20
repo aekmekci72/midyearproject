@@ -157,7 +157,8 @@ while running:
                 y=oppattack()
                 event1text=font.render(x, True,(0,0,0))
                 event2text=font.render(y, True,(0,0,0))
-            for i in range(len(items)):
+            for i in range(len(items)-1):
+                print(i)
                 item = items[i]
                 text = font.render(item, True, (0,0,0))
                 rect = text.get_rect()
@@ -172,6 +173,7 @@ while running:
                     items.remove(items[g])
                     x=x.split("-")
                     health+=int(x[1])
+                    
                     
 
     screen.fill((255, 255, 255))

@@ -1,1 +1,1 @@
-Apple(+2 hunger)-2,Helmet(+2 protection)-2,Boots(+1 protection)-1
+Bread(+5 hunger)-5,Apple(+2 hunger)-2,
