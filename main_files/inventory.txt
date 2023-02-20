@@ -1,1 +1,1 @@
-Bow,(3,damage),,Apple,(+2,hunger),Apple,(+2,hunger),,Apple (+2 hunger),
+Apple(+2 hunger)-2,Helmet(+2 protection)-2,Boots(+1 protection)-1

@@ -16,7 +16,7 @@ for line in infofile:
 pygame.display.set_caption("Sink or Swim Shop")
 
 font = pygame.font.SysFont('Arial',15)
-items = [("small-health-potion(+5 health)", 10), ("medium-health-potion(+10 health)", 17.5), ("large-health-potion(+20 health)", 30)]
+items = [("small-health-potion(+5 health)", 10,5), ("medium-health-potion(+10 health)", 17.5,10), ("large-health-potion(+20 health)", 30,20)]
 
 inventory = []
 
@@ -41,7 +41,7 @@ while not done:
                 rect.y = 10 + i * 30
                 if rect.collidepoint(position):
                     if money >= item[1]:
-                        inventory.append(item[0])
+                        inventory.append(item[0]+"-"+str(item[2]))
                         money -= item[1]
         if event.type==pygame.KEYDOWN:
             if event.key==pygame.K_e:
