@@ -233,7 +233,7 @@ while True:
         if event.type==pygame.MOUSEBUTTONDOWN:
             position=pygame.mouse.get_pos()
             if variable=="arcade" and position[0]>85 and position[0]<1450 and position[1]>65 and position[1]<230:
-                os.system("python specificfloateractions/arcademenu.py 1")
+                os.system("python specificinteractions/arcademenu.py 1")
             if variable=="stores" and position[0]>115 and position[0]<350 and position[1]>115 and position[1]<275:
                 os.system("python shop/foodstore.py 1")
             if variable=="stores" and position[0]>100 and position[0]<350 and position[1]>520 and position[1]<700:

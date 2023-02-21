@@ -3,10 +3,10 @@ import pygame,random,os
 
 pygame.init()
 
-attackstuff=["Dagger(5 damage)","Bow(3 damage)", "Sword(10 damage)"]
-armorstuff=["Helmet(+2 protection)","Chestplate(+7 protection)","Boots(+1 protection)"]
-foodstuff=["Apple(+2 hunger)", "Bread(+5 hunger)", "Steak(+10 hunger)"]
-healthstuff=["small-health-potion(+5 health)", "medium-health-potion(+10 health)", "large-health-potion(+20 health)"]
+attackstuff=["Dagger(5damage)","Bow(3damage)", "Sword(10damage)"]
+armorstuff=["Helmet(+2protection)","Chestplate(+7protection)","Boots(+1protection)"]
+foodstuff=["Apple(+2hunger)", "Bread(+5hunger)", "Steak(+10hunger)"]
+healthstuff=["small-health-potion(+5health)", "medium-health-potion(+10health)", "large-health-potion(+20health)"]
 
 
 infofile=open("main_files/infofile.txt")
@@ -34,10 +34,16 @@ for thing in line:
     print(thing)
     if thing[0] in attackstuff:
         extrastrength+=float(thing[1])
-    if thing[0] in armorstuff:
+    elif thing[0] in armorstuff:
         moreproct+=float(thing[1])
+        print("mhm")
+
     else:
         items.append(thingg)
+
+for thing in items:
+    if thing=="" or thing==" ":
+        items.remove(thing)
 
 opponenthealth=75
 opponentdext=60
@@ -173,6 +179,9 @@ while running:
                     items.remove(items[g])
                     x=x.split("-")
                     health+=int(x[1])
+    for thing in items:
+        if thing=="" or thing==" ":
+            items.remove(thing)
                     
                     
 

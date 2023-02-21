@@ -22,7 +22,7 @@ for line in infofile:
     line=line.strip()
     line=line.split(",")
     print(line)
-    money=int(line[3])
+    money=float(line[3])
 
 balance=money
 

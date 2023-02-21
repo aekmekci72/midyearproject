@@ -55,126 +55,134 @@ def sync():
     screen.blit(text_splash1, (60,140))
     scaled_splash = pygame.transform.smoothscale(scaled_splash, (width, height)) 
 def masterloop():
-    global scaled_splash, text_splash, text_splash1, counter, eventvar, money, happy
+    global scaled_splash, text_splash, text_splash1, counter, eventvar, money, happy, health
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
         if counter==100:
+            text_splash = font1.render("While exploring, you hear rumors about the captain's secret diary being here.", False, "white")
+            text_splash1 = font1.render("This could be interesting, you don't know much about the old captain.", False, "white")
+            counter+=1
+            sync()
+        if counter==101:
+            text_splash = font1.render("Where do you look? ", False, "white")
+            text_splash1 = font1.render("[left arrow --> undewr the table, right arrow --> behind the sofa]", False, "white")
+            
             eventvar="e3_1"
+            sync()
         if event.type == pygame.MOUSEBUTTONDOWN:
             if eventvar=="na":
                 if counter==1:
-                    text_splash = font1.render("There, you see dangerous waters.", False, "white")
-                    text_splash1 = font1.render("On the left, there is a thunderstorm, and on the right, there is a whirlpool", False, "white")
+                    text_splash = font1.render("You hear of a case of food poisoning going around the ship.", False, "white")
+                    text_splash1 = font1.render("This could be incredibly detrimental to one's health.", False, "white")
                     counter+=1
                     sync()
                 if counter==2:
-                    text_splash = font1.render("Which way do you want to direct your ship?", False, "white")
-                    text_splash1 = font1.render("[left arrow --> thunderstorm, right arrow --> whirlpool]", False, "white")
+                    text_splash = font1.render("Do you go for a drink to take your mind off these worries, or do you eat crackers?", False, "white")
+                    text_splash1 = font1.render("[left arrow --> alcohol, right arrow --> crackers]", False, "white")
                     eventvar="e1"
                     sync()
                 
                 if counter==4:
                     text_splash = font1.render("Now, you are faced with another challenge...", False, "white")
-                    text_splash1 = font1.render("Towards your left, you see sharks, and towards your right, you see pirhanas.", False, "white")
+                    text_splash1 = font1.render("Lightning strikes and part of the boat was destroyed!", False, "white")
                     counter+=1
                     sync()
                 if counter==5:
-                    text_splash = font1.render("Which way do you want to direct your ship?", False, "white")
-                    text_splash1 = font1.render("[left arrow --> sharks, right arrow --> piranhas]", False, "white")
+                    text_splash = font1.render("What do you do, take a detour to the nearest port city, or try to fix it yourself?", False, "white")
+                    text_splash1 = font1.render("[left arrow --> detour, right arrow --> fix it yourself]", False, "white")
                     eventvar="e2"
                     sync()
                 if counter==7:
                     
                     sync()
                 if counter==9:
-                    text_splash = font1.render("You see a town! Do you want to go past it, or explore?", False, "white")
-                    text_splash1 = font1.render("[left arrow --> go past, right arrow --> explore]", False, "white")
+                    text_splash = font1.render("Anyways, you are approached by a fortune teller who agrees to give you a reading for 10$", False, "white")
+                    text_splash1 = font1.render("[left arrow --> take the risk, right arrow --> NO WAY!]", False, "white")
                     eventvar="e3"
                     sync()
                 if counter==11:
-                    text_splash = font1.render("Anyways, you leave the town.", False, "white")
-                    text_splash1 = font1.render("The water looks boring...", False, "white")
-                    counter+=1
-                    sync()
-                if counter==12:
                     text_splash = font1.render("You decide to go back to what you were doing before", False, "white")
                     text_splash1 = font1.render("Events over for today.", False, "white")
-                    counter+=1
+                    counter+=2
                     sync()
                 if counter==13:
-                    
                     fi=open("main_files/infofile.txt")
                     stuff=""
                     for line in fi:
                         stuff+=line
                     stuff=stuff.split(",")
                     file=open("main_files/infofile.txt", "w")
-                    print(str(float(stuff[0])+float(health))+"," +str(float(stuff[1])+float(happy)) +","+str(float(stuff[2])+float(hunger))+","+str(float(stuff[3])+float(money)))
-                    info=str(float(stuff[0])+float(health))+"," +str(float(stuff[1])+float(happy)) +","+str(float(stuff[2])+float(hunger))+","+str(float(stuff[3])+float(money))
+                    info=str(int(stuff[0])+int(health))+"," +str(int(stuff[1])+int(happy)) +","+str(int(stuff[2])+int(hunger))+","+str(int(stuff[3])+int(money))
                     file.write(info)
                     file.close()
-                    file=open("day1/mhm.txt","w")
-                    file.write("yah")
-                    file.close()
-                    os.system("python day1/day1_part1.py")
+                    os.system("python day1/day1_part3.py")
                     pygame.quit()
 
 
         if event.type == pygame.KEYDOWN:
             if eventvar=="e1":
                 if event.key==pygame.K_RIGHT:
-                    text_splash = font1.render("You navigate your ship towards the whirlpool...", False, "white")
-                    text_splash1 = font1.render("And are able to circumnavigate the dangers.", False, "white")
+                    text_splash = font1.render("You decide to keep it simple and eat some crackers.", False, "white")
+                    text_splash1 = font1.render("You get +7 health.", False, "white")
+                    health+=7
                     counter=4
                     eventvar="na"
                     sync()
                 if event.key==pygame.K_LEFT:
-                    os.system("python main_files/death.py 1")
-                    pygame.quit()
+                    text_splash = font1.render("You drink alcohol to take your mind off your worries...", False, "white")
+                    text_splash1 = font1.render("Uh oh... you might have to run to the restroom! You lose 7 health", False, "white")
+                    health-=7
+                    counter=4
+                    eventvar="na"
+                    sync()
 
             if eventvar=="e2":
                 if event.key==pygame.K_LEFT:
-                    text_splash = font1.render("You navigate your ship towards the sharks... \nAnd are surprised to see they did not attack you.", False, "white")
-                    text_splash1 = font1.render("In addition, you discover a new species of shark! \nYou get 10 coins for your achievement", False, "white")
-                    money+=10
+                    text_splash = font1.render("You go to the port city and buy yourself some supplies, and now it's good as new!", False, "white")
+                    text_splash1 = font1.render("Although you lose 10 coins, you gain 10 health!", False, "white")
+                    money-=10
+                    health+=10
                     counter=9
                     eventvar="na"
                     sync()
                 if event.key==pygame.K_RIGHT:
-                    text_splash = font1.render("You steer your ships towards the fishies, surprised when they eat some of your boat!", False, "white")
-                    text_splash1 = font1.render("You have to spend 10 coins to fix it. ", False, "white")
+                    text_splash = font1.render("You decide to fix the boat yourself, not bad! You definitely saved money", False, "white")
+                    text_splash1 = font1.render("You gain 10 coins, but also are anxious about breaking down the ship. You lose 10 happiness!", False, "white")
                     eventvar="na"
-                    money-=10
-                    counter=9
+                    money+=10
+                    happy-=10
+                    counter=100
                     sync()
             if eventvar=="e3":
                 if event.key==pygame.K_LEFT:
-                    text_splash = font1.render("You pass the town.", False, "white")
-                    text_splash1 = font1.render("Maybe you missed something important...", False, "white")
+                    text_splash = font1.render("Of course! You find out that somebody on the ship is sick with the virus (although you already knew that)", False, "white")
+                    text_splash1 = font1.render("Despite that, she gives you a mask and ppe, you gain 5 health but lose 10 money.", False, "white")
                     eventvar="na"
-                    counter=11
+                    health+=5
+                    money-=10
+                    counter=100
                     sync()
                 if event.key==pygame.K_RIGHT:
                     eventvar="na"
-                    text_splash = font1.render("You look around and see some resources! \nYou eat some food and get +10 on your hunger bar!", False, "white")
-                    text_splash1 = font1.render("You see a cat and a dog. Do you (right) leave them or (left) take them?", False, "white")
+                    text_splash = font1.render("there's no way you're wasting money...", False, "white")
+                    text_splash1 = font1.render("it's not worth it.", False, "white")
                     counter=100
                     sync()
             if eventvar=="e3_1":
                 if event.key==pygame.K_LEFT:
-                    text_splash = font1.render("You take the cat and dog with you! Hopefully they aren't sick", False, "white")
-                    text_splash1 = font1.render("You gain 10 happiness!", False, "white")
-                    counter=11
-                    happy+=10
+                    text_splash = font1.render("You search under the table! Darn it, it's not here.", False, "white")
+                    text_splash1 = font1.render("however, you DID find 5 coins lying on the ground!", False, "white")
                     eventvar="na"
+                    money+=5
+                    counter=11
                     sync()
                 if event.key==pygame.K_RIGHT:
-                    text_splash = font1.render("Who knows, the cat and dog might be sick. You leave them", False, "white")
-                    text_splash1 = font1.render("You lose 10 happiness!", False, "white")
+                    text_splash = font1.render("You search by the sofa, here it is!", False, "white")
+                    text_splash1 = font1.render("You find out the captain isn't the one with the illness. What a relief!", False, "white")
                     eventvar="na"
-                    happy-=10
+                    health+=5
                     counter=11
                     sync()
                              
@@ -186,8 +194,6 @@ def masterloop():
         
 
         
-        
-
         pygame.display.update()
         clock.tick(60)
 

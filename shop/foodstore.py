@@ -16,7 +16,7 @@ for line in infofile:
 pygame.display.set_caption("Sink or Swim Shop")
 
 font = pygame.font.SysFont('Arial',15)
-items = [("Apple(+2 hunger)", 1.5,2), ("Bread(+5 hunger)", 7.5,5), ("Steak(+10 hunger)", 15,10)]
+items = [("Apple(+2hunger)", 1.5,2), ("Bread(+5hunger)", 7.5,5), ("Steak(+10hunger)", 15,10)]
 
 inventory = []
 

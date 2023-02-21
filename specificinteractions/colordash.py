@@ -13,7 +13,7 @@ for line in infofile:
     line=line.strip()
     line=line.split(",")
     print(line)
-    current_balance=int(line[3])
+    current_balance=float(line[3])
 
 typed_color=""
 

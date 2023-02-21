@@ -16,7 +16,7 @@ for line in infofile:
 pygame.display.set_caption("Sink or Swim Shop")
 
 font = pygame.font.SysFont('Arial',15)
-items = [("small-health-potion(+5 health)", 10,5), ("medium-health-potion(+10 health)", 17.5,10), ("large-health-potion(+20 health)", 30,20)]
+items = [("small-health-potion(+5health)", 10,5), ("medium-health-potion(+10health)", 17.5,10), ("large-health-potion(+20health)", 30,20)]
 
 inventory = []
 

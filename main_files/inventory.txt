@@ -1,1 +1,1 @@
-Bread(+5 hunger)-5,Apple(+2 hunger)-2,
+Steak(+10hunger)-10,,Chestplate(+7protection)-7,,small-health-potion(+5health)-5,

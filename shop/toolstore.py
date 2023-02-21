@@ -16,7 +16,7 @@ for line in infofile:
 pygame.display.set_caption("Sink or Swim Shop")
 
 font = pygame.font.SysFont('Arial',15)
-items = [("Dagger(5 damage)", 10,5), ("Bow(3 damage)", 5,3), ("Sword(10 damage)", 15,10), ("Helmet(+2 protection)",5,2),("Chestplate(+7 protection)",15,7),("Boots(+1 protection)",3,1)]
+items = [("Dagger(5damage)", 10,5), ("Bow(3damage)", 5,3), ("Sword(10damage)", 15,10), ("Helmet(+2protection)",5,2),("Chestplate(+7protection)",15,7),("Boots(+1protection)",3,1)]
 
 inventory = []
 
