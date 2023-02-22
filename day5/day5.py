@@ -26,6 +26,10 @@ scaled_water = pygame.transform.scale(splash_water, (800, 495))
 splash_water1 = pygame.transform.flip(scaled_water, True, False)
 
 
+file=open("main_files/hourtracker.txt","w")
+file.write("7")
+file.close
+
 def blit_alpha(target, source, location, opacity):
     x = location[0]
     y = location[1]
@@ -35,7 +39,7 @@ def blit_alpha(target, source, location, opacity):
     temp.set_alpha(opacity)        
     target.blit(temp, location)
 
-text_splash = font1.render('DAY 5', False, 'white')
+text_splash = font1.render('DAY 3', False, 'white')
 
 
 while True:
@@ -47,13 +51,12 @@ while True:
         if event.type == pygame.MOUSEBUTTONDOWN:
             (width/2-500,height/2+200)
             if width/2-500 <= pygame.mouse.get_pos()[0] <= width/2-360 and height/2+200 <= pygame.mouse.get_pos()[1] <= height/2+400:
-                f = open("main_files/infofile.txt", "w")
-                
-                f.write("75,35,60,10")
-                f.close()
+
                 os.system("python day5/day5_part1.py 1")
                 pygame.quit()
         
+    screen.blit(text , (0,0))
+    position=pygame.mouse.get_pos()
     screen.blit(scaled_splash,(0,0))
     blit_alpha(screen, scaled_water,(0,0),150)
     blit_alpha(screen, splash_water1,(0,450),150)
