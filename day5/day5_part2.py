@@ -39,8 +39,8 @@ def blit_alpha(target, source, location, opacity):
     temp.set_alpha(opacity)        
     target.blit(temp, location)
 
-text_splash = font1.render("As you stop at another port city to get more food...you come across some merchants selling stuff", False, "white")
-text_splash1 = font1.render("This could be interesting, you might learn some new stuff!", False, "white")
+text_splash = font1.render("As concern of finding the infected person grows...", False, "white")
+text_splash1 = font1.render("You focus your efforts solely on finding the infected person!", False, "white")
 screen.blit(text_splash, (60,70))
 screen.blit(text_splash1, (60,140))
 counter=1
@@ -63,10 +63,17 @@ def masterloop():
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
+
+        if counter==100:
+            text_splash = font1.render("Oh no! You slip and fall...that hurt!", False, "white")
+            text_splash1 = font1.render("-5 health", False, "white")
+            health-=5
+            counter+=1
+            sync()
         
         if counter==101:
-            text_splash = font1.render("You come across a great suit in town...do you buy it? Maybe you can impress a certain someone! ", False, "white")
-            text_splash1 = font1.render("[left arrow --> Hell yeah, right arrow --> Pass]", False, "white")
+            text_splash = font1.render("As concern of finding the infected person grows, whose room do you search?", False, "white")
+            text_splash1 = font1.render("[left arrow --> The chef, right arrow --> Lady Mary]", False, "white")
             
             eventvar="e3_1"
             sync()
@@ -78,18 +85,17 @@ def masterloop():
                     counter+=1
                     sync()
                 if counter==2:
-                    text_splash = font1.render("Do you buy the stone claiming to be of good fortune (costs $10)?", False, "white")
-                    text_splash1 = font1.render("[left arrow --> yes, right arrow --> nah]", False, "white")
+                    text_splash = font1.render("To start off, whose room do you search?", False, "white")
+                    text_splash1 = font1.render("[left arrow --> The mechanic's, right arrow --> Lady Margaret]", False, "white")
                     eventvar="e1"
                     sync()
-
-                if counter==5:
-                    text_splash = font1.render("In town, you're entranced by a second hand journal...Do you buy it?", False, "white")
-                    text_splash1 = font1.render("[left arrow --> No, right arrow --> Of course]", False, "white")
+                
+                if counter==4:
+                    text_splash = font1.render("You sigh, growing tired and restless...what do you do?", False, "white")
+                    text_splash1 = font1.render("[left arrow --> Take a walk, right arrow --> Stay inside]", False, "white")
                     eventvar="e2"
                     sync()
                 if counter==7:
-                    
                     sync()
 
                 if counter==10:
@@ -119,70 +125,50 @@ def masterloop():
         if event.type == pygame.KEYDOWN:
             if eventvar=="e1":
                 if event.key==pygame.K_RIGHT:
-                    text_splash = font1.render("Wow. Keep up the savings!", False, "white")
-                    text_splash1 = font1.render("You get +5 wealth.", False, "white")
-                    money+=5
+                    text_splash = font1.render("As you search her room, it's all clear!", False, "white")
+                    text_splash1 = font1.render("You get +5 health.", False, "white")
+                    health+=5
                     counter=4
                     eventvar="na"
                     sync()
                 if event.key==pygame.K_LEFT:
-                    text_splash = font1.render("You take the stone: Wow. You feel a sense of zen wash over yourself. (+5 health)(-10 wealth)", False, "white")
-                    text_splash1 = font1.render("The stone helps you get a vision...You realize that the plumber doesn't have the disease!!", False, "white")
+                    text_splash = font1.render("All you find are masks and cleared health logs!", False, "white")
+                    text_splash1 = font1.render("You get +5 health", False, "white")
                     health+=5
-                    money-=10
                     counter=4
                     eventvar="na"
                     sync()
 
             if eventvar=="e2":
                 if event.key==pygame.K_LEFT:
-                    text_splash = font1.render("Oh well!", False, "white")
-                    text_splash1 = font1.render("You don't gain or lose anything...", False, "white")
-                    counter=10
+                    text_splash = font1.render("As you go out on the deck for some fresh air, you see the nurse and medic", False, "white")
+                    text_splash1 = font1.render("Talking in hushed voices while looking at Sir Cavaret's room...what does it mean?", False, "white")
+                    counter=100
                     eventvar="na"
                     sync()
                 if event.key==pygame.K_RIGHT:
-                    text_splash = font1.render("How perfect for mental health! (+5 health)", False, "white")
-                    text_splash1 = font1.render("You end up finding a note saying: 'Never trust a skinny chef'....you wonder what that means...", False, "white")
+                    text_splash = font1.render("You decide to read a book! How relaxing", False, "white")
+                    text_splash1 = font1.render("+5 health", False, "white")
                     eventvar="na"
                     health+=5
                     counter=101
                     sync()            
             if eventvar=="e3_1":
                 if event.key==pygame.K_LEFT:
-                    text_splash = font1.render("You definitely got yourself a date once you make it out of here!", False, "white")
-                    text_splash1 = font1.render("Plus, you find some $5 in the suit pocket! -10 wealth, +5 health, + 5 wealth", False, "white")
+                    text_splash = font1.render("OMG! You find a diary with dark poems reflected on his life!", False, "white")
+                    text_splash1 = font1.render("You did it...you found the infected! +10 health +10 wealth", False, "white")
                     eventvar="na"
-                    money+=5
-                    money-=10
-                    health+=5
+                    money+=10
+                    health+=10
                     counter=11
                     sync()
                 if event.key==pygame.K_RIGHT:
-                    text_splash = font1.render("Oh well...at least you saved money", False, "white")
-                    text_splash1 = font1.render(" +5 wealth, -5 health", False, "white")
+                    text_splash = font1.render("She's not infected...all clear!", False, "white")
+                    text_splash1 = font1.render(" +5 health", False, "white")
                     eventvar="na"
-                    health-=5
-                    money+=5
+                    health+=5
                     counter=11
                     sync()
-                             
-            if eventvar=="e3_2":
-                if event.key==pygame.K_LEFT:
-                    text_splash = font1.render("In the nurse's chamber, you end up finding that none of the crewmates had the sickness!", False, "white")
-                    text_splash1 = font1.render("Whew! What a relief. (+5 health)", False, "white")
-                    eventvar="na"
-                    health+=5
-                    counter=101
-                    sync()
-                if event.key==pygame.K_RIGHT:
-                    eventvar="na"
-                    text_splash = font1.render("You end up finding a diary which says: 'never trust a skinny chef'...", False, "white")
-                    text_splash1 = font1.render("Hmm you wonder what that means... +5 health", False, "white")
-                    health+=5
-                    counter=101
-                    sync()
-
             
                 
             
