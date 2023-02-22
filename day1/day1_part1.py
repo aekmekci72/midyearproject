@@ -166,10 +166,7 @@ def mornclockfunc():
     hunger=list[2]
     money=list[3]
 
-    file=open("main_files/hourtracker.txt","w")
-    file.write(str(hour))
-    file.close()
-
+    
     file=open("main_files/hourtracker.txt")
     for line in file:
         line=line.strip()
@@ -179,6 +176,11 @@ def mornclockfunc():
             count=1
             print("gotherebro")
             thing=True
+
+    file=open("main_files/hourtracker.txt","w")
+    file.write(str(hour))
+    file.close()
+
     
 
 while True:

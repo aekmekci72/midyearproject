@@ -21,6 +21,17 @@ menu_items = [
     ("Gamble", "arcadegamble.py"),
 ]
 
+file=open("main_files/hourtracker.txt")
+for line in file:
+    line=line.strip()
+    hour=int(line)
+hour+=1
+
+file=open("main_files/hourtracker.txt","w")
+file.write(str(hour))
+file.close()
+
+
 selected_item = None
 global y
 def draw_menu():
