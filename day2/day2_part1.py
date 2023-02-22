@@ -98,52 +98,6 @@ def clickeddoor():
     global screenn
     screenn="door"
 
-def clockfunc():
-    global min, hour, count, var,pmam
-    if hour==3:
-        os.system("python day2/day2_part2.py 1")
-
-    time.sleep(0.1)
-    min+=1
-    if min<10:
-        mindisp="0"+str(min)
-    else:
-        mindisp=str(min)
-    clock_game = f"{hour}:{mindisp} "+pmam
-    
-    if min==60:
-        min=0
-        hour+=1
-        if count%2!=0:
-            pmam="AM"
-        else:
-            pmam="PM"
-        clock_game = f"{hour}:{mindisp} "+pmam
-        
-    if hour == 12:
-        if count%2!=0:
-            pmam="PM"
-        else:
-            pmam="AM"
-        clock_game = f"{hour}:{mindisp} "+pmam
-        hour = 1
-        count+=1
-    text_splash=font1.render(clock_game, False, 'black')
-    
-    
-    pygame.draw.rect(screen, "white", pygame.Rect(0, 0, 10000, 40))
-    screen.blit(text_splash, (10,10))
-
-    pygame.draw.rect(screen, "white", pygame.Rect(width-250, height-250, 250, 250))
-    hungerdisp=font1.render("hunger: "+str(hunger)+"/100",False,"black")
-    screen.blit(hungerdisp,(width-200,height-200))
-    healthdisp=font1.render("health: "+str(health)+"/100",False,"black")
-    screen.blit(healthdisp,(width-200,height-150))
-    happydisp=font1.render("happiness: "+str(happiness)+"/100",False,"black")
-    screen.blit(happydisp,(width-200,height-100))
-    moneydisp=font1.render("money: $"+str(money),False,"black")
-    screen.blit(moneydisp,(width-200,height-50))
- 
 while True:
 
     for event in pygame.event.get():
@@ -178,7 +132,6 @@ while True:
         
         scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
         screen.blit(scaled_splash,(0,0))
-    clockfunc()
     
         
     pygame.display.update()

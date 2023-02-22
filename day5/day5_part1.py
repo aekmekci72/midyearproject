@@ -37,7 +37,7 @@ def blit_alpha(target, source, location, opacity):
     target.blit(temp, location)
 
 text_splash = font1.render('You wake up and know the whole truth.', False, 'white')
-text_splash1 = font1.render('The person who had the _____ all along is _____.', False, 'white')
+text_splash1 = font1.render('The person who had the disease all along is the chef.', False, 'white')
 counter=1
 
 

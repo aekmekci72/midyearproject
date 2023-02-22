@@ -18,6 +18,16 @@ pygame.display.set_caption("Sink or Swim Shop")
 font = pygame.font.SysFont('Arial',15)
 items = [("small-health-potion(+5health)", 10,5), ("medium-health-potion(+10health)", 17.5,10), ("large-health-potion(+20health)", 30,20)]
 
+file=open("main_files/hourtracker.txt")
+for line in file:
+    line=line.strip()
+    hour=int(line)
+hour+=1
+
+file=open("main_files/hourtracker.txt","w")
+file.write(str(hour))
+file.close()
+
 inventory = []
 
 done = False

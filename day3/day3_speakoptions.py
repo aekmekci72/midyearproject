@@ -17,10 +17,9 @@ menu_font = pygame.font.Font(None, 48)
 item_font = pygame.font.Font(None, 24)
 
 menu_items = [
-    ("Color Dash", "colordash.py"),
-    ("Gamble", "arcadegamble.py"),
+    ("Chef", "conversations/chef.py"),
+    ("Sir Cavaret", "conversations/sircavaret.py"),
 ]
-
 file=open("main_files/hourtracker.txt")
 for line in file:
     line=line.strip()
@@ -29,15 +28,13 @@ hour+=1
 
 file=open("main_files/hourtracker.txt","w")
 file.write(str(hour))
-file.close()
-
-
+file.close
 selected_item = None
 global y
 def draw_menu():
     global y
     game_display.fill(WHITE)
-    menu_text = menu_font.render("Game Menu", True, BLACK)
+    menu_text = menu_font.render("Who Do You Want To Talk To?", True, BLACK)
     menu_text_rect = menu_text.get_rect(center=(WINDOW_WIDTH/2, 50))
     game_display.blit(menu_text, menu_text_rect)
 
@@ -65,10 +62,12 @@ while menu_running:
             print(position)
             if position[0]>50 and position[0]<350:
                 if position[1]>150 and position[1]<200:
-                    os.system("python specificinteractions/colordashpayment.py 1")
+                    os.system("python conversations/chef.py 1")
+                    os.system("python day3/day3_part1.py 1")
                     pygame.quit() 
                 elif position[1]>215 and position[1]<275:
-                    os.system("python specificinteractions/arcadegamble.py 1")
+                    os.system("python conversations/sircavaret.py 1")
+                    os.system("python day3/day3_part1.py 1")
                     pygame.quit()
     draw_menu()
 

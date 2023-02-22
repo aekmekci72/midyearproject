@@ -75,26 +75,30 @@ for line in file:
         pmam="PM"
         count=2
         thing=True
+        count+=1
+        morning=False
+
 
 b=False
 for line in file:
     if line!="75,35,60,10":
         b=True
 
-if b==True:
+if thing==True:
     hour=5
     pmam="PM"
+    count=1
+    
 
 var=0
 
-
+morning=True
 try:
     something=(hour)
 except:
     hour=11
 
-
-def clockfunc():
+def mornclockfunc():
     global health, happiness, hunger,money,thing
 
     for event in pygame.event.get():
@@ -102,58 +106,43 @@ def clockfunc():
             pygame.quit()
             exit()
     global min, hour, count, var,pmam
-    if hour==10 and pmam=="AM":
+    if hour==20:
+        print("detected")
+        os.system("python day2/day2.py 1")
+        pygame.quit()
+    if hour==10:
         os.system("python day1/day1_speakoptions.py 1")
         pygame.quit()
-    if hour==3 and pmam=="PM":
+    if hour==15:
+        morning=False
         os.system("python day1/day1_part2.py 1")
         pygame.quit()
     
 
-    if hour==9 and pmam=="PM":
-        print("detected")
-        os.system("python day2/day2.py 1")
-        pygame.quit()
+    
     
     
 
 
-    time.sleep(0.1)
+    time.sleep(0.05)
     min+=1
     if min<10:
         mindisp="0"+str(min)
     else:
         mindisp=str(min)
-    clock_game = f"{hour}:{mindisp} "+pmam
+    clock_game = f"{hour}:{mindisp} "
+    
+
     
     if min==60:
         min=0
         hour+=1
         
-        if count%2!=0:
-            pmam="AM"
-        else:
-            pmam="PM"
-        clock_game = f"{hour}:{mindisp} "+pmam
+        clock_game = f"{hour}:{mindisp} "
         
-    if hour == 12:
-        if count%2!=0:
-            pmam="PM"
-        else:
-            pmam="AM"
-        clock_game = f"{hour}:{mindisp} "+pmam
-        hour = 1
-        file=open("day1/hourtracker1.txt","w")
-        file.write(str(hour))
-        file.close()
-        count+=1
-    if thing==True:
-        count=2
-    clock_game = f"{hour}:{mindisp} "+pmam
-    text_splash=font1.render(clock_game, False, 'black')
+    text_splash=font1.render(clock_game, False, 'white')
     
     
-    pygame.draw.rect(screen, "white", pygame.Rect(0, 0, 10000, 40))
     screen.blit(text_splash, (10,10))
 
     pygame.draw.rect(screen, "white", pygame.Rect(width-250, height-250, 250, 250))
@@ -180,27 +169,9 @@ def clockfunc():
     file.write(str(hour))
     file.close()
 
-    file=open("main_files/hourtracker.txt")
-    for line in file:
-        line=line.strip()
-        hour=int(line)
-        if hour=="5":
-            pmam="PM"
-            count=2
-            thing=True
     
 
 while True:
-    
-    if variable=="commons":
-        screen.blit(player1,(500,150))
-    if variable=="hallway":
-        screen.blit(player2,(1000,100))
-    if variable=="medbay":
-        screen.blit(player3,(300,240))
-    
-    
-
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -208,26 +179,6 @@ while True:
             exit()
         
         if event.type == pygame.KEYDOWN:
-
-            if event.key==pygame.K_q and variable=="commons":
-                file=open("day1/charspeak.txt","w")
-                file.write(str(hour)+ " "+pmam)
-                file.close()
-                hour+=1
-                os.system("python day1/person1floateract.py 1")
-                
-            if event.key==pygame.K_w and variable=="hallway":
-                file=open("day1/charspeak.txt","w")
-                file.write(str(hour)+ " "+pmam)
-                file.close()
-                hour+=1
-                os.system("python day1/person2floateract.py 1")
-            if event.key==pygame.K_e and variable=="medbay":
-                file=open("day1/charspeak.txt","w")
-                file.write(str(hour)+ " "+pmam)
-                file.close()
-                hour+=1
-                os.system("python day1/person3floateract.py 1")
 
             if event.key == pygame.K_LEFT and variable=="commons" or event.key==pygame.K_DOWN and variable=="hallway" or event.key==pygame.K_UP and variable=="rooms":
                 variable="stores"
@@ -269,9 +220,17 @@ while True:
                 os.system("python shop/toolstore.py 1")
             if variable=="medbay" and position[0]>200 and position[0]<430 and position[1]>700 and position[1]<818:
                 os.system("python shop/healthstore.py 1")
+            if variable=="commons" and position[0]>1275 and position[0]<1400 and position[1]>95 and position[1]<325:
+                f=open("main_files/key.txt")
+                for line in f:
+                    if line=="no":
+                        print("no key")
+                    if line=="yes":
+                        print("yes key")
                 
-
-    clockfunc()
+                
+    if morning==True:
+        mornclockfunc()
     
         
     pygame.display.update()

@@ -71,8 +71,32 @@ for line in file:
     print(line)
     line=line.strip()
     hour=int(line)
+    if hour=="5":
+        pmam="PM"
+        count=2
+        thing=True
+        count+=1
+        morning=False
+
+
+b=False
+for line in file:
+    if line!="75,35,60,10":
+        b=True
+
+if thing==True:
+    hour=5
+    pmam="PM"
+    count=1
+    
+
+var=0
 
 morning=True
+try:
+    something=(hour)
+except:
+    hour=11
 
 def mornclockfunc():
     global health, happiness, hunger,money,thing
@@ -84,8 +108,16 @@ def mornclockfunc():
     global min, hour, count, var,pmam
     if hour==20:
         print("detected")
-        os.system("python day3/day3.py 1")
+        os.system("python day2/day2.py 1")
         pygame.quit()
+    if hour==10:
+        os.system("python day1/day1_speakoptions.py 1")
+        pygame.quit()
+    if hour==15:
+        morning=False
+        os.system("python day1/day1_part2.py 1")
+        pygame.quit()
+    
 
     
     
