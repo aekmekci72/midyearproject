@@ -4,7 +4,7 @@ import time
 
 global surv1
 global health, happiness, hunger,money
-
+global variable
 
 
 pygame.init()
@@ -47,7 +47,7 @@ health = 100
 wealth = 100
 
 clock_game = 0
-global min, hour, count, var, pmam
+global min, hour, count, var, pmam,thing
 booleee=False
 file =open("main_files/infofile.txt")
 
@@ -60,55 +60,54 @@ health=list[0]
 happiness=list[1]
 hunger=list[2]
 money=list[3]
-
 min=0
-hour=11
-
 pmam="AM"
-b=False
-for line in file:
-    if line!="75,35,60,10":
-        b=True
-
-if b==True:
-    hour=5
-    pmam="PM"
-
+thing=False
 count=1
-var=0
 
 
+file=open("main_files/hourtracker.txt")
+for line in file:
+    print(line)
+    line=line.strip()
+    hour=int(line)
 
-def clockfunc():
+morning=True
+
+def mornclockfunc():
+    global health, happiness, hunger,money,thing
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            exit()
     global min, hour, count, var,pmam
-    if hour==3:
-        os.system("python day1/day1_part2.py 1")
+    if hour==20:
+        print("detected")
+        os.system("python day3/day3.py 1")
+        pygame.quit()
 
-    time.sleep(0.1)
+    
+    
+    
+
+
+    time.sleep(0.05)
     min+=1
     if min<10:
         mindisp="0"+str(min)
     else:
         mindisp=str(min)
-    clock_game = f"{hour}:{mindisp} "+pmam
+    clock_game = f"{hour}:{mindisp} "
+    
+
     
     if min==60:
         min=0
         hour+=1
-        if count%2!=0:
-            pmam="AM"
-        else:
-            pmam="PM"
-        clock_game = f"{hour}:{mindisp} "+pmam
         
-    if hour == 12:
-        if count%2!=0:
-            pmam="PM"
-        else:
-            pmam="AM"
-        clock_game = f"{hour}:{mindisp} "+pmam
-        hour = 1
-        count+=1
+        clock_game = f"{hour}:{mindisp} "
+        
     text_splash=font1.render(clock_game, False, 'black')
     
     
@@ -124,19 +123,35 @@ def clockfunc():
     screen.blit(happydisp,(width-200,height-100))
     moneydisp=font1.render("money: $"+str(money),False,"black")
     screen.blit(moneydisp,(width-200,height-50))
+    list=[]
+    file=open("main_files/infofile.txt")
+    for line in file:
+        line=line.strip()
+        list=line.split(",")
+
+    health=list[0]
+    happiness=list[1]
+    hunger=list[2]
+    money=list[3]
+
+    
+    file=open("main_files/hourtracker.txt")
+    for line in file:
+        line=line.strip()
+        hour=int(line)
+        if hour=="5":
+            pmam="PM"
+            count=1
+            print("gotherebro")
+            thing=True
+
+    file=open("main_files/hourtracker.txt","w")
+    file.write(str(hour))
+    file.close()
+
     
 
 while True:
-    
-    if variable=="commons":
-        screen.blit(player1,(500,150))
-    if variable=="hallway":
-        screen.blit(player2,(1000,100))
-    if variable=="medbay":
-        screen.blit(player3,(300,240))
-    
-    
-
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -144,13 +159,6 @@ while True:
             exit()
         
         if event.type == pygame.KEYDOWN:
-
-            if event.key==pygame.K_q and variable=="commons":
-                print("person1 interact")
-            if event.key==pygame.K_w and variable=="hallway":
-                print("person2 interact")
-            if event.key==pygame.K_e and variable=="medbay":
-                print("person3 interact")
 
             if event.key == pygame.K_LEFT and variable=="commons" or event.key==pygame.K_DOWN and variable=="hallway" or event.key==pygame.K_UP and variable=="rooms":
                 variable="stores"
@@ -182,7 +190,19 @@ while True:
             position=pygame.mouse.get_pos()
             scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
             screen.blit(scaled_splash,(0,0))
-    clockfunc()
+        if event.type==pygame.MOUSEBUTTONDOWN:
+            position=pygame.mouse.get_pos()
+            if variable=="arcade" and position[0]>85 and position[0]<1450 and position[1]>65 and position[1]<230:
+                os.system("python specificinteractions/arcademenu.py 1")
+            if variable=="stores" and position[0]>115 and position[0]<350 and position[1]>115 and position[1]<275:
+                os.system("python shop/foodstore.py 1")
+            if variable=="stores" and position[0]>100 and position[0]<350 and position[1]>520 and position[1]<700:
+                os.system("python shop/toolstore.py 1")
+            if variable=="medbay" and position[0]>200 and position[0]<430 and position[1]>700 and position[1]<818:
+                os.system("python shop/healthstore.py 1")
+                
+    if morning==True:
+        mornclockfunc()
     
         
     pygame.display.update()

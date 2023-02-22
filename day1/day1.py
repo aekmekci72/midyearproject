@@ -63,6 +63,10 @@ while True:
                 file=open("day1/mhm.txt","w")
                 file.write("")
                 file.close()
+
+                file=open("main_files/key.txt","w")
+                file.write("no")
+                file.close()
                 os.system("python day1/day1_part1.py 1")
                 pygame.quit()
         

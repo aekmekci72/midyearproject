@@ -166,17 +166,6 @@ def mornclockfunc():
     hunger=list[2]
     money=list[3]
 
-    
-    file=open("main_files/hourtracker.txt")
-    for line in file:
-        line=line.strip()
-        hour=int(line)
-        if hour=="5":
-            pmam="PM"
-            count=1
-            print("gotherebro")
-            thing=True
-
     file=open("main_files/hourtracker.txt","w")
     file.write(str(hour))
     file.close()
@@ -232,6 +221,14 @@ while True:
                 os.system("python shop/toolstore.py 1")
             if variable=="medbay" and position[0]>200 and position[0]<430 and position[1]>700 and position[1]<818:
                 os.system("python shop/healthstore.py 1")
+            if variable=="commons" and position[0]>1275 and position[0]<1400 and position[1]>95 and position[1]<325:
+                f=open("main_files/key.txt")
+                for line in f:
+                    if line=="no":
+                        print("no key")
+                    if line=="yes":
+                        print("yes key")
+                
                 
     if morning==True:
         mornclockfunc()

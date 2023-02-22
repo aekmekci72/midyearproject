@@ -122,6 +122,10 @@ def masterloop():
                     info=str(int(stuff[0])+int(health))+"," +str(int(stuff[1])+int(happy)) +","+str(int(stuff[2])+int(hunger))+","+str(int(stuff[3])+int(money))
                     file.write(info)
                     file.close()
+                    file=open("main_files/hourtracker.txt","w")
+                    file.write("14")
+                    file.close()
+
                     os.system("python day1/day1_part3.py")
                     pygame.quit()
 

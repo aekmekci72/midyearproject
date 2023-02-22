@@ -52,7 +52,7 @@ while True:
             (width/2-500,height/2+200)
             if width/2-500 <= pygame.mouse.get_pos()[0] <= width/2-360 and height/2+200 <= pygame.mouse.get_pos()[1] <= height/2+400:
 
-                os.system("python day2/day2_part1.py 1")
+                os.system("python day2/day2_speakoptions.py 1")
                 pygame.quit()
         
     screen.blit(text , (0,0))

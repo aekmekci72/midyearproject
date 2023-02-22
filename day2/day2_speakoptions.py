@@ -21,6 +21,7 @@ menu_items = [
     ("Lady Mary", "conversations/ladymary.py"),
 ]
 file=open("main_files/hourtracker.txt")
+hour=0
 for line in file:
     line=line.strip()
     hour=int(line)
