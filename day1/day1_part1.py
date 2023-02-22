@@ -140,10 +140,9 @@ def mornclockfunc():
         
         clock_game = f"{hour}:{mindisp} "
         
-    text_splash=font1.render(clock_game, False, 'black')
+    text_splash=font1.render(clock_game, False, 'white')
     
     
-    pygame.draw.rect(screen, "white", pygame.Rect(0, 0, 10000, 40))
     screen.blit(text_splash, (10,10))
 
     pygame.draw.rect(screen, "white", pygame.Rect(width-250, height-250, 250, 250))
