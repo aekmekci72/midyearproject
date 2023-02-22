@@ -36,7 +36,6 @@ text_splash = font1.render('Time to talk to the nurse!', False, 'white')
 text_splash1 = font1.render('You wearily approach her...', False, 'white')
 counter=1
 
-
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:

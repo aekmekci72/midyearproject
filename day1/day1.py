@@ -26,6 +26,10 @@ scaled_water = pygame.transform.scale(splash_water, (800, 495))
 splash_water1 = pygame.transform.flip(scaled_water, True, False)
 
 
+file=open("main_files/hourtracker.txt","w")
+file.write("7")
+file.close
+
 def blit_alpha(target, source, location, opacity):
     x = location[0]
     y = location[1]

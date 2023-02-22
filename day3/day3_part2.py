@@ -62,13 +62,10 @@ def masterloop():
             exit()
         if counter==100:
             text_splash = font1.render("While exploring, you hear rumors about the captain's secret diary being here.", False, "white")
-            text_splash1 = font1.render("This could be interesting, you don't know much about the old captain.", False, "white")
+            text_splash1 = font1.render("Where do you look? [left arrow --> under the table, right arrow --> behind the sofa]", False, "white")
             counter+=1
             sync()
         if counter==101:
-            text_splash = font1.render("Where do you look? ", False, "white")
-            text_splash1 = font1.render("[left arrow --> undewr the table, right arrow --> behind the sofa]", False, "white")
-            
             eventvar="e3_1"
             sync()
         if event.type == pygame.MOUSEBUTTONDOWN:
@@ -165,9 +162,11 @@ def masterloop():
                     counter=100
                     sync()
                 if event.key==pygame.K_RIGHT:
-                    eventvar="na"
+                    
                     text_splash = font1.render("there's no way you're wasting money...", False, "white")
                     text_splash1 = font1.render("it's not worth it.", False, "white")
+                    
+                    eventvar="na"
                     counter=100
                     sync()
             if eventvar=="e3_1":

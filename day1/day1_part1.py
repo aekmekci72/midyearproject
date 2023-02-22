@@ -47,7 +47,7 @@ health = 100
 wealth = 100
 
 clock_game = 0
-global min, hour, count, var, pmam
+global min, hour, count, var, pmam,thing
 booleee=False
 file =open("main_files/infofile.txt")
 
@@ -60,22 +60,21 @@ health=list[0]
 happiness=list[1]
 hunger=list[2]
 money=list[3]
-hour=7
 min=0
 pmam="AM"
 thing=False
 count=1
 
-file=open("day1/mhm.txt")
+
+file=open("main_files/hourtracker.txt")
 for line in file:
-    if line=="yah":
-        hour=5
+    print(line)
+    line=line.strip()
+    hour=int(line)
+    if hour=="5":
         pmam="PM"
         count=2
         thing=True
-    elif "character spoke" == line:
-        hour+=1
-        
 
 b=False
 for line in file:
@@ -89,21 +88,34 @@ if b==True:
 var=0
 
 
+try:
+    something=(hour)
+except:
+    hour=11
+
+
 def clockfunc():
-    global health, happiness, hunger,money
+    global health, happiness, hunger,money,thing
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
     global min, hour, count, var,pmam
-    if hour==3:
+    if hour==10 and pmam=="AM":
+        os.system("python day1/day1_speakoptions.py 1")
+        pygame.quit()
+    if hour==3 and pmam=="PM":
         os.system("python day1/day1_part2.py 1")
+        pygame.quit()
+    
 
-    if hour==11 and pmam=="PM":
+    if hour==9 and pmam=="PM":
         print("detected")
         os.system("python day2/day2.py 1")
         pygame.quit()
+    
+    
 
 
     time.sleep(0.1)
@@ -117,6 +129,7 @@ def clockfunc():
     if min==60:
         min=0
         hour+=1
+        
         if count%2!=0:
             pmam="AM"
         else:
@@ -130,6 +143,9 @@ def clockfunc():
             pmam="AM"
         clock_game = f"{hour}:{mindisp} "+pmam
         hour = 1
+        file=open("day1/hourtracker1.txt","w")
+        file.write(str(hour))
+        file.close()
         count+=1
     if thing==True:
         count=2
@@ -159,6 +175,19 @@ def clockfunc():
     happiness=list[1]
     hunger=list[2]
     money=list[3]
+
+    file=open("main_files/hourtracker.txt","w")
+    file.write(str(hour))
+    file.close()
+
+    file=open("main_files/hourtracker.txt")
+    for line in file:
+        line=line.strip()
+        hour=int(line)
+        if hour=="5":
+            pmam="PM"
+            count=2
+            thing=True
     
 
 while True:

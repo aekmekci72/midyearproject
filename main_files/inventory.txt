@@ -1,1 +1,0 @@
-Steak(+10hunger)-10,,Chestplate(+7protection)-7,,small-health-potion(+5health)-5,
