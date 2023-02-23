@@ -20,7 +20,7 @@ text = smallfont.render('S T A R T' , True , color)
 continueb = pygame.image.load('images_fonts/continue.png')
 
 
-splash_page = pygame.image.load('images_fonts/standinimage.png')
+splash_page = pygame.image.load('images_fonts/nurse.jpg')
 scaled_splash = pygame.transform.scale(splash_page, (571, 301))
 
 def blit_alpha(target, source, location, opacity):

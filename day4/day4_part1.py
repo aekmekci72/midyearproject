@@ -108,14 +108,14 @@ def mornclockfunc():
     global min, hour, count, var,pmam
     if hour==20:
         print("detected")
-        os.system("python day2/day2.py 1")
+        os.system("python day5/day5.py 1")
         pygame.quit()
     if hour==10:
-        os.system("python day1/day1_speakoptions.py 1")
+        os.system("python day4/day4_speakoptions.py 1")
         pygame.quit()
     if hour==15:
         morning=False
-        os.system("python day1/day1_part2.py 1")
+        os.system("python day4/day4_part2.py 1")
         pygame.quit()
     
 
@@ -140,10 +140,9 @@ def mornclockfunc():
         
         clock_game = f"{hour}:{mindisp} "
         
-    text_splash=font1.render(clock_game, False, 'black')
+    text_splash=font1.render(clock_game, False, 'white')
     
     
-    pygame.draw.rect(screen, "white", pygame.Rect(0, 0, 10000, 40))
     screen.blit(text_splash, (10,10))
 
     pygame.draw.rect(screen, "white", pygame.Rect(width-250, height-250, 250, 250))
@@ -165,17 +164,6 @@ def mornclockfunc():
     happiness=list[1]
     hunger=list[2]
     money=list[3]
-
-    
-    file=open("main_files/hourtracker.txt")
-    for line in file:
-        line=line.strip()
-        hour=int(line)
-        if hour=="5":
-            pmam="PM"
-            count=1
-            print("gotherebro")
-            thing=True
 
     file=open("main_files/hourtracker.txt","w")
     file.write(str(hour))
@@ -232,6 +220,14 @@ while True:
                 os.system("python shop/toolstore.py 1")
             if variable=="medbay" and position[0]>200 and position[0]<430 and position[1]>700 and position[1]<818:
                 os.system("python shop/healthstore.py 1")
+            if variable=="commons" and position[0]>1275 and position[0]<1400 and position[1]>95 and position[1]<325:
+                f=open("main_files/key.txt")
+                for line in f:
+                    if line=="no":
+                        print("no key")
+                    if line=="yes":
+                        print("yes key")
+                
                 
     if morning==True:
         mornclockfunc()
