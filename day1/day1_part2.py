@@ -67,6 +67,8 @@ def masterloop():
                 if counter==1:
                     text_splash = font1.render("There, you see dangerous waters.", False, "white")
                     text_splash1 = font1.render("On the left, there is a thunderstorm, and on the right, there is a whirlpool", False, "white")
+                    splash_page = pygame.image.load('images_fonts/captain.jpg')
+                    scaled_splash = pygame.transform.scale(splash_page, (800, 800))
                     counter+=1
                     sync()
                 if counter==2:
@@ -92,6 +94,8 @@ def masterloop():
                     text_splash = font1.render("You see a town! Do you want to go past it, or explore?", False, "white")
                     text_splash1 = font1.render("[left arrow --> go past, right arrow --> explore]", False, "white")
                     eventvar="e3"
+                    splash_page = pygame.image.load('images_fonts/town.png')
+                    scaled_splash = pygame.transform.scale(splash_page, (1920, 1080))
                     sync()
                 if counter==11:
                     text_splash = font1.render("Anyways, you leave the town.", False, "white")
