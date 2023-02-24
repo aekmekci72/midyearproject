@@ -63,6 +63,8 @@ def masterloop():
         if counter==100:
             text_splash = font1.render("As you are travelling, you come accross a lifeboat telling you to steer away from the North. ", False, "white")
             text_splash1 = font1.render("However, a lighthouse on the other hand suggests that the North is a safer direction.", False, "white")
+            splash_page = pygame.image.load('images_fonts/lighthouse.png')
+            scaled_splash = pygame.transform.scale(splash_page, (1700, 853))
             counter+=1
             sync()
         if counter==101:
@@ -81,6 +83,9 @@ def masterloop():
                 if counter==2:
                     text_splash = font1.render("Which way do you want to direct your ship?", False, "white")
                     text_splash1 = font1.render("[left arrow --> left of boulder, right arrow --> right of boulder]", False, "white")
+                    splash_page = pygame.image.load('images_fonts/ocean.jpg')
+                    scaled_splash = pygame.transform.scale(splash_page, (1700, 853))
+
                     eventvar="e1"
                     sync()
                 
@@ -99,7 +104,9 @@ def masterloop():
                     sync()
                 if counter==9:
                     text_splash = font1.render("DANGER! DANGER! There's a fire aboard! What should you do?", False, "white")
-                    text_splash1 = font1.render("[left arrow --> break the windows and jump into water, right arrow --> grab a fire extinguisher]", False, "white")
+                    text_splash1 = font1.render("[left arrow --> break the windows and jump, right arrow --> grab a fire extinguisher]", False, "white")
+                    splash_page = pygame.image.load('images_fonts/fire.jpg')
+                    scaled_splash = pygame.transform.scale(splash_page, (1700, 853))
                     eventvar="e3"
                     sync()
                 if counter==11:
