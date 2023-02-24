@@ -6,7 +6,7 @@ pygame.init()
 WINDOW_WIDTH = 400
 WINDOW_HEIGHT = 400
 game_display = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
-pygame.display.set_caption("Color Game")
+pygame.display.set_caption("Color Dash")
 
 infofile=open("main_files/infofile.txt")
 for line in infofile:
@@ -104,7 +104,7 @@ while game_running:
     a = font.render("-3 points for every wrong answer.", True, WHITE)
     arect = a.get_rect(bottomleft=(10, WINDOW_HEIGHT-75))
     game_display.blit(a, arect)
-    a = font.render("The points times 2.5 will be added to your balance.", True, WHITE)
+    a = font.render("The points times 0.5 will be added to your balance.", True, WHITE)
     arect = a.get_rect(bottomleft=(10, WINDOW_HEIGHT-50))
     game_display.blit(a, arect)
     a = font.render("(but there will be a cap at 0$ being the lowest).", True, WHITE)
@@ -115,9 +115,9 @@ while game_running:
 
     if time_left <= 0:
         game_running = False
-        if current_balance+score*2.5>0:
+        if current_balance+score*0.5>0:
             infofile=open("main_files/infofile.txt","w")
-            line[3]=current_balance+score*2.5
+            line[3]=current_balance+score*0.5
                 
             for thing in line:
                 t=str(thing)+","

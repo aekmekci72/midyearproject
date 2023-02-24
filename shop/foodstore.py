@@ -72,6 +72,7 @@ while not done:
                         stuff.append(thing)
                 for thing in inventory:
                     stuff.append(thing)
+                print(stuff)
                 i=open("main_files/inventory.txt","w")
                 for thing in stuff:
                     a=thing+","
