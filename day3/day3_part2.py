@@ -63,6 +63,9 @@ def masterloop():
         if counter==100:
             text_splash = font1.render("While exploring, you hear rumors about the captain's secret diary being here.", False, "white")
             text_splash1 = font1.render("Where do you look? [left arrow --> under the table, right arrow --> behind the sofa]", False, "white")
+            splash_page = pygame.image.load('images_fonts/captain.jpg')
+            scaled_splash = pygame.transform.scale(splash_page, (600, 450))
+
             counter+=1
             sync()
         if counter==101:
@@ -73,6 +76,9 @@ def masterloop():
                 if counter==1:
                     text_splash = font1.render("You hear of a case of food poisoning going around the ship.", False, "white")
                     text_splash1 = font1.render("This could be incredibly detrimental to one's health.", False, "white")
+                    splash_page = pygame.image.load('images_fonts/food.jpg')
+                    scaled_splash = pygame.transform.scale(splash_page, (600, 450))
+
                     counter+=1
                     sync()
                 if counter==2:
@@ -84,6 +90,8 @@ def masterloop():
                 if counter==4:
                     text_splash = font1.render("Now, you are faced with another challenge...", False, "white")
                     text_splash1 = font1.render("Lightning strikes and part of the boat was destroyed!", False, "white")
+                    splash_page = pygame.image.load('images_fonts/lightning-storm.jpg')
+                    scaled_splash = pygame.transform.scale(splash_page, (600, 450))
                     counter+=1
                     sync()
                 if counter==5:
@@ -97,6 +105,8 @@ def masterloop():
                 if counter==9:
                     text_splash = font1.render("Anyways, you are approached by a fortune teller who agrees to give you a reading for 10$", False, "white")
                     text_splash1 = font1.render("[left arrow --> take the risk, right arrow --> NO WAY!]", False, "white")
+                    splash_page = pygame.image.load('images_fonts/town.png')
+                    scaled_splash = pygame.transform.scale(splash_page, (1920, 1080))
                     eventvar="e3"
                     sync()
                 if counter==11:
