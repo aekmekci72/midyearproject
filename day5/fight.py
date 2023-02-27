@@ -135,13 +135,10 @@ while running:
                 if rect.collidepoint(position):
                     print(item)
                     g=items.index(item)
-                    print(g)
-                    print(items)
                     x=items[g]
                     items.remove(items[g])
                     x=x.split("-")
                     health+=int(x[1])
-                    print("clicked something")
 
 
 
