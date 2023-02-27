@@ -39,8 +39,11 @@ def blit_alpha(target, source, location, opacity):
     temp.set_alpha(opacity)        
     target.blit(temp, location)
 
+splash_page = pygame.image.load('images_fonts/town.png')
 text_splash = font1.render("As you stop at another port city to get more food...you come across some merchants selling stuff", False, "white")
 text_splash1 = font1.render("This could be interesting, you might learn some new stuff!", False, "white")
+scaled_splash = pygame.transform.scale(splash_page, (1920, 1080))
+screen.blit(scaled_splash,(0,0))
 screen.blit(text_splash, (60,70))
 screen.blit(text_splash1, (60,140))
 counter=1
@@ -67,7 +70,8 @@ def masterloop():
         if counter==101:
             text_splash = font1.render("You come across a great suit in town...do you buy it? Maybe you can impress a certain someone! ", False, "white")
             text_splash1 = font1.render("[left arrow --> Hell yeah, right arrow --> Pass]", False, "white")
-            
+            splash_page = pygame.image.load('images_fonts/town.png')
+            scaled_splash = pygame.transform.scale(splash_page, (1920, 1080))
             eventvar="e3_1"
             sync()
         if event.type == pygame.MOUSEBUTTONDOWN:
@@ -75,17 +79,23 @@ def masterloop():
                 if counter==1:
                     text_splash = font1.render("You hear of a case of food poisoning going around the ship.", False, "white")
                     text_splash1 = font1.render("This could be incredibly detrimental to one's health.", False, "white")
+                    splash_page = pygame.image.load('images_fonts/kitchen.jpg')
+                    scaled_splash = pygame.transform.scale(splash_page, (1920, 1080))
                     counter+=1
                     sync()
                 if counter==2:
                     text_splash = font1.render("Do you buy the stone claiming to be of good fortune (costs $10)?", False, "white")
                     text_splash1 = font1.render("[left arrow --> yes, right arrow --> nah]", False, "white")
+                    splash_page = pygame.image.load('images_fonts/fortune.jpg')
+                    scaled_splash = pygame.transform.scale(splash_page, (2032, 1351))
                     eventvar="e1"
                     sync()
 
                 if counter==5:
                     text_splash = font1.render("In town, you're entranced by a second hand journal...Do you buy it?", False, "white")
                     text_splash1 = font1.render("[left arrow --> No, right arrow --> Of course]", False, "white")
+                    splash_page = pygame.image.load('images_fonts/journal.jpg')
+                    scaled_splash = pygame.transform.scale(splash_page, (1500, 800))
                     eventvar="e2"
                     sync()
                 if counter==7:
@@ -96,10 +106,14 @@ def masterloop():
                     text_splash = font1.render("When you're back on the ship early, you decide to explore some more! Where do you look?", False, "white")
                     text_splash1 = font1.render("[left arrow --> Nurse's chamber, right arrow --> Under the flower vase of commons]", False, "white")
                     eventvar="e3_2"
+                    splash_page = pygame.image.load('images_fonts/dock.png')
+                    scaled_splash = pygame.transform.scale(splash_page, (1920, 1080))
                     sync()
                 if counter==11:
                     text_splash = font1.render("You decide to go back to what you were doing before", False, "white")
                     text_splash1 = font1.render("Events over for today.", False, "white")
+                    splash_page = pygame.image.load('images_fonts/howtoplayback.png')
+                    scaled_splash = pygame.transform.scale(splash_page, (1920, 1080))
                     counter+=2
                     sync()
                 if counter==13:
@@ -122,7 +136,7 @@ def masterloop():
                     text_splash = font1.render("Wow. Keep up the savings!", False, "white")
                     text_splash1 = font1.render("You get +5 wealth.", False, "white")
                     money+=5
-                    counter=4
+                    counter=5
                     eventvar="na"
                     sync()
                 if event.key==pygame.K_LEFT:
@@ -130,7 +144,7 @@ def masterloop():
                     text_splash1 = font1.render("The stone helps you get a vision...You realize that the plumber doesn't have the disease!!", False, "white")
                     health+=5
                     money-=10
-                    counter=4
+                    counter=5
                     eventvar="na"
                     sync()
 
