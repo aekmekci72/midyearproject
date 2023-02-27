@@ -6,7 +6,6 @@ global surv1
 global health, happiness, hunger,money
 global variable
 
-
 pygame.init()
 screen= pygame.display.set_mode()
 pygame.display.set_caption('Sick or Swim')
@@ -47,7 +46,9 @@ health = 100
 wealth = 100
 
 clock_game = 0
-global min, hour, count, var, pmam,thing
+global min, hour, count, var,thing
+hour=7
+
 booleee=False
 file =open("main_files/infofile.txt")
 
@@ -93,10 +94,6 @@ if thing==True:
 var=0
 
 morning=True
-try:
-    something=(hour)
-except:
-    hour=11
 
 def mornclockfunc():
     global health, happiness, hunger,money,thing
@@ -117,11 +114,6 @@ def mornclockfunc():
         morning=False
         os.system("python day3/day3_part2.py 1")
         pygame.quit()
-    
-
-    
-    
-    
 
 
     time.sleep(0.05)
@@ -140,10 +132,9 @@ def mornclockfunc():
         
         clock_game = f"{hour}:{mindisp} "
         
-    text_splash=font1.render(clock_game, False, 'black')
+    text_splash=font1.render(clock_game, False, 'white')
     
     
-    pygame.draw.rect(screen, "white", pygame.Rect(0, 0, 10000, 40))
     screen.blit(text_splash, (10,10))
 
     pygame.draw.rect(screen, "white", pygame.Rect(width-250, height-250, 250, 250))
@@ -166,20 +157,10 @@ def mornclockfunc():
     hunger=list[2]
     money=list[3]
 
-    
-    file=open("main_files/hourtracker.txt")
-    for line in file:
-        line=line.strip()
-        hour=int(line)
-        if hour=="5":
-            pmam="PM"
-            count=1
-            print("gotherebro")
-            thing=True
-
     file=open("main_files/hourtracker.txt","w")
     file.write(str(hour))
     file.close()
+
 
     
 
@@ -232,6 +213,23 @@ while True:
                 os.system("python shop/toolstore.py 1")
             if variable=="medbay" and position[0]>200 and position[0]<430 and position[1]>700 and position[1]<818:
                 os.system("python shop/healthstore.py 1")
+            if variable=="commons" and position[0]>1275 and position[0]<1400 and position[1]>95 and position[1]<325:
+                f=open("main_files/key.txt")
+                for line in f:
+                    if line=="no":
+                        print("no key")
+                    if line=="yes":
+                        print("yes key")
+    if happiness<=0:
+        os.system("python main_files/death.py 1")
+        pygame.quit()
+    if health<=0:
+        os.system("python main_files/death.py 1")
+        pygame.quit()
+    if hunger<=0:
+        os.system("python main_files/death.py 1")
+        pygame.quit()
+                
                 
     if morning==True:
         mornclockfunc()

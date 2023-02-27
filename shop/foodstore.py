@@ -22,7 +22,6 @@ hour+=1
 file=open("main_files/hourtracker.txt","w")
 file.write(str(hour))
 file.close()
-
 pygame.display.set_caption("Sink or Swim Shop")
 
 font = pygame.font.SysFont('Arial',15)

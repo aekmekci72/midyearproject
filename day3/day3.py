@@ -9,6 +9,10 @@ clock = pygame.time.Clock()
 font = pygame.font.Font('images_fonts/Neucha-Regular.ttf',60)
 font1 = pygame.font.Font('images_fonts/PermanentMarker-Regular.ttf', 90)
 
+file=open("main_files/went.txt","w")
+file.write("siaodfhasd")
+file.close()
+
 color = (255,255,255)
 color_light = (170,170,170)
 color_dark = (100,100,100)
@@ -55,8 +59,6 @@ while True:
                 os.system("python day3/day3_buykey.py 1")
                 pygame.quit()
         
-    screen.blit(text , (0,0))
-    position=pygame.mouse.get_pos()
     screen.blit(scaled_splash,(0,0))
     blit_alpha(screen, scaled_water,(0,0),150)
     blit_alpha(screen, splash_water1,(0,450),150)

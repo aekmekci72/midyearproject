@@ -23,7 +23,7 @@ menu_items = [
 
 file=open("main_files/hourtracker.txt","w")
 file.write("11")
-file.close
+file.close()
 selected_item = None
 global y
 def draw_menu():

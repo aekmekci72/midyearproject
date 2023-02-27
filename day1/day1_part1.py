@@ -94,7 +94,7 @@ var=0
 
 morning=True
 try:
-    something=(hour)
+    something=int(hour)
 except:
     hour=11
 
@@ -222,6 +222,18 @@ while True:
                         print("no key")
                     if line=="yes":
                         print("yes key")
+
+    if float(happiness)<=0:
+        os.system("python main_files/death.py 1")
+        pygame.quit()
+    if float(health)<=0:
+        os.system("python main_files/death.py 1")
+        pygame.quit()
+    if float(hunger)<=0:
+        os.system("python main_files/death.py 1")
+        pygame.quit()
+        
+
                 
                 
     if morning==True:

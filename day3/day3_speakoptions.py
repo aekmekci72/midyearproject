@@ -8,6 +8,10 @@ WINDOW_HEIGHT = 400
 game_display = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 pygame.display.set_caption("Game Menu")
 
+file=open("main_files/went.txt","w")
+file.write("yes")
+file.close()
+
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 GRAY = (128, 128, 128)
@@ -28,7 +32,7 @@ hour+=1
 
 file=open("main_files/hourtracker.txt","w")
 file.write(str(hour))
-file.close
+file.close()
 selected_item = None
 global y
 def draw_menu():

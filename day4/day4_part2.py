@@ -83,21 +83,25 @@ def masterloop():
                     scaled_splash = pygame.transform.scale(splash_page, (1920, 1080))
                     counter+=1
                     sync()
-                if counter==2:
+                if counter==2 and money>=10:
                     text_splash = font1.render("Do you buy the stone claiming to be of good fortune (costs $10)?", False, "white")
                     text_splash1 = font1.render("[left arrow --> yes, right arrow --> nah]", False, "white")
                     splash_page = pygame.image.load('images_fonts/fortune.jpg')
                     scaled_splash = pygame.transform.scale(splash_page, (2032, 1351))
                     eventvar="e1"
                     sync()
+                else:
+                    counter=10
 
-                if counter==5:
+                if counter==5 and money>=10:
                     text_splash = font1.render("In town, you're entranced by a second hand journal...Do you buy it?", False, "white")
                     text_splash1 = font1.render("[left arrow --> No, right arrow --> Of course]", False, "white")
                     splash_page = pygame.image.load('images_fonts/journal.jpg')
                     scaled_splash = pygame.transform.scale(splash_page, (1500, 800))
                     eventvar="e2"
                     sync()
+                else:
+                    counter=10
                 if counter==7:
                     
                     sync()

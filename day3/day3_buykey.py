@@ -1,13 +1,17 @@
 import pygame,sys,os
 pygame.init()
-
+global current_balance
 required_amount = 10
 infofile=open("main_files/infofile.txt")
 for line in infofile:
     line=line.strip()
     line=line.split(",")
-    print(line)
     current_balance=float(line[3])
+    print(line)
+try:
+    current_balance=float(current_balance)
+except:
+    current_balance=0
 
 screen = pygame.display.set_mode((800, 600))
 font = pygame.font.SysFont(None, 30)
@@ -39,7 +43,7 @@ while True:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             position=pygame.mouse.get_pos()
             print(position)
-            if position[0]>50 and position[0]<150 and position[1]>150 and position[1]<200:
+            if position[0]>50 and position[0]<150 and position[1]>150 and position[1]<200 and current_balance>=10:
                 if current_balance >= required_amount:
                     current_balance-=10
                     line[3]=current_balance

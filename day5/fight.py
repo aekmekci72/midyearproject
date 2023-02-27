@@ -1,10 +1,10 @@
 
 import pygame,random,os
 pygame.init()
-attackstuff=["Dagger(5 damage)","Bow(3 damage)", "Sword(10 damage)"]
-armorstuff=["Helmet(+2 protection)","Chestplate(+7 protection)","Boots(+1 protection)"]
-foodstuff=["Apple(+2 hunger)", "Bread(+5 hunger)", "Steak(+10 hunger)"]
-healthstuff=["small-health-potion(+5 health)", "medium-health-potion(+10 health)", "large-health-potion(+20 health)"]
+attackstuff=["Dagger(5damage)-5","Bow(3damage)-3", "Sword(10damage)-10"]
+armorstuff=["Helmet(+2protection)-2","Chestplate(+7protection)-7","Boots(+1protection)-1"]
+foodstuff=["Apple(+2hunger)-2", "Bread(+5hunger)-5", "Steak(+10hunger)-10"]
+healthstuff=["small-health-potion(+5health)-5", "medium-health-potion(+10health)-10", "large-health-potion(+20health)-20"]
 infofile=open("main_files/infofile.txt")
 for line in infofile:
     line=line.strip()
@@ -27,7 +27,8 @@ for thing in line:
     print(thing)
     if thing[0] in attackstuff:
         extrastrength+=float(thing[1])
-    if thing[0] in armorstuff:
+        print("mah")
+    elif thing[0] in armorstuff:
         moreproct+=float(thing[1])
     else:
         items.append(thingg)
@@ -125,7 +126,7 @@ while running:
                 y=oppattack()
                 event1text=font.render(x, True,(0,0,0))
                 event2text=font.render(y, True,(0,0,0))
-            for i in range(len(items)):
+            for i in range(len(items)-1):
                 print(i)
                 item = items[i]
                 text = font.render(item, True, (0,0,0))

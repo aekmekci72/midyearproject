@@ -90,9 +90,14 @@ def clickedwheel():
     global screenn
     screenn="wheel"
 
-def clickedsofa():
+
+def clickedrug():
     global screenn
-    screenn="sofa"
+    screenn="rug"
+
+def clickeddrawer():
+    global screenn
+    screenn="drawer"
 
 def clickeddoor():
     global screenn
@@ -107,21 +112,24 @@ while True:
 
         if event.type==pygame.MOUSEBUTTONDOWN and screenn=="captain":
             position=pygame.mouse.get_pos()
-            if position[0]>1019 and position[0]<1441:
-                if position[1]>64 and position[1]<163:
+            if position[0]>71 and position[0]<607:
+                if position[1]> 68 and position[1]<255:
                     clickedbookshelf()
-            if position[0]>86 and position[0]<385:
-                if position[1]>622 and position[1]<810:
+            if position[0]>82 and position[0]<538:
+                if position[1]>600 and position[1]<802:
                     clickedbed()
-            if position[0]>1080 and position[0]<1460:
-                if position[1]>295 and position[1]<603:
+            if position[0]>1195 and position[0]<1382:
+                if position[1]>561 and position[1]<863:
                     clickedwheel()
-            if position[0]>69 and position[0]<218:
-                if position[1]>79 and position[1]<271:
-                    clickedsofa()
-            if position[0]>14 and position[0]<56:
-                if position[1]>335 and position[1]<570:
-                    clickeddoor()
+            if position[0]>548 and position[0]<1032:
+                if position[1]>285 and position[1]<557:
+                    clickedrug()
+            if position[0]>1041 and position[0]<1261:
+                if position[1]>98 and position[1]<255:
+                    clickeddrawer()
+            if position[0]<50 or position[1]<50 or position[1]>800:
+                clickeddoor()
+            
             
             
             
@@ -132,6 +140,7 @@ while True:
         
         scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
         screen.blit(scaled_splash,(0,0))
+        print(screenn)
     
         
     pygame.display.update()

@@ -104,7 +104,7 @@ while game_running:
     a = font.render("-3 points for every wrong answer.", True, WHITE)
     arect = a.get_rect(bottomleft=(10, WINDOW_HEIGHT-75))
     game_display.blit(a, arect)
-    a = font.render("The points times 0.5 will be added to your balance.", True, WHITE)
+    a = font.render("The points times 0.75 will be added to your balance.", True, WHITE)
     arect = a.get_rect(bottomleft=(10, WINDOW_HEIGHT-50))
     game_display.blit(a, arect)
     a = font.render("(but there will be a cap at 0$ being the lowest).", True, WHITE)
@@ -115,9 +115,9 @@ while game_running:
 
     if time_left <= 0:
         game_running = False
-        if current_balance+score*0.5>0:
+        if current_balance+score*0.75>0:
             infofile=open("main_files/infofile.txt","w")
-            line[3]=current_balance+score*0.5
+            line[3]=current_balance+score*0.75
                 
             for thing in line:
                 t=str(thing)+","

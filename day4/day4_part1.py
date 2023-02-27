@@ -47,7 +47,7 @@ health = 100
 wealth = 100
 
 clock_game = 0
-global min, hour, count, var, pmam,thing
+global min, hour, count, var,thing
 booleee=False
 file =open("main_files/infofile.txt")
 
@@ -93,11 +93,6 @@ if thing==True:
 var=0
 
 morning=True
-try:
-    something=(hour)
-except:
-    hour=11
-
 def mornclockfunc():
     global health, happiness, hunger,money,thing
 
@@ -117,11 +112,6 @@ def mornclockfunc():
         morning=False
         os.system("python day4/day4_part2.py 1")
         pygame.quit()
-    
-
-    
-    
-    
 
 
     time.sleep(0.05)
@@ -168,6 +158,8 @@ def mornclockfunc():
     file=open("main_files/hourtracker.txt","w")
     file.write(str(hour))
     file.close()
+
+
 
     
 
@@ -227,6 +219,16 @@ while True:
                         print("no key")
                     if line=="yes":
                         print("yes key")
+    
+    if happiness<=0:
+        os.system("python main_files/death.py 1")
+        pygame.quit()
+    if health<=0:
+        os.system("python main_files/death.py 1")
+        pygame.quit()
+    if hunger<=0:
+        os.system("python main_files/death.py 1")
+        pygame.quit()
                 
                 
     if morning==True:
