@@ -47,7 +47,7 @@ health = 100
 wealth = 100
 
 clock_game = 0
-global min, hour, count, var, pmam,thing
+global min, hour, count, var,thing
 booleee=False
 file =open("main_files/infofile.txt")
 
@@ -117,11 +117,6 @@ def mornclockfunc():
         morning=False
         os.system("python day1/day1_part2.py 1")
         pygame.quit()
-    
-
-    
-    
-    
 
 
     time.sleep(0.05)
