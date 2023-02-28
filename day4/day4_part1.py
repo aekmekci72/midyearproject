@@ -90,6 +90,10 @@ if thing==True:
     pmam="PM"
     count=1
     
+try:
+    print(hour)
+except:
+    hour=7
 
 var=0
 
