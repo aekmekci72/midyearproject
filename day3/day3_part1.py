@@ -220,13 +220,13 @@ while True:
                         print("no key")
                     if line=="yes":
                         print("yes key")
-    if happiness<=0:
+    if float(happiness)<=0:
         os.system("python main_files/death.py 1")
         pygame.quit()
-    if health<=0:
+    if float(health)<=0:
         os.system("python main_files/death.py 1")
         pygame.quit()
-    if hunger<=0:
+    if float(hunger)<=0:
         os.system("python main_files/death.py 1")
         pygame.quit()
                 
