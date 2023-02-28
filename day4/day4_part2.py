@@ -130,7 +130,7 @@ def masterloop():
                     info=str(int(stuff[0])+int(health))+"," +str(int(stuff[1])+int(happy)) +","+str(int(stuff[2])+int(hunger))+","+str(int(stuff[3])+int(money))
                     file.write(info)
                     file.close()
-                    os.system("python day1/day1_part3.py")
+                    os.system("python day4/day4_part1.py")
                     pygame.quit()
 
 
@@ -174,7 +174,7 @@ def masterloop():
                     money+=5
                     money-=10
                     health+=5
-                    counter=11
+                    counter=12
                     sync()
                 if event.key==pygame.K_RIGHT:
                     text_splash = font1.render("Oh well...at least you saved money", False, "white")
@@ -182,7 +182,7 @@ def masterloop():
                     eventvar="na"
                     health-=5
                     money+=5
-                    counter=11
+                    counter=12
                     sync()
                              
             if eventvar=="e3_2":

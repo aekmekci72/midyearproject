@@ -48,6 +48,7 @@ wealth = 100
 
 clock_game = 0
 global min, hour, count, var,thing
+
 booleee=False
 file =open("main_files/infofile.txt")
 
