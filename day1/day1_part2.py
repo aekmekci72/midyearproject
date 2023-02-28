@@ -39,8 +39,14 @@ def blit_alpha(target, source, location, opacity):
     temp.set_alpha(opacity)        
     target.blit(temp, location)
 
+splash_page = pygame.image.load('images_fonts/captain.jpg')
+scaled_splash = pygame.transform.scale(splash_page, (width*1.01, height*1.01))
+screen.blit(scaled_splash,(0,0))
 text_splash = font1.render('You are casually hanging out on the ship when you hear the alarm blare', False, 'white')
 text_splash1 = font1.render('You dash to the captain room and look outside from behind the wheel', False, 'white')
+screen.blit(text_splash, (60,70))
+screen.blit(text_splash1, (60,140))
+
 counter=1
 
 global eventvar
