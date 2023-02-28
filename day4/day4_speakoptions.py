@@ -3,7 +3,7 @@ import sys, os
 
 pygame.init()
 
-WINDOW_WIDTH = 400
+WINDOW_WIDTH = 500
 WINDOW_HEIGHT = 400
 game_display = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
 pygame.display.set_caption("Game Menu")
