@@ -48,6 +48,7 @@ wealth = 100
 
 clock_game = 0
 global min, hour, count, var,thing
+
 booleee=False
 file =open("main_files/infofile.txt")
 
@@ -89,6 +90,10 @@ if thing==True:
     pmam="PM"
     count=1
     
+try:
+    print(hour)
+except:
+    hour=7
 
 var=0
 
