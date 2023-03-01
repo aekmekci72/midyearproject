@@ -133,7 +133,7 @@ def masterloop():
                     file.write("14")
                     file.close()
 
-                    os.system("python day1/day1_part3.py")
+                    os.system("python day2/day2_part3.py")
                     pygame.quit()
 
 
