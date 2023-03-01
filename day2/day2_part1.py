@@ -49,43 +49,24 @@ health = 100
 wealth = 100
 
 clock_game = 0
-global bookshelfchecked,key1,listenunlock1,listenunlock11,listenunlock111
-global min, hour, count, var, pmam
+global bookshelfchecked,key1,listenunlock1,listenunlock11,listenunlock111,key2,listenunlock2,listenunlock22,listenunlock222,listenesc
 bookshelfchecked=False
 key1=False
+key2=False
 booleee=False
-file =open("main_files/infofile.txt")
 
-list=[]
-for line in file:
-    line=line.strip()
-    list=line.split(",")
+listenesc=False
 
-health=list[0]
-happiness=list[1]
-hunger=list[2]
-money=list[3]
-
-min=0
-hour=11
-
-pmam="AM"
-b=False
-for line in file:
-    if line!="75,35,60,10":
-        b=True
-
-if b==True:
-    hour=5
-    pmam="PM"
-
-count=1
 global screenn
 screenn="captain"
 var=0
 listenunlock1=False
 listenunlock11=False
 listenunlock111=False
+
+listenunlock2=False
+listenunlock22=False
+listenunlock222=False
 
 global wheelpuzzlestr
 
@@ -163,7 +144,7 @@ def clickeddrawer():
     scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
 
 def smthwheelpuzzle():
-    global wheelpuzzlestr
+    global wheelpuzzlestr, scaled_splash, splash_page,key2,listenunlock2
     position=pygame.mouse.get_pos()
     if position[0]>641 and position[0]<768:
         if position[1]>203 and position[1]<297:
@@ -183,9 +164,14 @@ def smthwheelpuzzle():
     if position[0]>1099 and position[0]<1448:
         if position[1]>138 and position[1]<274:
             if wheelpuzzlestr=="wsne":
-                print("yes")
+                print("got here")
+                splash_page = pygame.image.load('day2/wheelsolve.png')
+                scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
+                screen.blit(scaled_splash,(0,0))
+                key2=True
+                listenunlock2=True
             else:
-                print('no')
+                wheelpuzzlestr=""
 
 while True:
 
@@ -235,6 +221,29 @@ while True:
                 screen.blit(scaled_splash,(0,0))
         if event.type==pygame.MOUSEBUTTONDOWN and screenn=="wheel":
             smthwheelpuzzle()
+        if event.type==pygame.MOUSEBUTTONDOWN and screenn=="rug":
+            if listenesc==True:
+                os.system("python day2/day2_part2.py")
+                pygame.quit()
+
+            elif listenunlock222==True:
+                splash_page = pygame.image.load('day2/trapdooropen.png')
+                scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
+                screen.blit(scaled_splash,(0,0))
+                listenesc=True
+
+
+            elif listenunlock22==True:
+                splash_page = pygame.image.load('day2/trapdoorunlock.png')
+                scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
+                screen.blit(scaled_splash,(0,0))
+                listenunlock222=True
+
+            elif listenunlock2==True:
+                splash_page = pygame.image.load('day2/trapdoorlock.png')
+                scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
+                listenunlock22=True
+                screen.blit(scaled_splash,(0,0))
 
 
         
