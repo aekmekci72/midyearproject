@@ -28,7 +28,7 @@ global money, happy
 health=0
 happy=0
 hunger=0
-money=0
+money=30
 
 def blit_alpha(target, source, location, opacity):
     x = location[0]
@@ -39,14 +39,14 @@ def blit_alpha(target, source, location, opacity):
     temp.set_alpha(opacity)        
     target.blit(temp, location)
 
-splash_page = pygame.image.load('images_fonts/town.png')
 text_splash = font1.render("As you stop at another port city to get more food...you come across some merchants selling stuff", False, "white")
 text_splash1 = font1.render("This could be interesting, you might learn some new stuff!", False, "white")
+splash_page = pygame.image.load('images_fonts/town.png')
 scaled_splash = pygame.transform.scale(splash_page, (1920, 1080))
 screen.blit(scaled_splash,(0,0))
 screen.blit(text_splash, (60,70))
 screen.blit(text_splash1, (60,140))
-counter=1
+counter=2
 
 global eventvar
 
@@ -59,76 +59,79 @@ def sync():
     screen.blit(text_splash, (60,70))
     screen.blit(text_splash1, (60,140))
     scaled_splash = pygame.transform.smoothscale(scaled_splash, (width, height)) 
-
 def masterloop():
     global scaled_splash, text_splash, text_splash1, counter, eventvar, money, happy, health
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
-        
-        if counter==101:
-            text_splash = font1.render("You come across a great suit in town...do you buy it? Maybe you can impress a certain someone! ", False, "white")
-            text_splash1 = font1.render("[left arrow --> Hell yeah, right arrow --> Pass]", False, "white")
-            splash_page = pygame.image.load('images_fonts/town.png')
-            scaled_splash = pygame.transform.scale(splash_page, (1920, 1080))
-            eventvar="e3_1"
-            sync()
         if event.type == pygame.MOUSEBUTTONDOWN:
-            if eventvar=="na":
-                if counter==1:
-                    text_splash = font1.render("You hear of a case of food poisoning going around the ship.", False, "white")
-                    text_splash1 = font1.render("This could be incredibly detrimental to one's health.", False, "white")
-                    splash_page = pygame.image.load('images_fonts/kitchen.jpg')
-                    scaled_splash = pygame.transform.scale(splash_page, (1920, 1080))
-                    counter+=1
-                    sync()
-                if counter==2 and money>=10:
-                    text_splash = font1.render("Do you buy the stone claiming to be of good fortune (costs $10)?", False, "white")
-                    text_splash1 = font1.render("[left arrow --> yes, right arrow --> nah]", False, "white")
-                    splash_page = pygame.image.load('images_fonts/fortune.jpg')
-                    scaled_splash = pygame.transform.scale(splash_page, (2032, 1351))
-                    eventvar="e1"
-                    sync()
-                else:
-                    counter=10
-
-                if counter==5 and money>=10:
-                    text_splash = font1.render("In town, you're entranced by a second hand journal...Do you buy it?", False, "white")
-                    text_splash1 = font1.render("[left arrow --> No, right arrow --> Of course]", False, "white")
-                    splash_page = pygame.image.load('images_fonts/journal.jpg')
-                    scaled_splash = pygame.transform.scale(splash_page, (1500, 800))
-                    eventvar="e2"
-                    sync()
-                else:
-                    counter=10
-                if counter==7:
+            if eventvar=="na":                    
+                if counter==2:
+                    if money>=10:
+                        text_splash = font1.render("Do you buy the stone claiming to be of good fortune (costs $10)?", False, "white")
+                        text_splash1 = font1.render("[left arrow --> yes, right arrow --> nah]", False, "white")
+                        splash_page = pygame.image.load('images_fonts/fortune.jpg')
+                        scaled_splash = pygame.transform.scale(splash_page, (2032, 1351))
+                        eventvar="e1"
+                        sync()
+                    else:
+                        counter=4
+                
+                if counter==4:
+                    if money>=10:
+                        text_splash = font1.render("In town, you're entranced by a second hand journal...Do you buy it?", False, "white")
+                        text_splash1 = font1.render("[left arrow --> No, right arrow --> Of course]", False, "white")
+                        splash_page = pygame.image.load('images_fonts/journal.jpg')
+                        scaled_splash = pygame.transform.scale(splash_page, (1500, 800))
+                        eventvar="e2"
+                        sync()
+                    else:
+                        counter=9
                     
-                    sync()
-
-                if counter==10:
-                    text_splash = font1.render("When you're back on the ship early, you decide to explore some more! Where do you look?", False, "white")
+                if counter==9:
+                    text_splash = font1.render("After exploring, you're back on the ship early, you decide to explore some more! Where do you look?", False, "white")
                     text_splash1 = font1.render("[left arrow --> Nurse's chamber, right arrow --> Under the flower vase of commons]", False, "white")
-                    eventvar="e3_2"
+                    eventvar="e3_1"
                     splash_page = pygame.image.load('images_fonts/dock.png')
                     scaled_splash = pygame.transform.scale(splash_page, (1920, 1080))
                     sync()
+                
+                if counter==10:
+                    if money>=10:
+                        text_splash = font1.render("You come across a great suit in town...do you buy it? Maybe you can impress a certain someone! ", False, "white")
+                        text_splash1 = font1.render("[left arrow --> Hell yeah, right arrow --> Pass]", False, "white")
+                        splash_page = pygame.image.load('images_fonts/town.png')
+                        scaled_splash = pygame.transform.scale(splash_page, (1920, 1080))
+                        eventvar="e3"
+                        sync()
+                    else:
+                        counter=11
+
                 if counter==11:
+                    text_splash = font1.render("Anyways, you leave the town.", False, "white")
+                    text_splash1 = font1.render("The water looks boring...", False, "white")
+                    counter+=1
+                    sync()
+                if counter==12:
                     text_splash = font1.render("You decide to go back to what you were doing before", False, "white")
                     text_splash1 = font1.render("Events over for today.", False, "white")
-                    splash_page = pygame.image.load('images_fonts/howtoplayback.png')
-                    scaled_splash = pygame.transform.scale(splash_page, (1920, 1080))
-                    counter+=2
+                    counter+=1
                     sync()
                 if counter==13:
+                    
                     fi=open("main_files/infofile.txt")
                     stuff=""
                     for line in fi:
                         stuff+=line
                     stuff=stuff.split(",")
                     file=open("main_files/infofile.txt", "w")
-                    info=str(int(stuff[0])+int(health))+"," +str(int(stuff[1])+int(happy)) +","+str(int(stuff[2])+int(hunger))+","+str(int(stuff[3])+int(money))
+                    print(str(float(stuff[0])+float(health))+"," +str(float(stuff[1])+float(happy)) +","+str(float(stuff[2])+float(hunger))+","+str(float(stuff[3])+float(money)))
+                    info=str(float(stuff[0])+float(health))+"," +str(float(stuff[1])+float(happy)) +","+str(float(stuff[2])+float(hunger))+","+str(float(stuff[3])+float(money))
                     file.write(info)
+                    file.close()
+                    file=open("main_files/hourtracker.txt","w")
+                    file.write("17")
                     file.close()
                     os.system("python day4/day4_part1.py")
                     pygame.quit()
@@ -140,7 +143,7 @@ def masterloop():
                     text_splash = font1.render("Wow. Keep up the savings!", False, "white")
                     text_splash1 = font1.render("You get +5 wealth.", False, "white")
                     money+=5
-                    counter=5
+                    counter=4
                     eventvar="na"
                     sync()
                 if event.key==pygame.K_LEFT:
@@ -148,25 +151,24 @@ def masterloop():
                     text_splash1 = font1.render("The stone helps you get a vision...You realize that the plumber doesn't have the disease!!", False, "white")
                     health+=5
                     money-=10
-                    counter=5
+                    counter=4
                     eventvar="na"
                     sync()
-
             if eventvar=="e2":
                 if event.key==pygame.K_LEFT:
+                    eventvar="na"
                     text_splash = font1.render("Oh well!", False, "white")
                     text_splash1 = font1.render("You don't gain or lose anything...", False, "white")
-                    counter=10
-                    eventvar="na"
+                    counter=9
                     sync()
                 if event.key==pygame.K_RIGHT:
                     text_splash = font1.render("How perfect for mental health! (+5 health)", False, "white")
                     text_splash1 = font1.render("You end up finding a note saying: 'Never trust a skinny chef'....you wonder what that means...", False, "white")
                     eventvar="na"
                     health+=5
-                    counter=101
-                    sync()            
-            if eventvar=="e3_1":
+                    counter=10
+                    sync()
+            if eventvar=="e3":
                 if event.key==pygame.K_LEFT:
                     text_splash = font1.render("You definitely got yourself a date once you make it out of here!", False, "white")
                     text_splash1 = font1.render("Plus, you find some $5 in the suit pocket! -10 wealth, +5 health, + 5 wealth", False, "white")
@@ -174,7 +176,7 @@ def masterloop():
                     money+=5
                     money-=10
                     health+=5
-                    counter=12
+                    counter=11
                     sync()
                 if event.key==pygame.K_RIGHT:
                     text_splash = font1.render("Oh well...at least you saved money", False, "white")
@@ -182,25 +184,24 @@ def masterloop():
                     eventvar="na"
                     health-=5
                     money+=5
-                    counter=12
+                    counter=11
                     sync()
-                             
-            if eventvar=="e3_2":
+            if eventvar=="e3_1":
                 if event.key==pygame.K_LEFT:
                     text_splash = font1.render("In the nurse's chamber, you end up finding that none of the crewmates had the sickness!", False, "white")
                     text_splash1 = font1.render("Whew! What a relief. (+5 health)", False, "white")
                     eventvar="na"
                     health+=5
-                    counter=101
+                    counter=11
                     sync()
                 if event.key==pygame.K_RIGHT:
                     eventvar="na"
                     text_splash = font1.render("You end up finding a diary which says: 'never trust a skinny chef'...", False, "white")
                     text_splash1 = font1.render("Hmm you wonder what that means... +5 health", False, "white")
                     health+=5
-                    counter=101
+                    counter=11
                     sync()
-
+                             
             
                 
             
@@ -209,6 +210,8 @@ def masterloop():
         
 
         
+        
+
         pygame.display.update()
         clock.tick(60)
 
