@@ -28,7 +28,7 @@ global money, happy
 health=0
 happy=0
 hunger=0
-money=30
+money=0
 
 def blit_alpha(target, source, location, opacity):
     x = location[0]

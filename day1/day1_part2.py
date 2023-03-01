@@ -1,5 +1,5 @@
 import pygame
-import os
+import os, time
 
 pygame.init()
 screen= pygame.display.set_mode()
@@ -53,13 +53,6 @@ global eventvar
 
 eventvar="na"
 
-def sync():
-    global scaled_splash, text_splash, text_splash1, counter, eventvar, money, happy
-    screen.blit(text , (0,0))
-    screen.blit(scaled_splash,(0,0))
-    screen.blit(text_splash, (60,70))
-    screen.blit(text_splash1, (60,140))
-    scaled_splash = pygame.transform.smoothscale(scaled_splash, (width, height)) 
 def masterloop():
     global scaled_splash, text_splash, text_splash1, counter, eventvar, money, happy
     for event in pygame.event.get():
@@ -68,15 +61,16 @@ def masterloop():
             exit()
         if counter==100:
             eventvar="e3_1"
+
         if event.type == pygame.MOUSEBUTTONDOWN:
             if eventvar=="na":
                 if counter==1:
                     text_splash = font1.render("There, you see dangerous waters.", False, "white")
                     text_splash1 = font1.render("On the left, there is a thunderstorm, and on the right, there is a whirlpool", False, "white")
-                    splash_page = pygame.image.load('images_fonts/captain.jpg')
-                    scaled_splash = pygame.transform.scale(splash_page, (800, 800))
+                    screen.blit(text_splash, (60,70))
+                    screen.blit(text_splash1, (60,140))
                     counter+=1
-                    sync()
+
                 if counter==2:
                     text_splash = font1.render("Which way do you want to direct your ship?", False, "white")
                     text_splash1 = font1.render("[left arrow --> thunderstorm, right arrow --> whirlpool]", False, "white")
@@ -200,6 +194,24 @@ def masterloop():
 
         pygame.display.update()
         clock.tick(60)
+
+def sync():
+    global scaled_splash, text_splash, text_splash1, counter, eventvar, money, happy
+    screen.blit(text , (0,0))
+    screen.blit(scaled_splash,(0,0))
+    screen.blit(text_splash, (60,70))
+    screen.blit(text_splash1, (60,140))
+    scaled_splash = pygame.transform.smoothscale(scaled_splash, (width, height)) 
+
+def sync_spec():
+    global scaled_splash, text_splash, text_splash1, counter, eventvar, money, happy
+    screen.blit(text , (0,0))
+    screen.blit(scaled_splash,(0,0))
+    screen.blit(text_splash, (60,70))
+    screen.blit(text_splash1, (60,140))
+    scaled_splash = pygame.transform.smoothscale(scaled_splash, (width, height)) 
+    time.sleep(3)
+
 
 while True:
     masterloop()
