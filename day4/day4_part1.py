@@ -89,18 +89,39 @@ class Button:
                 splash_page = pygame.image.load('day4/kitchenn.png')
                 scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
                 screen.blit(scaled_splash,(0,0))
-
+global counter
 
 def clickedOven():
-    pass
-def clickedPuzzle():
-    pass
+    global screenn,scaled_splash,counter
+    screenn="oven"
+    print(screenn)
+    splash_page = pygame.image.load('day4/cake1.png')
+    scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
+    counter=0
+
+def clickedPuzzle(number):
+    print(number)
 def clickedFridge():
-    pass
+    global screenn,scaled_splash
+    screenn="fridge"
+    print(screenn)
+    splash_page = pygame.image.load('day4/fridgeclose.png')
+    scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
+
 def clickedMicrowave():
-    pass
+    global screenn,scaled_splash
+    screenn="microwave"
+    print(screenn)
+    splash_page = pygame.image.load('day4/microlock.png')
+    scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
+
 def clickedClock():
-    pass
+    global screenn,scaled_splash
+    screenn="clock"
+    print(screenn)
+    splash_page = pygame.image.load('day4/clocklock.png')
+    scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
+
 
 while True:
 
@@ -122,33 +143,46 @@ while True:
                     clickedClock()
             if position[0]>37 and position[0]<419:
                 if position[1]>50 and position[1]<570:
-                    clickedFridge()
+                    if not(position[0]>359 and position[0]<390) or not (position[1]>170 and position[1]<197):
+                        clickedFridge()
             if position[0]>1220 and position[0]<1446:
                 if position[1]>297 and position[1]<415:
                     clickedMicrowave()
             if position[0]>855 and position[0]<1189:
                 if position[1]>385 and position[1]<550:
                     clickedOven()
-          #  if position[0]>1041 and position[0]<1261:
-           #     if position[1]>98 and position[1]<255:
-            #        clickedPuzzle()
-        if event.type==pygame.MOUSEBUTTONDOWN and screenn=="drawer":
-            if listenunlock111==True:
-                splash_page = pygame.image.load('day2/openeddrawer.png')
+            if position[0]>1027 and position[0]<1054:
+                if position[1]>266 and position[1]<290:
+                    clickedPuzzle(7)
+            if position[0]>1450 and position[0]<1468:
+                if position[1]>373 and position[1]<408:
+                    clickedPuzzle(1)
+            if position[0]>773 and position[0]<814:
+                if position[1]>534 and position[1]<566:
+                    clickedPuzzle(2)
+            if position[0]>359 and position[0]<390:
+                if position[1]>170 and position[1]<197:
+                    clickedPuzzle(9)
+        if event.type==pygame.MOUSEBUTTONDOWN and screenn=="oven":
+            counter+=1
+            if counter==1:
+                splash_page = pygame.image.load('day4/cake1.png')
                 scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
-                screen.blit(scaled_splash,(0,0))
-
-            elif listenunlock11==True:
-                splash_page = pygame.image.load('day2/unlockeddrawer.png')
+            if counter==2:
+                splash_page = pygame.image.load('day4/cake2.png')
                 scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
-                screen.blit(scaled_splash,(0,0))
-                listenunlock111=True
-
-            elif listenunlock1==True:
-                splash_page = pygame.image.load('day2/lockeddrawer.png')
+            if counter==3:
+                splash_page = pygame.image.load('day4/cake3.png')
                 scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
-                listenunlock11=True
-                screen.blit(scaled_splash,(0,0))
+            if counter==4:
+                splash_page = pygame.image.load('day4/cake4.png')
+                scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
+            if counter==5:
+                splash_page = pygame.image.load('day4/cake5.png')
+                scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
+            if counter==6:
+                splash_page = pygame.image.load('day4/cakeeaten.png')
+                scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
         if event.type==pygame.MOUSEBUTTONDOWN and screenn=="wheel":
             pass
         if event.type==pygame.MOUSEBUTTONDOWN and screenn=="rug":
