@@ -133,7 +133,7 @@ def masterloop():
                     file=open("main_files/hourtracker.txt","w")
                     file.write("17")
                     file.close()
-                    os.system("python day4/day4_part1.py")
+                    os.system("python day4/day4_part3.py")
                     pygame.quit()
 
 
