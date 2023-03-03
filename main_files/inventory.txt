@@ -1,0 +1,1 @@
+Bread(+5hunger)-5,Apple(+2hunger)-2,Steak(+10hunger)-10,,Bow(3damage)-3,Chestplate(+7protection)-7,Helmet(+2protection)-2,,mediumhealthpotion(+10health)-10,smallhealthpotion(+5health)-5,

@@ -29,6 +29,12 @@ items = [("Apple(+2hunger)", 1.5,2), ("Bread(+5hunger)", 7.5,5), ("Steak(+10hung
 
 inventory = []
 
+infofile=open("main_files/infofile.txt")
+for line in infofile:
+    line=line.strip()
+    line=line.split(",")
+    money=float(line[3])
+
 done = False
 clock = pygame.time.Clock()
 
@@ -61,7 +67,6 @@ while not done:
                     t=str(thing)+","
                     infofile.write(t)
                 infofile.close()
-
                 invent=open("main_files/inventory.txt")
                 stuff=[]
                 for line in invent:
@@ -71,7 +76,6 @@ while not done:
                         stuff.append(thing)
                 for thing in inventory:
                     stuff.append(thing)
-                print(stuff)
                 i=open("main_files/inventory.txt","w")
                 for thing in stuff:
                     a=thing+","
