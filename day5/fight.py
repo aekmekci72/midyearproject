@@ -10,9 +10,7 @@ for line in infofile:
     line=line.strip()
     line=line.split(",")
     health=float(line[0])
-    happiness=float(line[1])
-    hunger=float(line[2])
-    money=float(line[3])
+    money=float(line[1])
 items=[]
 inventory=open("main_files/inventory.txt")
 extrastrength=0
@@ -34,7 +32,7 @@ for thing in line:
         items.append(thingg)
 opponenthealth=75
 opponentdext=60
-dext=45+(hunger/4)
+dext=35+(((health+money)/2)/4)
 opponentstrength=60
 opponentstrength-=moreproct
 opponentdext-=moreproct/3

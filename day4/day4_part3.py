@@ -57,9 +57,7 @@ for line in file:
     list=line.split(",")
 
 health=list[0]
-happiness=list[1]
-hunger=list[2]
-money=list[3]
+money=list[1]
 min=0
 pmam="AM"
 thing=False
@@ -81,7 +79,7 @@ for line in file:
 
 b=False
 for line in file:
-    if line!="75,35,60,10":
+    if line!="75,100":
         b=True
 
 if thing==True:
@@ -99,7 +97,7 @@ except:
     hour=11
 
 def mornclockfunc():
-    global health, happiness, hunger,money,thing
+    global health,money,thing
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -107,7 +105,6 @@ def mornclockfunc():
             exit()
     global min, hour, count, var,pmam
     if hour==20:
-        print("detected")
         os.system("python day5/day5.py 1")
         pygame.quit()
 
@@ -134,12 +131,9 @@ def mornclockfunc():
     screen.blit(text_splash, (10,10))
 
     pygame.draw.rect(screen, "white", pygame.Rect(width-250, height-250, 250, 250))
-    hungerdisp=font1.render("hunger: "+str(hunger)+"/100",False,"black")
-    screen.blit(hungerdisp,(width-200,height-200))
+
     healthdisp=font1.render("health: "+str(health)+"/100",False,"black")
     screen.blit(healthdisp,(width-200,height-150))
-    happydisp=font1.render("happiness: "+str(happiness)+"/100",False,"black")
-    screen.blit(happydisp,(width-200,height-100))
     moneydisp=font1.render("money: $"+str(money),False,"black")
     screen.blit(moneydisp,(width-200,height-50))
     list=[]
@@ -149,9 +143,7 @@ def mornclockfunc():
         list=line.split(",")
 
     health=list[0]
-    happiness=list[1]
-    hunger=list[2]
-    money=list[3]
+    money=list[1]
 
     file=open("main_files/hourtracker.txt","w")
     file.write(str(hour))
@@ -200,6 +192,7 @@ while True:
             screen.blit(scaled_splash,(0,0))
         if event.type==pygame.MOUSEBUTTONDOWN:
             position=pygame.mouse.get_pos()
+            print(position)
             if variable=="arcade" and position[0]>56 and position[0]<1466 and position[1]>74 and position[1]<287:
                 os.system("python specificinteractions/arcademenu.py 1")
             if variable=="stores" and position[0]>71 and position[0]<556 and position[1]>64 and position[1]<292:
@@ -216,13 +209,7 @@ while True:
                     if line=="yes":
                         print("yes key")
 
-    if float(happiness)<=0:
-        os.system("python main_files/death.py 1")
-        pygame.quit()
     if float(health)<=0:
-        os.system("python main_files/death.py 1")
-        pygame.quit()
-    if float(hunger)<=0:
         os.system("python main_files/death.py 1")
         pygame.quit()
         

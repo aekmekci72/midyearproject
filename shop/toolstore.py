@@ -21,7 +21,7 @@ infofile=open("main_files/infofile.txt")
 for line in infofile:
     line=line.strip()
     line=line.split(",")
-    money=float(line[3])
+    money=float(line[1])
 
 pygame.display.set_caption("Sink or Swim Shop")
 
@@ -56,7 +56,7 @@ while not done:
         if event.type==pygame.KEYDOWN:
             if event.key==pygame.K_e:
                 stuff=line
-                stuff[3]=money
+                stuff[1]=money
                 infofile=open("main_files/infofile.txt","w")
                 for thing in stuff:
                     t=str(thing)+","

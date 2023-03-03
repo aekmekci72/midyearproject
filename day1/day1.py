@@ -53,7 +53,7 @@ while True:
             if width/2-500 <= pygame.mouse.get_pos()[0] <= width/2-360 and height/2+200 <= pygame.mouse.get_pos()[1] <= height/2+400:
                 f = open("main_files/infofile.txt", "w")
                 
-                f.write("75,35,60,100")
+                f.write("75,100")
                 f.close()
 
                 a=open("main_files/inventory.txt","w")
