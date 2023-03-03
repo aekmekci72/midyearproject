@@ -207,13 +207,14 @@ while True:
             screen.blit(scaled_splash,(0,0))
         if event.type==pygame.MOUSEBUTTONDOWN:
             position=pygame.mouse.get_pos()
-            if variable=="arcade" and position[0]>85 and position[0]<1450 and position[1]>65 and position[1]<230:
+            print(position)
+            if variable=="arcade" and position[0]>56 and position[0]<1466 and position[1]>74 and position[1]<287:
                 os.system("python specificinteractions/arcademenu.py 1")
-            if variable=="stores" and position[0]>115 and position[0]<350 and position[1]>115 and position[1]<275:
+            if variable=="stores" and position[0]>71 and position[0]<556 and position[1]>64 and position[1]<292:
                 os.system("python shop/foodstore.py 1")
-            if variable=="stores" and position[0]>100 and position[0]<350 and position[1]>520 and position[1]<700:
+            if variable=="stores" and position[0]>70 and position[0]<556 and position[1]>576 and position[1]<808:
                 os.system("python shop/toolstore.py 1")
-            if variable=="medbay" and position[0]>200 and position[0]<430 and position[1]>700 and position[1]<818:
+            if variable=="medbay" and position[0]>76 and position[0]<536 and position[1]>593 and position[1]<806:
                 os.system("python shop/healthstore.py 1")
             if variable=="commons" and position[0]>1275 and position[0]<1400 and position[1]>95 and position[1]<325:
                 f=open("main_files/key.txt")
