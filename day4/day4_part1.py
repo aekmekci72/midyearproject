@@ -234,10 +234,12 @@ while True:
                     position=pygame.mouse.get_pos()
                     if position[0]>623 and position[0]<930:
                         if position[1]>542 and position[1]<630:
-                            print('randombutton')
+                            os.system("python day4/day4_part2.py 1")
+                            pygame.quit()
                     if position[0]>624 and position[0]<932:
                         if position[1]>643 and position[1]<735:
-                            print("randomhint")
+                            os.system("python day4/day4_randomhint.py 1")
+                            pygame.quit()
                 
                     
 
