@@ -89,7 +89,13 @@ class Button:
                 splash_page = pygame.image.load('day4/kitchenn.png')
                 scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
                 screen.blit(scaled_splash,(0,0))
-global counter
+global counter,puzzlestr,pineapplecut,keyy,microcount,clockkey,clockcount
+clockcount=0
+microcount=0
+keyy=False
+clockkey=False
+pineapplecut=False
+puzzlestr=""
 
 def clickedOven():
     global screenn,scaled_splash,counter
@@ -100,13 +106,27 @@ def clickedOven():
     counter=0
 
 def clickedPuzzle(number):
-    print(number)
+    global puzzlestr,pineapplecut
+    if number!="reset":
+        puzzlestr+=(str(number))
+    else:
+        puzzlestr=""
+    if puzzlestr=="7291":
+        pineapplecut=True
+
+
 def clickedFridge():
-    global screenn,scaled_splash
+    global screenn,scaled_splash,pineapplecut,keyy
     screenn="fridge"
     print(screenn)
-    splash_page = pygame.image.load('day4/fridgeclose.png')
-    scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
+    if pineapplecut==False:
+        splash_page = pygame.image.load('day4/fridgeclose.png')
+        scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
+    else:
+        splash_page = pygame.image.load('day4/fridgeopen.png')
+        scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
+        keyy=True
+    
 
 def clickedMicrowave():
     global screenn,scaled_splash
@@ -136,8 +156,6 @@ while True:
 
         if event.type==pygame.MOUSEBUTTONDOWN and screenn=="captain":
 
-            position=pygame.mouse.get_pos()
-            print(position)
             if position[0]>465 and position[0]<563:
                 if position[1]> 69 and position[1]<170:
                     clickedClock()
@@ -163,6 +181,9 @@ while True:
             if position[0]>359 and position[0]<390:
                 if position[1]>170 and position[1]<197:
                     clickedPuzzle(9)
+            if position[0]>1222 and position[0]<1362:
+                if position[1]>772 and position[1]<802:
+                    clickedPuzzle("reset")
         if event.type==pygame.MOUSEBUTTONDOWN and screenn=="oven":
             counter+=1
             if counter==1:
@@ -183,12 +204,42 @@ while True:
             if counter==6:
                 splash_page = pygame.image.load('day4/cakeeaten.png')
                 scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
-        if event.type==pygame.MOUSEBUTTONDOWN and screenn=="wheel":
-            pass
-        if event.type==pygame.MOUSEBUTTONDOWN and screenn=="rug":
-            if listenesc==True:
-                os.system("python day4/day4_part2.py")
-                pygame.quit()
+        if event.type==pygame.MOUSEBUTTONDOWN and screenn=="microwave":
+            if keyy==True:
+                microcount+=1
+                if microcount==1:
+                    splash_page = pygame.image.load('day4/microlock.png')
+                    scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
+                if microcount==2:
+                    splash_page = pygame.image.load('day4/microunlock.png')
+                    scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
+                if microcount==3:
+                    splash_page = pygame.image.load('day4/microopen.png')
+                    scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
+                    clockkey=True
+        
+        if event.type==pygame.MOUSEBUTTONDOWN and screenn=="clock":
+            if clockkey==True:
+                clockcount+=1
+                if clockcount==1:
+                    splash_page = pygame.image.load('day4/clocklock.png')
+                    scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
+                if clockcount==2:
+                    splash_page = pygame.image.load('day4/clockunlock.png')
+                    scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
+                if clockcount==3:
+                    splash_page = pygame.image.load('day4/clockopen.png')
+                    scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
+                    clockcount-=1
+                    position=pygame.mouse.get_pos()
+                    if position[0]>623 and position[0]<930:
+                        if position[1]>542 and position[1]<630:
+                            print('randombutton')
+                    if position[0]>624 and position[0]<932:
+                        if position[1]>643 and position[1]<735:
+                            print("randomhint")
+                
+                    
 
 
             

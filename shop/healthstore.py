@@ -13,6 +13,8 @@ for line in infofile:
     line=line.split(",")
     money=float(line[3])
 
+
+
 pygame.display.set_caption("Sink or Swim Shop")
 
 font = pygame.font.SysFont('Arial',15)
