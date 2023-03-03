@@ -4,15 +4,13 @@ pygame.init()
 attackstuff=["Dagger(5damage)-5","Bow(3damage)-3", "Sword(10damage)-10"]
 armorstuff=["Helmet(+2protection)-2","Chestplate(+7protection)-7","Boots(+1protection)-1"]
 foodstuff=["Apple(+2hunger)-2", "Bread(+5hunger)-5", "Steak(+10hunger)-10"]
-healthstuff=["small-health-potion(+5health)-5", "medium-health-potion(+10health)-10", "large-health-potion(+20health)-20"]
+healthstuff=["smallhealthpotion(+5health)-5", "mediumhealthpotion(+10health)-10", "largehealthpotion(+20health)-20"]
 infofile=open("main_files/infofile.txt")
 for line in infofile:
     line=line.strip()
     line=line.split(",")
     health=float(line[0])
-    happiness=float(line[1])
-    hunger=float(line[2])
-    money=float(line[3])
+    money=float(line[1])
 items=[]
 inventory=open("main_files/inventory.txt")
 extrastrength=0
@@ -23,18 +21,18 @@ for line in inventory:
     print(line)
 for thing in line:
     thingg=thing
-    thing=thing.split("-")
     print(thing)
-    if thing[0] in attackstuff:
+    if thing in attackstuff:
+        thing=thing.split("-")
         extrastrength+=float(thing[1])
-        print("mah")
-    elif thing[0] in armorstuff:
+    elif thing in armorstuff:
+        thing=thing.split("-")
         moreproct+=float(thing[1])
     else:
         items.append(thingg)
 opponenthealth=75
 opponentdext=60
-dext=45+(hunger/4)
+dext=35+(((health+money)/2)/4)
 opponentstrength=60
 opponentstrength-=moreproct
 opponentdext-=moreproct/3

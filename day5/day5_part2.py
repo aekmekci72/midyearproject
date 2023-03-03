@@ -115,7 +115,8 @@ def masterloop():
                         stuff+=line
                     stuff=stuff.split(",")
                     file=open("main_files/infofile.txt", "w")
-                    info=str(int(stuff[0])+int(health))+"," +str(int(stuff[1])+int(happy)) +","+str(int(stuff[2])+int(hunger))+","+str(int(stuff[3])+int(money))
+                    health+=happy/2
+                    info=str(int(stuff[0])+int(health))+"," +str(int(stuff[1])+int(money))
                     file.write(info)
                     file.close()
                     os.system("python day5/day5_part1.py")

@@ -11,14 +11,14 @@ infofile=open("main_files/infofile.txt")
 for line in infofile:
     line=line.strip()
     line=line.split(",")
-    money=float(line[3])
+    money=float(line[1])
 
 
 
 pygame.display.set_caption("Sink or Swim Shop")
 
 font = pygame.font.SysFont('Arial',15)
-items = [("small-health-potion(+5health)", 10,5), ("medium-health-potion(+10health)", 17.5,10), ("large-health-potion(+20health)", 30,20)]
+items = [("smallhealthpotion(+5health)", 10,5), ("mediumhealthpotion(+10health)", 17.5,10), ("largehealthpotion(+20health)", 30,20)]
 
 file=open("main_files/hourtracker.txt")
 for line in file:
@@ -29,6 +29,12 @@ hour+=1
 file=open("main_files/hourtracker.txt","w")
 file.write(str(hour))
 file.close()
+
+infofile=open("main_files/infofile.txt")
+for line in infofile:
+    line=line.strip()
+    line=line.split(",")
+    money=float(line[1])
 
 inventory = []
 
@@ -58,13 +64,12 @@ while not done:
         if event.type==pygame.KEYDOWN:
             if event.key==pygame.K_e:
                 stuff=line
-                stuff[3]=money
+                stuff[1]=money
                 infofile=open("main_files/infofile.txt","w")
                 for thing in stuff:
                     t=str(thing)+","
                     infofile.write(t)
                 infofile.close()
-
                 invent=open("main_files/inventory.txt")
                 stuff=[]
                 for line in invent:
