@@ -126,7 +126,7 @@ def masterloop():
                         stuff+=line
                     stuff=stuff.split(",")
                     file=open("main_files/infofile.txt", "w")
-                    info=str(int(stuff[0])+int(health))+"," +str(int(stuff[1])+int(happy)) +","+str(int(stuff[2])+int(hunger))+","+str(int(stuff[3])+int(money))
+                    info=str(float(stuff[0])+float(health))+"," +str(float(stuff[1])+float(happy)) +","+str(float(stuff[2])+float(hunger))+","+str(float(stuff[3])+float(money))
                     file.write(info)
                     file.close()
                     file=open("main_files/hourtracker.txt","w")

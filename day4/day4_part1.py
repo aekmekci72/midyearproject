@@ -4,7 +4,7 @@ import time
 
 global surv1
 global health, happiness, hunger,money
-global variable
+
 
 
 pygame.init()
@@ -14,6 +14,7 @@ pygame.display.set_caption('Sick or Swim')
 clock = pygame.time.Clock()
 font = pygame.font.Font('images_fonts/Neucha-Regular.ttf',60)
 font1 = pygame.font.Font('images_fonts/PermanentMarker-Regular.ttf', 20)
+global scaled_splash
 
 color = (255,255,255)
 color_light = (170,170,170)
@@ -24,12 +25,8 @@ smallfont = pygame.font.SysFont('Arial',35)
 text = smallfont.render('S T A R T' , True , color)
 
 
-splash_page = pygame.image.load('images_fonts/rooms/commons.png')
+splash_page = pygame.image.load('day4/kitchenn.png')
 scaled_splash = pygame.transform.scale(splash_page, (800, 800))
-
-player1=pygame.image.load('images_fonts/person1.png')
-player2=pygame.image.load('images_fonts/person2.png')
-player3=pygame.image.load('images_fonts/person3.png')
 
 
 
@@ -42,202 +39,218 @@ def blit_alpha(target, source, location, opacity):
     temp.set_alpha(opacity)        
     target.blit(temp, location)
 
-variable="commons"
+
+scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
 health = 100
 wealth = 100
 
 clock_game = 0
-global min, hour, count, var,thing
-
+global bookshelfchecked,key1,listenunlock1,listenunlock11,listenunlock111,key2,listenunlock2,listenunlock22,listenunlock222,listenesc
+bookshelfchecked=False
+key1=False
+key2=False
 booleee=False
-file =open("main_files/infofile.txt")
 
-list=[]
-for line in file:
-    line=line.strip()
-    list=line.split(",")
+listenesc=False
 
-health=list[0]
-happiness=list[1]
-hunger=list[2]
-money=list[3]
-min=0
-pmam="AM"
-thing=False
-count=1
-
-
-file=open("main_files/hourtracker.txt")
-for line in file:
-    print(line)
-    line=line.strip()
-    hour=int(line)
-    if hour=="5":
-        pmam="PM"
-        count=2
-        thing=True
-        count+=1
-        morning=False
-
-
-b=False
-for line in file:
-    if line!="75,35,60,10":
-        b=True
-
-if thing==True:
-    hour=5
-    pmam="PM"
-    count=1
-    
-try:
-    print(hour)
-except:
-    hour=7
-
+global screenn
+screenn="captain"
 var=0
+listenunlock1=False
+listenunlock11=False
+listenunlock111=False
 
-morning=True
-def mornclockfunc():
-    global health, happiness, hunger,money,thing
+listenunlock2=False
+listenunlock22=False
+listenunlock222=False
 
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            exit()
-    global min, hour, count, var,pmam
-    if hour==20:
-        print("detected")
-        os.system("python day5/day5.py 1")
-        pygame.quit()
-    if hour==10:
-        os.system("python day4/day4_speakoptions.py 1")
-        pygame.quit()
-    if hour==15:
-        morning=False
-        os.system("python day4/day4_part2.py 1")
-        pygame.quit()
+global wheelpuzzlestr
 
+wheelpuzzlestr=""
 
-    time.sleep(0.05)
-    min+=1
-    if min<10:
-        mindisp="0"+str(min)
+class Button:
+    
+    def __init__(self, x, y, width, height, color):
+        self.rect = pygame.Rect(x, y, width, height)
+        self.color = color
+        self.text = font.render('Back', True, (0,0,0))
+
+    def draw(self, surface):
+        pygame.draw.rect(surface, self.color, self.rect)
+        surface.blit(self.text, (self.rect.centerx - self.text.get_width() // 2, self.rect.centery - self.text.get_height() // 2))
+
+    def handle_event(self, event):
+        global screenn,scaled_splash
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if self.rect.collidepoint(event.pos):
+                self.color = (225,0,0)
+                screenn="captain"
+                print(screenn)
+                splash_page = pygame.image.load('day4/kitchenn.png')
+                scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
+                screen.blit(scaled_splash,(0,0))
+global counter,puzzlestr,pineapplecut,keyy,microcount,clockkey,clockcount
+clockcount=0
+microcount=0
+keyy=False
+clockkey=False
+pineapplecut=False
+puzzlestr=""
+
+def clickedOven():
+    global screenn,scaled_splash,counter
+    screenn="oven"
+    print(screenn)
+    splash_page = pygame.image.load('day4/cake1.png')
+    scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
+    counter=0
+
+def clickedPuzzle(number):
+    global puzzlestr,pineapplecut
+    if number!="reset":
+        puzzlestr+=(str(number))
     else:
-        mindisp=str(min)
-    clock_game = f"{hour}:{mindisp} "
+        puzzlestr=""
+    if puzzlestr=="7291":
+        pineapplecut=True
+
+
+def clickedFridge():
+    global screenn,scaled_splash,pineapplecut,keyy
+    screenn="fridge"
+    print(screenn)
+    if pineapplecut==False:
+        splash_page = pygame.image.load('day4/fridgeclose.png')
+        scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
+    else:
+        splash_page = pygame.image.load('day4/fridgeopen.png')
+        scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
+        keyy=True
     
 
-    
-    if min==60:
-        min=0
-        hour+=1
-        
-        clock_game = f"{hour}:{mindisp} "
-        
-    text_splash=font1.render(clock_game, False, 'white')
-    
-    
-    screen.blit(text_splash, (10,10))
+def clickedMicrowave():
+    global screenn,scaled_splash
+    screenn="microwave"
+    print(screenn)
+    splash_page = pygame.image.load('day4/microlock.png')
+    scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
 
-    pygame.draw.rect(screen, "white", pygame.Rect(width-250, height-250, 250, 250))
-    hungerdisp=font1.render("hunger: "+str(hunger)+"/100",False,"black")
-    screen.blit(hungerdisp,(width-200,height-200))
-    healthdisp=font1.render("health: "+str(health)+"/100",False,"black")
-    screen.blit(healthdisp,(width-200,height-150))
-    happydisp=font1.render("happiness: "+str(happiness)+"/100",False,"black")
-    screen.blit(happydisp,(width-200,height-100))
-    moneydisp=font1.render("money: $"+str(money),False,"black")
-    screen.blit(moneydisp,(width-200,height-50))
-    list=[]
-    file=open("main_files/infofile.txt")
-    for line in file:
-        line=line.strip()
-        list=line.split(",")
+def clickedClock():
+    global screenn,scaled_splash
+    screenn="clock"
+    print(screenn)
+    splash_page = pygame.image.load('day4/clocklock.png')
+    scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
 
-    health=list[0]
-    happiness=list[1]
-    hunger=list[2]
-    money=list[3]
-
-    file=open("main_files/hourtracker.txt","w")
-    file.write(str(hour))
-    file.close()
-
-
-
-    
 
 while True:
 
+    back = Button(0, 0, 200, 50, (225,225,225))
+    
+
     for event in pygame.event.get():
+        
         if event.type == pygame.QUIT:
             pygame.quit()
             exit()
-        
-        if event.type == pygame.KEYDOWN:
 
-            if event.key == pygame.K_LEFT and variable=="commons" or event.key==pygame.K_DOWN and variable=="hallway" or event.key==pygame.K_UP and variable=="rooms":
-                variable="stores"
-                splash_page = pygame.image.load('images_fonts/rooms/stores.png')
-            elif event.key == pygame.K_RIGHT and variable=="commons" or event.key==pygame.K_DOWN and variable=="outsideup" or event.key==pygame.K_UP and variable=="outsidedown":       
-                variable="captain"
-                splash_page = pygame.image.load('images_fonts/rooms/captainquarters.png')
-            elif event.key == pygame.K_UP and variable=="commons" or event.key==pygame.K_LEFT and variable=="outsideup" or event.key==pygame.K_RIGHT and variable=="hallway":
-                variable="arcade"
-                splash_page = pygame.image.load('images_fonts/rooms/arcade.png')
-            elif event.key == pygame.K_DOWN and variable=="commons" or event.key ==pygame.K_LEFT and variable=="outsidedown" or event.key==pygame.K_RIGHT and variable=="rooms":
-                variable="medbay"
-                splash_page = pygame.image.load('images_fonts/rooms/medbay.png')
-            elif event.key == pygame.K_LEFT and variable=="arcade" or event.key == pygame.K_UP and variable=="stores":
-                variable="hallway"
-                splash_page = pygame.image.load('images_fonts/hallway.png')
-            elif event.key == pygame.K_DOWN and variable =="captain" or event.key ==pygame.K_RIGHT and variable=="medbay":
-                variable="outsidedown"
-                splash_page = pygame.image.load('images_fonts/outsidedown.png')
-            elif event.key == pygame.K_UP and variable =="captain" or event.key ==pygame.K_RIGHT and variable=="arcade":
-                variable="outsideup"
-                splash_page = pygame.image.load('images_fonts/outsideup.png')
-            elif event.key == pygame.K_DOWN and variable =="stores" or event.key ==pygame.K_LEFT and variable=="medbay":
-                variable="rooms"
-                splash_page = pygame.image.load('images_fonts/rooms/rooms.png')
-            elif event.key==pygame.K_DOWN and variable=="arcade" or event.key==pygame.K_RIGHT and variable=="stores" or event.key==pygame.K_UP and variable=="medbay" or event.key==pygame.K_LEFT and variable=="captain":
-                variable="commons"
-                splash_page = pygame.image.load('images_fonts/rooms/commons.png')
-            position=pygame.mouse.get_pos()
-            scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
-            screen.blit(scaled_splash,(0,0))
-        if event.type==pygame.MOUSEBUTTONDOWN:
-            position=pygame.mouse.get_pos()
-            if variable=="arcade" and position[0]>85 and position[0]<1450 and position[1]>65 and position[1]<230:
-                os.system("python specificinteractions/arcademenu.py 1")
-            if variable=="stores" and position[0]>115 and position[0]<350 and position[1]>115 and position[1]<275:
-                os.system("python shop/foodstore.py 1")
-            if variable=="stores" and position[0]>100 and position[0]<350 and position[1]>520 and position[1]<700:
-                os.system("python shop/toolstore.py 1")
-            if variable=="medbay" and position[0]>200 and position[0]<430 and position[1]>700 and position[1]<818:
-                os.system("python shop/healthstore.py 1")
-            if variable=="commons" and position[0]>1275 and position[0]<1400 and position[1]>95 and position[1]<325:
-                f=open("main_files/key.txt")
-                for line in f:
-                    if line=="no":
-                        print("no key")
-                    if line=="yes":
-                        print("yes key")
-    
-    if float(happiness)<=0:
-        os.system("python main_files/death.py 1")
-        pygame.quit()
-    if float(health)<=0:
-        os.system("python main_files/death.py 1")
-        pygame.quit()
-    if float(hunger)<=0:
-        os.system("python main_files/death.py 1")
-        pygame.quit()
+        if event.type==pygame.MOUSEBUTTONDOWN and screenn=="captain":
+
+            if position[0]>465 and position[0]<563:
+                if position[1]> 69 and position[1]<170:
+                    clickedClock()
+            if position[0]>37 and position[0]<419:
+                if position[1]>50 and position[1]<570:
+                    if not(position[0]>359 and position[0]<390) or not (position[1]>170 and position[1]<197):
+                        clickedFridge()
+            if position[0]>1220 and position[0]<1446:
+                if position[1]>297 and position[1]<415:
+                    clickedMicrowave()
+            if position[0]>855 and position[0]<1189:
+                if position[1]>385 and position[1]<550:
+                    clickedOven()
+            if position[0]>1027 and position[0]<1054:
+                if position[1]>266 and position[1]<290:
+                    clickedPuzzle(7)
+            if position[0]>1450 and position[0]<1468:
+                if position[1]>373 and position[1]<408:
+                    clickedPuzzle(1)
+            if position[0]>773 and position[0]<814:
+                if position[1]>534 and position[1]<566:
+                    clickedPuzzle(2)
+            if position[0]>359 and position[0]<390:
+                if position[1]>170 and position[1]<197:
+                    clickedPuzzle(9)
+            if position[0]>1222 and position[0]<1362:
+                if position[1]>772 and position[1]<802:
+                    clickedPuzzle("reset")
+        if event.type==pygame.MOUSEBUTTONDOWN and screenn=="oven":
+            counter+=1
+            if counter==1:
+                splash_page = pygame.image.load('day4/cake1.png')
+                scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
+            if counter==2:
+                splash_page = pygame.image.load('day4/cake2.png')
+                scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
+            if counter==3:
+                splash_page = pygame.image.load('day4/cake3.png')
+                scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
+            if counter==4:
+                splash_page = pygame.image.load('day4/cake4.png')
+                scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
+            if counter==5:
+                splash_page = pygame.image.load('day4/cake5.png')
+                scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
+            if counter==6:
+                splash_page = pygame.image.load('day4/cakeeaten.png')
+                scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
+        if event.type==pygame.MOUSEBUTTONDOWN and screenn=="microwave":
+            if keyy==True:
+                microcount+=1
+                if microcount==1:
+                    splash_page = pygame.image.load('day4/microlock.png')
+                    scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
+                if microcount==2:
+                    splash_page = pygame.image.load('day4/microunlock.png')
+                    scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
+                if microcount==3:
+                    splash_page = pygame.image.load('day4/microopen.png')
+                    scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
+                    clockkey=True
+        
+        if event.type==pygame.MOUSEBUTTONDOWN and screenn=="clock":
+            if clockkey==True:
+                clockcount+=1
+                if clockcount==1:
+                    splash_page = pygame.image.load('day4/clocklock.png')
+                    scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
+                if clockcount==2:
+                    splash_page = pygame.image.load('day4/clockunlock.png')
+                    scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
+                if clockcount==3:
+                    splash_page = pygame.image.load('day4/clockopen.png')
+                    scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
+                    clockcount-=1
+                    position=pygame.mouse.get_pos()
+                    if position[0]>623 and position[0]<930:
+                        if position[1]>542 and position[1]<630:
+                            os.system("python day4/day4_part2.py 1")
+                            pygame.quit()
+                    if position[0]>624 and position[0]<932:
+                        if position[1]>643 and position[1]<735:
+                            os.system("python day4/day4_randomhint.py 1")
+                            pygame.quit()
                 
-                
-    if morning==True:
-        mornclockfunc()
+                    
+
+
+            
+        
+        
+        
+    screen.blit(scaled_splash,(0,0))
+    back.handle_event(event)
+    back.draw(screen)
     
         
     pygame.display.update()
@@ -246,5 +259,4 @@ while True:
     screen.blit(text_splash, (60,70))
     screen.blit(text , (0,0))
     position=pygame.mouse.get_pos()
-    scaled_splash = pygame.transform.smoothscale(splash_page, (width, height))
     screen.blit(scaled_splash,(0,0))

@@ -108,7 +108,7 @@ def mornclockfunc():
     global min, hour, count, var,pmam
     if hour==20:
         print("detected")
-        os.system("python day3/day3.py 1")
+        os.system("python day5/day5.py 1")
         pygame.quit()
 
 
