@@ -47,7 +47,7 @@ while True:
             if position[0]>50 and position[0]<150 and position[1]>150 and position[1]<200 and current_balance>=10:
                 if current_balance >= required_amount:
                     current_balance-=10
-                    line[3]=current_balance
+                    line[0]=current_balance
                     infofile=open("main_files/infofile.txt","w")
                     for thing in line:
                         t=str(thing)+","
