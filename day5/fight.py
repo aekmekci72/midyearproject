@@ -15,11 +15,18 @@ items=[]
 inventory=open("main_files/inventory.txt")
 extrastrength=0
 moreproct=0
+varrr=False
+print(inventory)
 for line in inventory:
     print(line)
     line=line.split(",")
     print(line)
+    varrr=True
+if varrr==False:
+    line=[]
+
 for thing in line:
+
     thingg=thing
     print(thing)
     if thing in attackstuff:
@@ -30,6 +37,9 @@ for thing in line:
         moreproct+=float(thing[1])
     else:
         items.append(thingg)
+    if thing.strip()=="":
+        print("nada")
+
 opponenthealth=75
 opponentdext=60
 dext=35+(((health+money)/2)/4)
