@@ -1,1 +1,1 @@
-Apple(+2hunger)-2,Apple(+2hunger)-2,,Boots(+1protection)-1,Chestplate(+7protection)-7,Bow(3damage)-3,,mediumhealthpotion(+10health)-10,largehealthpotion(+20health)-20,
+Bow(3damage)-3,,Apple(+2hunger)-2,
