@@ -127,7 +127,7 @@ def masterloop():
                     stuff=stuff.split(",")
                     file=open("main_files/infofile.txt", "w")
                     health+=happy/2
-                    info=str(int(stuff[0])+int(health))+"," +str(int(stuff[1])+int(money))
+                    info=str(float(stuff[0])+float(health))+"," +str(float(stuff[1])+float(money))
                     file.write(info)
                     file.close()
                     os.system("python day5/day5_part1.py")

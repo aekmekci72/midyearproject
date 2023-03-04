@@ -13,7 +13,7 @@ for line in infofile:
     line=line.strip()
     line=line.split(",")
     print(line)
-    current_balance=float(line[3])
+    current_balance=float(line[1])
 
 typed_color=""
 
@@ -117,7 +117,7 @@ while game_running:
         game_running = False
         if current_balance+score*0.75>0:
             infofile=open("main_files/infofile.txt","w")
-            line[3]=current_balance+score*0.75
+            line[1]=current_balance+score*0.75
                 
             for thing in line:
                 t=str(thing)+","
@@ -125,7 +125,7 @@ while game_running:
             infofile.close()
         else:
             infofile=open("main_files/infofile.txt","w")
-            line[3]=0
+            line[1]=0
             for thing in line:
                 t=str(thing)+","
                 infofile.write(t)

@@ -36,6 +36,11 @@ screen.blit(te, (v.x + 10, v.y + 10))
 if current_balance >= required_amount:
     pygame.draw.rect(screen, (0, 255, 0), button_rect)
 
+file=open("main_files/hourtracker.txt","w")
+file.write("9")
+file.close()
+
+
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -47,7 +52,7 @@ while True:
             if position[0]>50 and position[0]<150 and position[1]>150 and position[1]<200 and current_balance>=10:
                 if current_balance >= required_amount:
                     current_balance-=10
-                    line[0]=current_balance
+                    line[1]=current_balance
                     infofile=open("main_files/infofile.txt","w")
                     for thing in line:
                         t=str(thing)+","
