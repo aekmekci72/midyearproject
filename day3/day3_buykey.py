@@ -6,7 +6,8 @@ infofile=open("main_files/infofile.txt")
 for line in infofile:
     line=line.strip()
     line=line.split(",")
-    current_balance=float(line[3])
+    print(line)
+    current_balance=float(line[1])
     print(line)
 try:
     current_balance=float(current_balance)

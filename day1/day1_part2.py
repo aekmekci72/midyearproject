@@ -24,7 +24,7 @@ splash_page = pygame.image.load('images_fonts/standinimage.png')
 scaled_splash = pygame.transform.scale(splash_page, (800, 800))
 
 
-global money, happy
+global money, happy, health
 health=0
 happy=0
 hunger=0
@@ -54,7 +54,7 @@ global eventvar
 eventvar="na"
 
 def masterloop():
-    global scaled_splash, text_splash, text_splash1, counter, eventvar, money, happy
+    global scaled_splash, text_splash, text_splash1, counter, eventvar, money, happy, health
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
