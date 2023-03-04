@@ -21,8 +21,7 @@ infofile=open("main_files/infofile.txt")
 for line in infofile:
     line=line.strip()
     line=line.split(",")
-    print(line)
-    money=float(line[3])
+    money=float(line[1])
 
 balance=money
 
@@ -85,7 +84,7 @@ while running:
             elif event.key==pygame.K_e:
                 stuff=line
                 print(stuff)
-                stuff[3]=balance
+                stuff[1]=balance
                 infofile=open("main_files/infofile.txt","w")
                 for thing in stuff:
                     t=str(thing)+","
@@ -95,7 +94,7 @@ while running:
         if balance==0:
             stuff=line
             print(stuff)
-            stuff[3]=balance
+            stuff[1]=balance
             infofile=open("main_files/infofile.txt","w")
             for thing in stuff:
                 t=str(thing)+","
