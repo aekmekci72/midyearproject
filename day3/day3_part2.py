@@ -124,10 +124,14 @@ def masterloop():
                         stuff+=line
                     stuff=stuff.split(",")
                     file=open("main_files/infofile.txt", "w")
-                    info=str(int(stuff[0])+int(health))+"," +str(int(stuff[1])+int(happy)) +","+str(int(stuff[2])+int(hunger))+","+str(int(stuff[3])+int(money))
+                    health+=happy/2
+                    info=str(float(stuff[0])+float(health))+"," +str(float(stuff[1])+float(money)) 
                     file.write(info)
                     file.close()
-                    os.system("python day1/day1_part3.py")
+                    file=open("main_files/hourtracker.txt","w")
+                    file.write("17")
+                    file.close()
+                    os.system("python day3/day3_part1.py")
                     pygame.quit()
 
 
