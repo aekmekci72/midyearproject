@@ -39,7 +39,7 @@ def blit_alpha(target, source, location, opacity):
     temp.set_alpha(opacity)        
     target.blit(temp, location)
 
-text_splash = font1.render('DAY 3', False, 'white')
+text_splash = font1.render('DAY 5', False, 'white')
 
 
 while True:

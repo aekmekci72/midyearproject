@@ -77,30 +77,3 @@ while True:
          
     pygame.display.update()
     clock.tick(60)
-
-
-
-
-
-# while True:
-#     for ev in pygame.event.get():
-          
-#         if ev.type == pygame.QUIT:
-#             pygame.quit()
-              
-#         if ev.type == pygame.MOUSEBUTTONDOWN:
-#             if width/2 <= pygame.mouse.get_pos()[0] <= width/2+240 and height/2 <= pygame.mouse.get_pos()[1] <= height/2+40:
-#                 os.system("main_files/screen2.py 1")
-#                 pygame.quit()
-                  
-#     screen.fill((0,0,0))
-      
-#     if width/2 <= pygame.mouse.get_pos()[0] <= width/2+140 and height/2 <= pygame.mouse.get_pos()[1] <= height/2+40:
-#         pygame.draw.rect(screen,color_light,[width/2,height/2,240,40])
-          
-#     else:
-#         pygame.draw.rect(screen,color_dark,[width/2,height/2,240,40])
-      
-#     screen.blit(text , (width/2+50,height/2))
-      
-#     pygame.display.update()

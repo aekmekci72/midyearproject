@@ -19,11 +19,11 @@ text = smallfont.render('S T A R T' , True , color)
 continueb = pygame.image.load('images_fonts/continue.png')
 
 
-splash_page = pygame.image.load('images_fonts/fam.jpg')
-splash_page2 = pygame.image.load('images_fonts/sickness.jpg')
+splash_page = pygame.image.load('images_fonts/kitchen_sink.jpg')
+splash_page2 = pygame.image.load('images_fonts/lightning-storm.jpg')
 splash_page3 = pygame.image.load('images_fonts/dock.png')
 scaled_splash = pygame.transform.scale(splash_page, (571, 301))
-scaled_splash2 = pygame.transform.scale(splash_page2, (1800, 1351.5))
+scaled_splash2 = pygame.transform.scale(splash_page2, (1700, 1000))
 scaled_splash3 = pygame.transform.scale(splash_page3, (1700, 1100))
 
 
