@@ -1,1 +1,0 @@
-Bow(3damage)-3,,Apple(+2hunger)-2,
