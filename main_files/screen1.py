@@ -42,13 +42,11 @@ def blit_alpha(target, source, location, opacity):
 text_splash = font1.render('Sick Or Swim', False, 'white')
 text_splash_name = font.render('By: Shreeja And Anna', False, 'white')
 
-count = True
 pygame.mixer.music.load('guitar.mp3')
 pygame.mixer.music.play(-1)
 
 
 while True:
-
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.mixer.music.stop()
@@ -58,7 +56,7 @@ while True:
         if event.type == pygame.MOUSEBUTTONDOWN:
             (width/2-500,height/2+200)
             if width/2-500 <= pygame.mouse.get_pos()[0] <= width/2-360 and height/2+200 <= pygame.mouse.get_pos()[1] <= height/2+400:
-                os.system("python main_files/howtoplay.py 1")
+                os.system("python main_files/howtoplay.py")
                 pygame.quit()
 
        
