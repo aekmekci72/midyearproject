@@ -32,6 +32,16 @@ player2=pygame.image.load('images_fonts/person2.png')
 player3=pygame.image.load('images_fonts/person3.png')
 
 
+def hourplusone():
+    file=open("main_files/hourtracker.txt")
+    for line in file:
+        hour=int(line)
+    hour+=1
+
+    file=open("main_files/hourtracker.txt","w")
+    file.write(str(hour))
+    file.close()
+
 
 def blit_alpha(target, source, location, opacity):
     x = location[0]
@@ -202,12 +212,16 @@ while True:
             position=pygame.mouse.get_pos()
             print(position)
             if variable=="arcade" and position[0]>56 and position[0]<1466 and position[1]>74 and position[1]<287:
+                hourplusone()
                 os.system("python specificinteractions/arcademenu.py 1")
             if variable=="stores" and position[0]>71 and position[0]<556 and position[1]>64 and position[1]<292:
+                hourplusone()
                 os.system("python shop/foodstore.py 1")
             if variable=="stores" and position[0]>70 and position[0]<556 and position[1]>576 and position[1]<808:
+                hourplusone()
                 os.system("python shop/toolstore.py 1")
             if variable=="medbay" and position[0]>76 and position[0]<536 and position[1]>593 and position[1]<806:
+                hourplusone()
                 os.system("python shop/healthstore.py 1")
             if variable=="commons" and position[0]>1275 and position[0]<1400 and position[1]>95 and position[1]<325:
                 f=open("main_files/key.txt")

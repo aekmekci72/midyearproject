@@ -77,6 +77,22 @@ for line in file:
         morning=False
 
 
+def hourplusone():
+    file=open("main_files/hourtracker.txt")
+    for line in file:
+        hour=int(line)
+    hour+=1
+
+    file=open("main_files/hourtracker.txt","w")
+    file.write(str(hour))
+    file.close()
+
+def keychoice():
+    f=open("main_files/key.txt","w")
+    f.write("no")
+    f.close()
+    os.system("python main_files/keystuff.py 1")
+
 b=False
 for line in file:
     if line!="75,100":
@@ -202,12 +218,13 @@ while True:
             if variable=="medbay" and position[0]>76 and position[0]<536 and position[1]>593 and position[1]<806:
                 os.system("python shop/healthstore.py 1")
             if variable=="commons" and position[0]>1275 and position[0]<1400 and position[1]>95 and position[1]<325:
+                hourplusone()
                 f=open("main_files/key.txt")
                 for line in f:
                     if line=="no":
-                        print("no key")
+                        pass
                     if line=="yes":
-                        print("yes key")
+                        keychoice()
 
     if float(health)<=0:
         os.system("python main_files/death.py 1")
