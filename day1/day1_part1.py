@@ -33,9 +33,11 @@ player3=pygame.image.load('images_fonts/person3.png')
 
 
 def hourplusone():
+    global hour
     file=open("main_files/hourtracker.txt")
     for line in file:
         hour=int(line)
+
     hour+=1
 
     file=open("main_files/hourtracker.txt","w")

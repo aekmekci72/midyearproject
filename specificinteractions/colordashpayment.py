@@ -7,7 +7,7 @@ for line in infofile:
     line=line.strip()
     line=line.split(",")
     print(line)
-    current_balance=int(line[1])
+    current_balance=float(line[1])
 
 screen = pygame.display.set_mode((800, 600))
 font = pygame.font.SysFont(None, 30)

@@ -78,6 +78,7 @@ for line in file:
 
 
 def hourplusone():
+    global hour
     file=open("main_files/hourtracker.txt")
     for line in file:
         hour=int(line)

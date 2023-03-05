@@ -37,13 +37,13 @@ for thing in line:
         moreproct+=float(thing[1])
     else:
         items.append(thingg)
-    if thing.strip()=="":
+    if thing=="":
         print("nada")
 
-opponenthealth=75
-opponentdext=60
+opponenthealth=88
+opponentdext=78
 dext=35+(((health+money)/2)/4)
-opponentstrength=60
+opponentstrength=75
 opponentstrength-=moreproct
 opponentdext-=moreproct/3
 strength=50+extrastrength
