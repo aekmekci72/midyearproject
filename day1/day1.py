@@ -41,7 +41,6 @@ def blit_alpha(target, source, location, opacity):
 
 text_splash = font1.render('DAY 1', False, 'white')
 
-
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:

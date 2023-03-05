@@ -19,10 +19,6 @@ text = smallfont.render('S T A R T' , True , color)
 continueb = pygame.image.load('images_fonts/continue.png')
 
 global scaled_splash, text_splash, text_splash1, counter
-splash_page = pygame.image.load('images_fonts/standinimage.png')
-
-scaled_splash = pygame.transform.scale(splash_page, (800, 800))
-
 
 global money, happy
 health=0
@@ -39,8 +35,11 @@ def blit_alpha(target, source, location, opacity):
     temp.set_alpha(opacity)        
     target.blit(temp, location)
 
+splash_page = pygame.image.load("images_fonts/mystery.jpg")
+scaled_splash = pygame.transform.scale(splash_page, (width, height))
 text_splash = font1.render("As concern of finding the infected person grows...", False, "white")
 text_splash1 = font1.render("You focus your efforts solely on finding the infected person!", False, "white")
+screen.blit(scaled_splash, (0, 0))
 screen.blit(text_splash, (60,70))
 screen.blit(text_splash1, (60,140))
 counter=1
@@ -67,6 +66,8 @@ def masterloop():
         if counter==100:
             text_splash = font1.render("Oh no! You slip and fall...that hurt!", False, "white")
             text_splash1 = font1.render("-5 health", False, "white")
+            splash_page = pygame.image.load("images_fonts/howtoplayback.png")
+            scaled_splash = pygame.transform.scale(splash_page, (width, height))
             health-=5
             counter+=1
             sync()
@@ -74,6 +75,8 @@ def masterloop():
         if counter==101:
             text_splash = font1.render("As concern of finding the infected person grows, whose room do you search?", False, "white")
             text_splash1 = font1.render("[left arrow --> The chef, right arrow --> Lady Mary]", False, "white")
+            splash_page = pygame.image.load("images_fonts/mystery.jpg")
+            scaled_splash = pygame.transform.scale(splash_page, (width, height))
             
             eventvar="e3_1"
             sync()
@@ -82,17 +85,23 @@ def masterloop():
                 if counter==1:
                     text_splash = font1.render("You hear of a case of food poisoning going around the ship.", False, "white")
                     text_splash1 = font1.render("This could be incredibly detrimental to one's health.", False, "white")
+                    splash_page = pygame.image.load("images_fonts/food.jpg")
+                    scaled_splash = pygame.transform.scale(splash_page, (width, height))
                     counter+=1
                     sync()
                 if counter==2:
                     text_splash = font1.render("To start off, whose room do you search?", False, "white")
                     text_splash1 = font1.render("[left arrow --> The mechanic's, right arrow --> Lady Margaret]", False, "white")
+                    splash_page = pygame.image.load("images_fonts/mystery.jpg")
+                    scaled_splash = pygame.transform.scale(splash_page, (width, height))
                     eventvar="e1"
                     sync()
                 
                 if counter==4:
                     text_splash = font1.render("You sigh, growing tired and restless...what do you do?", False, "white")
                     text_splash1 = font1.render("[left arrow --> Take a walk, right arrow --> Stay inside]", False, "white")
+                    splash_page = pygame.image.load("images_fonts/mystery.jpg")
+                    scaled_splash = pygame.transform.scale(splash_page, (width, height))
                     eventvar="e2"
                     sync()
                 if counter==7:
@@ -101,6 +110,8 @@ def masterloop():
                 if counter==10:
                     text_splash = font1.render("When you're back on the ship early, you decide to explore some more! Where do you look?", False, "white")
                     text_splash1 = font1.render("[left arrow --> Nurse's chamber, right arrow --> Under the flower vase of commons]", False, "white")
+                    splash_page = pygame.image.load("images_fonts/mystery.jpg")
+                    scaled_splash = pygame.transform.scale(splash_page, (width, height))
                     eventvar="e3_2"
                     sync()
                 if counter==11:
@@ -128,6 +139,9 @@ def masterloop():
                 if event.key==pygame.K_RIGHT:
                     text_splash = font1.render("As you search her room, it's all clear!", False, "white")
                     text_splash1 = font1.render("You get +5 health.", False, "white")
+                    splash_page = pygame.image.load("images_fonts/lady_marg.jpg")
+                    scaled_splash = pygame.transform.scale(splash_page, (width, height))
+
                     health+=5
                     counter=4
                     eventvar="na"
@@ -135,6 +149,8 @@ def masterloop():
                 if event.key==pygame.K_LEFT:
                     text_splash = font1.render("All you find are masks and cleared health logs!", False, "white")
                     text_splash1 = font1.render("You get +5 health", False, "white")
+                    splash_page = pygame.image.load("images_fonts/mask.png")
+                    scaled_splash = pygame.transform.scale(splash_page, (width, height))
                     health+=5
                     counter=4
                     eventvar="na"
@@ -144,12 +160,16 @@ def masterloop():
                 if event.key==pygame.K_LEFT:
                     text_splash = font1.render("As you go out on the deck for some fresh air, you see the nurse and medic", False, "white")
                     text_splash1 = font1.render("Talking in hushed voices while looking at Sir Cavaret's room...what does it mean?", False, "white")
+                    splash_page = pygame.image.load("images_fonts/ocean1.jpg")
+                    scaled_splash = pygame.transform.scale(splash_page, (width, height))
                     counter=100
                     eventvar="na"
                     sync()
                 if event.key==pygame.K_RIGHT:
                     text_splash = font1.render("You decide to read a book! How relaxing", False, "white")
                     text_splash1 = font1.render("+5 health", False, "white")
+                    splash_page = pygame.image.load("images_fonts/book.jpg")
+                    scaled_splash = pygame.transform.scale(splash_page, (width, height))
                     eventvar="na"
                     health+=5
                     counter=101
@@ -158,6 +178,8 @@ def masterloop():
                 if event.key==pygame.K_LEFT:
                     text_splash = font1.render("OMG! You find a diary with dark poems reflected on his life!", False, "white")
                     text_splash1 = font1.render("You did it...you found the infected! +10 health +10 wealth", False, "white")
+                    splash_page = pygame.image.load("images_fonts/book.jpg")
+                    scaled_splash = pygame.transform.scale(splash_page, (width, height))
                     eventvar="na"
                     money+=10
                     health+=10
@@ -166,6 +188,8 @@ def masterloop():
                 if event.key==pygame.K_RIGHT:
                     text_splash = font1.render("She's not infected...all clear!", False, "white")
                     text_splash1 = font1.render(" +5 health", False, "white")
+                    splash_page = pygame.image.load("images_fonts/mask.png")
+                    scaled_splash = pygame.transform.scale(splash_page, (width, height))
                     eventvar="na"
                     health+=5
                     counter=11

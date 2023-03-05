@@ -165,9 +165,7 @@ def mornclockfunc():
 
     file=open("main_files/hourtracker.txt","w")
     file.write(str(hour))
-    file.close()
-
-    
+    file.close()    
 
 while True:
 
