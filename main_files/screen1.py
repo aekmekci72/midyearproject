@@ -43,10 +43,15 @@ text_splash = font1.render('Sick Or Swim', False, 'white')
 text_splash_name = font.render('By: Shreeja And Anna', False, 'white')
 
 count = True
+pygame.mixer.music.load('guitar.mp3')
+pygame.mixer.music.play(-1)
+
+
 while True:
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
+            pygame.mixer.music.stop()
             pygame.quit()
             exit()
        
