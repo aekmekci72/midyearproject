@@ -42,8 +42,8 @@ def blit_alpha(target, source, location, opacity):
 text_splash = font1.render('Sick Or Swim', False, 'white')
 text_splash_name = font.render('By: Shreeja And Anna', False, 'white')
 
-#pygame.mixer.music.load('guitar.mp3')
-#pygame.mixer.music.play(-1)
+pygame.mixer.music.load('guitar.mp3')
+pygame.mixer.music.play(-1)
 
 
 while True:
