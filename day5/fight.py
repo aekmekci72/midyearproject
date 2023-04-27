@@ -113,7 +113,7 @@ def draw_health_bar():
     health_percentage = health / 100
     health_bar_current_width = health_bar_width * health_percentage
     
-    pygame.draw.rect(screen, (0,0,0), (health_bar_x, health_bar_y, health_bar_width, health_bar_height))
+    
     
     if opponenthealth > 0:
         pygame.draw.rect(screen, (0,225,0), (health_bar_x, health_bar_y, health_bar_current_width, health_bar_height))
